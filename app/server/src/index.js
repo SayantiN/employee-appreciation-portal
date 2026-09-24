@@ -7,17 +7,26 @@ import { fileURLToPath } from 'node:url';
 import { migrate, dbPath } from './db.js';
 import { loadUser, requireCsrfHeader } from './middleware/auth.js';
 import { runScheduler } from './lib/cycles.js';
+import { findAvailablePort } from './lib/port.js';
 
 import { router as authRouter } from './routes/auth.js';
 import { router as cyclesRouter } from './routes/cycles.js';
 import { router as votesRouter } from './routes/votes.js';
 import { router as employeesRouter } from './routes/employees.js';
 import { router as dashboardRouter } from './routes/dashboard.js';
+import { router as winnersRouter } from './routes/winners.js';
+import { router as publishRouter } from './routes/publish.js';
+import { router as feedbackRouter } from './routes/feedback.js';
+import { router as adminRouter } from './routes/admin.js';
+import { router as tutorialsRouter } from './routes/tutorials.js';
+import { seedBaselineTutorials } from './lib/tutorials.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const PORT = Number(process.env.PORT || 4000);
+const requestedPort = Number(process.env.PORT || 4000);
+const PORT = await findAvailablePort(requestedPort, '0.0.0.0');
 
 migrate();
+seedBaselineTutorials();
 
 const app = express();
 app.disable('x-powered-by');
@@ -46,6 +55,11 @@ app.use('/api/cycles', cyclesRouter);
 app.use('/api/votes', votesRouter);
 app.use('/api/employees', employeesRouter);
 app.use('/api/dashboard', dashboardRouter);
+app.use('/api/winners', winnersRouter);
+app.use('/api/publish', publishRouter);
+app.use('/api/feedback', feedbackRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api/tutorials', tutorialsRouter);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true, db: path.basename(dbPath) }));
 

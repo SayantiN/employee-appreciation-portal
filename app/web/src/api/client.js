@@ -97,7 +97,62 @@ export const api = {
   reopenCycle: (id, reason) => api.post(`/cycles/${id}/reopen`, { reason }),
   recomputeCycle: (id) => api.post(`/cycles/${id}/recompute`),
 
+  closedCycles: () => api.get('/cycles/closed'),
+
   // employees
   employees: (state) => api.get(`/employees${gridQuery(state)}`),
   selectableEmployees: () => api.get('/employees/selectable'),
+  createEmployee: (payload) => api.post('/employees', payload),
+  updateEmployee: (id, payload) => api.patch(`/employees/${id}`, payload),
+  setEmployeeStatus: (id, status) => api.post(`/employees/${id}/status`, { status }),
+  setEmployeeRole: (id, role) => api.post(`/employees/${id}/role`, { role }),
+  importEmployees: (csv, dryRun) => api.post('/employees/import', { csv, dryRun }),
+
+  // feedback
+  myFeedback: () => api.get('/feedback/mine'),
+  reportFeedback: (voteId, reason) => api.post(`/feedback/${voteId}/report`, { reason }),
+  feedbackReports: () => api.get('/feedback/reports'),
+  resolveFeedbackReport: (id, status) => api.post(`/feedback/reports/${id}`, { status }),
+
+  // winners, reports
+  hallOfFame: () => api.get('/winners'),
+  showcase: (winnerId) => api.get(`/winners/showcase/${winnerId}`),
+  winnersReport: (state, extra) => api.get(`/winners/report${withExtra(gridQuery(state), extra)}`),
+  awardStats: (state, extra) => api.get(`/winners/stats${withExtra(gridQuery(state), extra)}`),
+  awardStatsHistory: (employeeId, extra) => api.get(`/winners/stats/${employeeId}${withExtra('', extra)}`),
+
+  // publish
+  publishCycles: () => api.get('/publish/cycles'),
+  publishCycle: (id) => api.get(`/publish/cycles/${id}`),
+  publishWinner: (id, payload) => api.post(`/publish/cycles/${id}`, payload),
+  unpublishWinner: (id, reason) => api.post(`/publish/cycles/${id}/unpublish`, { reason }),
+  saveShowcase: (winnerId, payload) => request('PUT', `/publish/showcase/${winnerId}`, payload),
+
+  // tutorials
+  tutorials: () => api.get('/tutorials'),
+  tutorial: (id) => api.get(`/tutorials/${id}`),
+  tutorialProgress: (id, percent) => api.post(`/tutorials/${id}/progress`, { percent }),
+  adminTutorials: (state) => api.get(`/tutorials/admin${gridQuery(state)}`),
+  adminTutorial: (id) => api.get(`/tutorials/admin/${id}`),
+  createTutorial: (payload) => api.post('/tutorials/admin', payload),
+  updateTutorial: (id, payload) => api.patch(`/tutorials/admin/${id}`, payload),
+
+  // admin
+  auditLog: (state) => api.get(`/admin/audit${gridQuery(state)}`),
+  settings: () => api.get('/admin/settings'),
+  saveSetting: (key, value) => request('PUT', `/admin/settings/${key}`, { value }),
+  analytics: (awardType) => api.get(`/admin/analytics${awardType ? `?awardType=${awardType}` : ''}`),
 };
+
+/** Appends non-grid parameters (view, date range…) to a grid query string. */
+export function withExtra(qs, extra = {}) {
+  const p = new URLSearchParams(qs.replace(/^\?/, ''));
+  for (const [k, v] of Object.entries(extra)) if (v != null && v !== '') p.set(k, v);
+  const s = p.toString();
+  return s ? `?${s}` : '';
+}
+
+/** A download link carrying the same filters as the grid on screen (DG-11). */
+export function exportUrl(path, state, extra) {
+  return `${BASE}${path}${withExtra(gridQuery({ ...state, page: undefined, pageSize: undefined }), extra)}`;
+}

@@ -8,6 +8,15 @@ import { VoteForm } from './screens/VoteForm.jsx';
 import { MyVotes } from './screens/MyVotes.jsx';
 import { Results } from './screens/Results.jsx';
 import { AdminCycles } from './screens/AdminCycles.jsx';
+import { FeedbackForMe } from './screens/FeedbackForMe.jsx';
+import { WinnersReport } from './screens/WinnersReport.jsx';
+import { AwardStats } from './screens/AwardStats.jsx';
+import { HallOfFame, Showcase, ShowcaseIndex } from './screens/HallOfFame.jsx';
+import { HowItWorks } from './screens/HowItWorks.jsx';
+import { Tutorials, TutorialPlayer } from './screens/Tutorials.jsx';
+import { AdminPublish } from './screens/AdminPublish.jsx';
+import { AdminEmployees } from './screens/AdminEmployees.jsx';
+import { AdminAnalytics, AdminAudit, AdminSettings, AdminTutorials } from './screens/AdminGovernance.jsx';
 
 export default function App() {
   return (
@@ -20,8 +29,24 @@ export default function App() {
             <Route path="vote/month" element={<VoteForm awardType="Month" />} />
             <Route path="vote/year" element={<VoteForm awardType="Year" />} />
             <Route path="my-votes" element={<MyVotes />} />
+            <Route path="feedback" element={<FeedbackForMe />} />
             <Route path="results" element={<Results />} />
+            <Route path="results/past" element={<Results past />} />
+            <Route path="reports/winners" element={<WinnersReport />} />
+            <Route path="reports/award-stats" element={<AwardStats />} />
+            <Route path="winners" element={<HallOfFame />} />
+            <Route path="winners/showcase" element={<ShowcaseIndex />} />
+            <Route path="winners/showcase/:winnerId" element={<Showcase />} />
+            <Route path="help" element={<HowItWorks />} />
+            <Route path="tutorials" element={<Tutorials />} />
+            <Route path="tutorials/:id" element={<TutorialPlayer />} />
             <Route path="admin/cycles" element={<AdminOnly><AdminCycles /></AdminOnly>} />
+            <Route path="admin/winners" element={<AdminOnly><AdminPublish /></AdminOnly>} />
+            <Route path="admin/employees" element={<AdminOnly><AdminEmployees /></AdminOnly>} />
+            <Route path="admin/tutorials" element={<AdminOnly><AdminTutorials /></AdminOnly>} />
+            <Route path="admin/analytics" element={<AdminOnly><AdminAnalytics /></AdminOnly>} />
+            <Route path="admin/audit" element={<AdminOnly><AdminAudit /></AdminOnly>} />
+            <Route path="admin/settings" element={<AdminOnly><AdminSettings /></AdminOnly>} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

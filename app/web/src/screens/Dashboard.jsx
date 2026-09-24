@@ -7,6 +7,7 @@ import {
   Skeleton, Stat, StatusPill, Withheld,
 } from '../components/ui.jsx';
 import './screens.scss';
+import './pages.scss';
 
 export function Dashboard() {
   const { user, isPrivileged } = useAuth();
@@ -175,9 +176,12 @@ export function Dashboard() {
           <Card accent="teal">
             <SectionLabel tone="teal">Getting started</SectionLabel>
             <p className="page__lede" style={{ marginBottom: 12 }}>
-              The tutorial library arrives in a later phase. Until then, How It Works explains the rules.
+              Short walkthroughs of every screen, and a five-minute tour for new joiners.
             </p>
-            <ProgressBar value={0} tone="teal" label="Onboarding progress" />
+            <div className="row">
+              <Button as={Link} to="/tutorials" size="sm">Video tutorials</Button>
+              <Button as={Link} to="/help" size="sm" variant="ghost">How it works</Button>
+            </div>
           </Card>
 
           <Card>
@@ -185,8 +189,8 @@ export function Dashboard() {
             {/* R-6.7.3 — nothing from an open cycle is ever shown here. */}
             <Withheld title="Feedback is not visible yet">
               It appears once a cycle closes <strong>and</strong> at least three colleagues have voted for you.
-              The full page arrives with phase 2.
             </Withheld>
+            <div style={{ marginTop: 8 }}><Link to="/feedback" className="page__editlink">Open Feedback for Me →</Link></div>
           </Card>
 
           {data.announcements.length > 0 && (

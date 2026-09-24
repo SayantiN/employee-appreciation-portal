@@ -74,6 +74,16 @@ router.get('/current', (req, res) => {
   });
 });
 
+/** Past Results (SPEC 6.8) — every cycle whose window has shut. */
+router.get('/closed', (_req, res) => {
+  const rows = db.prepare(
+    `SELECT id, award_type, period_label, status, closes_at FROM voting_cycles
+      WHERE status IN ('Closed','Tallied','TieNeedsDecision','Published')
+      ORDER BY period_label DESC, award_type DESC`
+  ).all();
+  res.json({ cycles: rows.map((c) => ({ ...c, pretty_period: prettyPeriod(c) })) });
+});
+
 router.post('/', requireAdmin, (req, res) => {
   const { awardType, periodLabel, opensAt, closesAt } = req.body || {};
   if (!['Month', 'Year'].includes(awardType)) return res.status(400).json({ error: 'bad_award_type' });

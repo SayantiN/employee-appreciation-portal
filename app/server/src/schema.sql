@@ -222,3 +222,62 @@ CREATE TABLE IF NOT EXISTS login_attempts (
 );
 CREATE INDEX IF NOT EXISTS ix_attempts_ip   ON login_attempts(ip, occurred_at);
 CREATE INDEX IF NOT EXISTS ix_attempts_mail ON login_attempts(email, occurred_at);
+
+-- ------------------------------------------------------ feedback moderation
+-- R-6.7.4 — a nominee may report a card as abusive. It is hidden from them at
+-- once and queued for admin review; the vote itself is not altered.
+CREATE TABLE IF NOT EXISTS feedback_reports (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  vote_id      INTEGER NOT NULL REFERENCES votes(id),
+  reporter_id  INTEGER NOT NULL REFERENCES employees(id),
+  reason       TEXT    NOT NULL DEFAULT '',
+  status       TEXT    NOT NULL DEFAULT 'Open' CHECK (status IN ('Open','Upheld','Dismissed')),
+  created_at   TEXT    NOT NULL DEFAULT (datetime('now')),
+  UNIQUE (vote_id, reporter_id)
+);
+
+-- ------------------------------------------------------------ showcases
+-- SPEC 6.11 — one showcase per published winner record. The body is an
+-- ordered list of blocks (text, metric, link), stored as JSON.
+CREATE TABLE IF NOT EXISTS showcases (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  winner_id    INTEGER NOT NULL UNIQUE REFERENCES winners(id),
+  status       TEXT    NOT NULL DEFAULT 'Draft' CHECK (status IN ('Draft','Published')),
+  body_json    TEXT    NOT NULL DEFAULT '[]',
+  published_at TEXT,
+  updated_by   INTEGER REFERENCES employees(id),
+  updated_at   TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+
+-- ------------------------------------------------------------ tutorials
+-- SPEC 6.14. The script is the source of truth (R-6.14.1); captions and the
+-- transcript are derived from it, never from the audio (R-6.14.2).
+CREATE TABLE IF NOT EXISTS tutorials (
+  id                     INTEGER PRIMARY KEY AUTOINCREMENT,
+  title                  TEXT    NOT NULL,
+  category               TEXT    NOT NULL,
+  description            TEXT    NOT NULL DEFAULT '',
+  duration_seconds       INTEGER NOT NULL DEFAULT 0,
+  script                 TEXT    NOT NULL DEFAULT '',
+  video_url              TEXT,
+  audience               TEXT    NOT NULL DEFAULT 'All' CHECK (audience IN ('All','Admin')),
+  status                 TEXT    NOT NULL DEFAULT 'Draft'
+                                 CHECK (status IN ('Draft','Published','Stale','Archived')),
+  in_onboarding          INTEGER NOT NULL DEFAULT 0,
+  sort_order             INTEGER NOT NULL DEFAULT 0,
+  applies_to_app_version TEXT    NOT NULL DEFAULT '0.1',
+  related_path           TEXT,
+  updated_at             TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+
+-- R-6.14.11 — support and onboarding only. Never joined into any ranking.
+CREATE TABLE IF NOT EXISTS tutorial_progress (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  tutorial_id  INTEGER NOT NULL REFERENCES tutorials(id),
+  employee_id  INTEGER NOT NULL REFERENCES employees(id),
+  percent      INTEGER NOT NULL DEFAULT 0,
+  completed    INTEGER NOT NULL DEFAULT 0,
+  first_viewed TEXT    NOT NULL DEFAULT (datetime('now')),
+  updated_at   TEXT    NOT NULL DEFAULT (datetime('now')),
+  UNIQUE (tutorial_id, employee_id)
+);

@@ -1,0 +1,234 @@
+@use '../styles/tokens' as *;
+@use '../styles/mixins' as *;
+
+// Screens added in phases 2–4: feedback, reports, winners, tutorials, admin.
+
+/* ================================================= shared page utilities */
+.page__editlink {
+  font-size: $fs-12; font-weight: $fw-bold; color: var(--c-blue-deep); text-decoration: none;
+  &:hover { text-decoration: underline; }
+  @include focus-ring;
+}
+.linkbtn {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-size: $fs-12; font-weight: $fw-bold; color: var(--c-blue-deep);
+  @include focus-ring;
+}
+.toolbar-row { display: flex; align-items: center; gap: $s-3; flex-wrap: wrap; }
+.checkline {
+  display: inline-flex; align-items: center; gap: $s-2; font-size: $fs-13; color: var(--c-ink-2);
+  input { accent-color: var(--c-blue); width: 17px; height: 17px; }
+}
+.tiles--5 { @include laptop { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.code { font-family: $font-mono; font-size: $fs-12; color: var(--c-ink-2); }
+.plain-list {
+  list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: $s-1;
+  font-size: $fs-13; max-height: 320px; overflow-y: auto;
+}
+
+.detail-list {
+  margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: $s-1 $s-4; font-size: $fs-13;
+  > div { display: contents; }
+  dt { color: var(--c-muted); }
+  dd { margin: 0; color: var(--c-ink); }
+}
+.json {
+  margin: 0; padding: $s-3; border-radius: $r-md; background: var(--c-surface-2);
+  font-family: $font-mono; font-size: $fs-11; white-space: pre-wrap; word-break: break-word;
+  max-height: 260px; overflow: auto;
+}
+
+/* ============================================== Award statistics (6.9A) */
+.stats__sub { display: block; font-size: $fs-11; color: var(--c-faint); @include truncate; }
+.stats__cardgrid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: $s-1 $s-3; font-size: $fs-12; color: var(--c-muted);
+  b { color: var(--c-ink); font-size: $fs-14; @include tabular; }
+}
+
+/* =================================================== Winners report 6.9 */
+.basis-label {
+  font-size: $fs-12; color: var(--c-blue-deep);
+  padding: $s-2 $s-3; border-radius: $r-md; background: var(--c-blue-tint);
+}
+
+/* ===================================================== Hall of Fame 6.10 */
+.hof {
+  display: grid; gap: $s-3; grid-template-columns: 1fr;
+  @include tablet  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @include laptop  { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @include desktop { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  &--year { @include desktop { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  &__tile { display: flex; flex-direction: column; gap: $s-3; }
+  &__tile--year { border-width: 2px; background: linear-gradient(160deg, var(--c-bronze-tint), var(--c-surface) 55%); }
+  &__who { display: flex; align-items: center; gap: $s-3; }
+  &__name { font-size: $fs-16; font-weight: $fw-black; }
+  &__role { font-size: $fs-12; color: var(--c-muted); }
+  &__cite { margin: 0; font-size: $fs-12; color: var(--c-ink-2); @include truncate(4); }
+}
+
+/* ==================================================== Showcase 6.11 */
+.showcase__body { display: flex; flex-direction: column; gap: $s-4; max-width: 820px; }
+.showcase__text {
+  h2 { font-size: $fs-20; font-weight: $fw-black; margin: 0 0 $s-2; }
+  p { margin: 0 0 $s-3; font-size: $fs-14; line-height: $lh-body; color: var(--c-ink-2); }
+}
+.showcase__links {
+  margin: 0; padding-left: $s-5; font-size: $fs-14; line-height: 1.9;
+  a { color: var(--c-blue-deep); font-weight: $fw-bold; }
+}
+
+/* =================================================== Feedback for Me 6.7 */
+.cols--feedback { @include laptop { grid-template-columns: 300px minmax(0, 1fr); align-items: start; } }
+.feedback__rail { @include laptop { position: sticky; top: calc(#{$topbar-h} + #{$s-4}); } }
+.feedback__feed {
+  display: grid; gap: $s-3; align-content: start;
+  @include desktop { grid-template-columns: 1fr 1fr; }
+}
+.fb-card {
+  display: flex; flex-direction: column; gap: $s-3;
+  &__who { font-weight: $fw-black; font-size: $fs-13; }
+  &__rating {
+    font-size: $fs-24; font-weight: $fw-black; @include tabular;
+    small { font-size: $fs-12; color: var(--c-faint); font-weight: $fw-bold; }
+  }
+  &__text {
+    margin: 0; font-size: $fs-13; line-height: $lh-snug; color: var(--c-ink-2);
+    &.is-clamped { @include truncate(4); }
+  }
+  // The growth part of the feedback, visually distinguished (SPEC 6.7).
+  &__suggest {
+    border-left: 3px solid var(--c-sage); background: var(--c-sage-tint);
+    padding: $s-2 $s-3; border-radius: 0 $r-md $r-md 0;
+    p { margin: 0; font-size: $fs-13; color: var(--c-sage-deep); font-weight: $fw-semibold; }
+  }
+}
+
+/* ======================================================= Tutorials 6.14 */
+.tour {
+  display: flex; align-items: center; gap: $s-4; flex-wrap: wrap;
+  padding: $s-5; border-radius: $r-xl; color: #fff;
+  background: linear-gradient(120deg, $c-teal, $c-teal-deep);
+  &__ring {
+    width: 64px; height: 64px; border-radius: 50%; flex: none; display: grid; place-items: center;
+    background: conic-gradient(#fff var(--pct), rgba(255, 255, 255, 0.25) 0);
+    span {
+      width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center;
+      background: $c-teal-deep; font-size: $fs-12; font-weight: $fw-black;
+    }
+  }
+  &__title { font-size: $fs-16; font-weight: $fw-black; }
+  &__sub { font-size: $fs-12; color: rgba(255, 255, 255, 0.82); }
+}
+.tut-card {
+  @include card; overflow: hidden; display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+  @include focus-ring;
+  &:hover { border-color: var(--c-teal); }
+  &__thumb {
+    aspect-ratio: 16 / 9; display: grid; place-items: center; position: relative;
+    background: linear-gradient(135deg, var(--c-teal-tint), var(--c-blue-tint));
+    span {
+      width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--c-teal); color: #fff; font-size: 14px;
+    }
+    em {
+      position: absolute; right: $s-2; bottom: $s-2; font-style: normal; font-size: $fs-11; font-weight: $fw-bold;
+      background: rgba(0, 0, 0, 0.55); color: #fff; padding: 1px 6px; border-radius: $r-sm; @include tabular;
+    }
+  }
+  &__body { padding: $s-3; display: flex; flex-direction: column; gap: $s-2; }
+  &__title { font-size: $fs-14; font-weight: $fw-black; }
+  &__desc { font-size: $fs-12; color: var(--c-muted); @include truncate(2); }
+}
+.player__title { font-size: $fs-20; font-weight: $fw-black; margin: 0; }
+.player {
+  display: grid; gap: $s-4;
+  @include laptop { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; }
+  &__main { display: flex; flex-direction: column; gap: $s-3; max-width: 960px; }
+  &__video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: $r-lg; }
+  &__placeholder {
+    aspect-ratio: 16 / 9; border-radius: $r-lg; padding: $s-6;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: $s-2; text-align: center;
+    border: 1px dashed var(--c-line-2); background: var(--c-surface-2); color: var(--c-muted); font-size: $fs-13;
+    strong { color: var(--c-ink); font-size: $fs-16; }
+  }
+  &__transcript { max-height: 70vh; display: flex; flex-direction: column; }
+}
+.transcript {
+  list-style: none; margin: 0; padding: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 2px;
+  button {
+    width: 100%; text-align: left; background: none; border: 0; border-radius: $r-sm;
+    padding: $s-2; font-size: $fs-13; line-height: $lh-snug; color: var(--c-ink-2); cursor: pointer;
+    @include focus-ring(-2px);
+    &:hover:not(:disabled) { background: var(--c-teal-tint); }
+    &:disabled { cursor: default; }
+  }
+  time { font-size: $fs-11; font-weight: $fw-bold; color: var(--c-teal-deep); margin-right: $s-1; @include tabular; }
+}
+
+/* ================================================= Publish winners 6.17 */
+.cols--publish { @include laptop { grid-template-columns: 300px minmax(0, 1fr); align-items: start; } }
+.pub-list {
+  display: flex; flex-direction: column; max-height: 75vh; overflow-y: auto;
+  &__item {
+    display: flex; align-items: center; gap: $s-2; width: 100%; text-align: left; cursor: pointer;
+    padding: $s-3; background: none; border: 0; border-bottom: 1px solid var(--c-line);
+    border-left: 3px solid transparent; font-size: $fs-13; color: var(--c-ink);
+    @include focus-ring(-2px);
+    &:hover { background: var(--c-surface-2); }
+    &.is-on { background: var(--c-blue-tint); border-left-color: var(--c-blue); }
+  }
+  &__sub { display: block; font-size: $fs-11; color: var(--c-muted); @include truncate; }
+}
+.pub-choices { display: flex; flex-direction: column; gap: $s-1; }
+.pub-choice {
+  display: flex; align-items: center; gap: $s-3; min-height: $tap-min; padding: $s-2 $s-3;
+  border: 1px solid var(--c-line); border-radius: $r-md; cursor: pointer; font-size: $fs-13;
+  input { accent-color: var(--c-plum); width: 17px; height: 17px; }
+  &.is-on { border-color: var(--c-plum); background: var(--c-plum-tint); }
+}
+.sc-block {
+  display: flex; flex-direction: column; gap: $s-2; padding: $s-3;
+  border: 1px solid var(--c-line); border-radius: $r-md; background: var(--c-surface-2);
+}
+
+/* ========================================================= Settings 6.21 */
+.settings { display: flex; flex-direction: column; }
+.settings__row {
+  display: grid; gap: $s-2; padding: $s-3 0; border-bottom: 1px solid var(--c-line);
+  &:last-child { border-bottom: 0; }
+  @include tablet { grid-template-columns: minmax(0, 1fr) 320px; align-items: center; }
+}
+.settings__name { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.settings__control { display: flex; gap: $s-2; align-items: center; .input { flex: 1; } }
+.settings__ok  { font-size: $fs-11; color: var(--c-sage-deep); font-weight: $fw-bold; }
+.settings__err { font-size: $fs-11; color: var(--c-clay-deep); font-weight: $fw-bold; grid-column: 1 / -1; }
+
+/* ======================================================== How It Works */
+.prose {
+  ul { margin: 0; padding-left: $s-5; display: flex; flex-direction: column; gap: $s-2; font-size: $fs-13; line-height: $lh-snug; }
+  p { margin: 0 0 $s-2; font-size: $fs-13; line-height: $lh-snug; }
+  details {
+    border-top: 1px solid var(--c-line); padding: $s-3 0; font-size: $fs-13;
+    summary { cursor: pointer; font-weight: $fw-bold; }
+    p { margin: $s-2 0 0; color: var(--c-muted); }
+  }
+}
+
+.heat td, .heat th { white-space: nowrap; }
+
+/* ================================================================ print */
+.print-only { display: none; }
+@media print {
+  .shell__side, .shell__top, .shell__tabs, .no-print, .grid__toolbar, .grid__chips, .grid__foot, .skip-link {
+    display: none !important;
+  }
+  .print-only { display: block; }
+  .print-head { font-size: 12px; margin-bottom: 8px; }
+  .shell__content { padding: 0 !important; max-width: none; }
+  .grid__scroller { display: block !important; overflow: visible; }
+  .grid__cards { display: none !important; }
+  .card, .grid { break-inside: avoid; border-color: #bbb; }
+  body { background: #fff; }
+}

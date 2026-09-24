@@ -47,26 +47,35 @@ The database is a file at `server/data/portal.sqlite`. Delete it to start comple
 
 ## What is built
 
-This is **P0 + P1** of the six-phase plan in SPEC §17.
+Every screen in SPEC §5 is now built, plus one addition — **Award Statistics**.
 
-| Screen | Spec | State |
+| Screen | Spec | Notes |
 |---|---|---|
-| Login, forgot password, reset | 6.1, 6.2 | Complete |
-| Dashboard | 6.3 | Complete |
-| Vote — Employee of the Month | 6.4 | Complete |
-| Vote — Employee of the Year | 6.5 | Complete |
-| My Votes | 6.6 | Complete |
-| Results & Leaderboard | 6.8 | Complete |
-| Admin — Voting Cycles | 6.16 | Complete |
-| Feedback for Me | 6.7 | Phase 2 |
-| Winners Report | 6.9 | Phase 4 |
-| Hall of Fame, Work Showcase | 6.10, 6.11 | Phase 3 |
-| Publish Winners | 6.17 | Phase 3 |
-| Video Tutorials | 6.14 | Phase 4/5 |
-| Employee Directory, Analytics, Audit UI, Settings | 6.18–6.21 | Phase 4 |
+| Login, forgot password, reset | 6.1, 6.2 | |
+| Dashboard | 6.3 | |
+| Vote — Employee of the Month / Year | 6.4, 6.5 | |
+| My Votes | 6.6 | |
+| Feedback for Me | 6.7 | Reveal threshold, report-as-abusive, print to PDF |
+| Current Cycle Status · Past Results | 6.8 | Past Results deep-links with `?cycle=<id>` |
+| Winners Report | 6.9 | Month / Year / Date-wise / All views, two date bases, CSV export, print |
+| **Award Statistics** | 6.9A (new) | Per employee: EoM and EoY wins and nominations, drill-down, CSV export |
+| Hall of Fame · Work Showcase | 6.10, 6.11 | Showcase blocks: write-up, impact figure, link |
+| How It Works · Video Tutorials | 6.13, 6.14 | 15 baseline tutorials seeded as scripts; transcript until videos are recorded |
+| Admin — Voting Cycles | 6.16 | |
+| Admin — Publish Winners | 6.17 | Override and tie resolution need a justification; unpublish |
+| Admin — Employee Directory | 6.18 | Add, edit, role, deactivate, CSV import with dry run |
+| Admin — Tutorial Library | 6.14.7 | |
+| Admin — Analytics & Exports | 6.19 | Participation, ratings, department heatmap, non-voters, moderation queue |
+| Admin — Audit Log · System Settings | 6.20, 6.21 | |
 
-Navigation shows the unbuilt screens greyed with a "soon" marker rather than hiding them, so the
-shape of the finished product is visible and nobody wonders whether a menu item was forgotten.
+**Award Statistics counting rule:** a *nomination* is one cycle in which the person received at least
+one submitted vote, counted only once that cycle has closed; a *win* is a published winner (joint
+winners each count one). Open cycles never contribute, so the report cannot leak live standings.
+
+**Not built yet:** Notifications centre and My Profile screens (notifications are already written to
+the database on publish), file uploads for showcases and tutorial videos (need storage and virus
+scanning), .xlsx/PDF exports (CSV opens in Excel; pages have a print stylesheet), grid column
+show/hide (DG-8), and Hall of Fame photos.
 
 The **audit log, tally engine, scheduler and full schema are already complete** — later phases add
 screens over data that is already being recorded correctly.

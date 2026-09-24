@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { api } from '../api/client.js';
 import { useAuth } from '../state/auth.jsx';
 import {
@@ -6,6 +7,7 @@ import {
   Skeleton, Stat, StatusPill, Withheld,
 } from '../components/ui.jsx';
 import './screens.scss';
+import './pages.scss';
 
 /**
  * SPEC 6.8 — the same cycle renders two different screens by role.
@@ -13,18 +15,28 @@ import './screens.scss';
  * an admin or auditor sees the live tally, watermarked. The rule is a product
  * behaviour, not a permission checkbox (BR-5, AC-2).
  */
-export function Results() {
+export function Results({ past = false }) {
   const { isPrivileged } = useAuth();
+  const [params, setParams] = useSearchParams();
   const [cycles, setCycles] = useState(null);
   const [selected, setSelected] = useState(null);
   const [view, setView] = useState(null);
 
   useEffect(() => {
-    api.currentCycles().then((out) => {
+    setCycles(null); setView(null);
+    (past ? api.closedCycles() : api.currentCycles()).then((out) => {
       setCycles(out.cycles);
-      if (out.cycles.length) setSelected(out.cycles[0].id);
+      // Past Results can be deep-linked from the Winners Report (?cycle=id).
+      const wanted = Number(params.get('cycle'));
+      const hit = out.cycles.find((c) => c.id === wanted);
+      if (out.cycles.length) setSelected(hit ? hit.id : out.cycles[0].id);
     });
-  }, []);
+  }, [past]);
+
+  const choose = (id) => {
+    setSelected(id);
+    if (past) { const p = new URLSearchParams(params); p.set('cycle', id); setParams(p, { replace: true }); }
+  };
 
   useEffect(() => {
     if (!selected) return;
@@ -35,21 +47,34 @@ export function Results() {
   if (!cycles) return <div className="page"><Skeleton h={48} r={10} /><Skeleton h={280} r={10} /></div>;
 
   if (!cycles.length) {
-    return <EmptyState title="No cycle is open right now"
-                       body="Past results appear on the Winners Report, which arrives in a later phase." />;
+    return past
+      ? <EmptyState title="No cycle has closed yet" body="Final leaderboards appear here once a voting window shuts." />
+      : <EmptyState title="No cycle is open right now" body="Finished cycles are under Results → Past Results." />;
   }
 
   return (
     <div className="page fade-in">
-      <div className="row">
-        {cycles.map((c) => (
-          <Button key={c.id} size="sm"
-                  variant={c.id === selected ? 'primary' : 'secondary'}
-                  onClick={() => setSelected(c.id)}>
-            {c.award_type} · {c.pretty_period}
-          </Button>
-        ))}
-      </div>
+      {past ? (
+        <div className="row">
+          <label className="row" style={{ gap: 8 }}>
+            <span className="section-label" style={{ margin: 0 }}>Cycle</span>
+            <select className="input" style={{ width: 'auto' }} value={selected || ''}
+                    onChange={(e) => choose(Number(e.target.value))}>
+              {cycles.map((c) => <option key={c.id} value={c.id}>{c.award_type} · {c.pretty_period}</option>)}
+            </select>
+          </label>
+        </div>
+      ) : (
+        <div className="row">
+          {cycles.map((c) => (
+            <Button key={c.id} size="sm"
+                    variant={c.id === selected ? 'primary' : 'secondary'}
+                    onClick={() => choose(c.id)}>
+              {c.award_type} · {c.pretty_period}
+            </Button>
+          ))}
+        </div>
+      )}
 
       {!view ? <Skeleton h={260} r={10} /> : view.hidden ? (
         <>

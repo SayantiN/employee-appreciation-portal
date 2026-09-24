@@ -9,6 +9,7 @@ import { db, migrate } from '../db.js';
 import { hashPassword } from '../lib/password.js';
 import { computeTally } from '../lib/cycles.js';
 import { auditSystem } from '../lib/audit.js';
+import { seedBaselineTutorials } from '../lib/tutorials.js';
 
 const mode = process.argv[2] || 'demo';
 const DEMO_PASSWORD = 'Portal#2026';
@@ -78,6 +79,7 @@ const pick = (arr) => arr[Math.floor(rnd() * arr.length)];
 
 function wipe() {
   const tables = [
+    'tutorial_progress', 'tutorials', 'showcases', 'feedback_reports',
     'vote_versions', 'votes', 'cycle_results', 'winners', 'notifications',
     'announcements', 'audit_log', 'grid_preferences', 'sessions',
     'password_reset_tokens', 'login_attempts', 'voting_cycles', 'employees',
@@ -171,6 +173,7 @@ function seedMinimal() {
   wipe();
   insertPeople([['E-0001', 'Portal Administrator', 'admin@isgesolutions.com', 'Administrator', 'Operations', 'Admin']]);
   db.prepare(`UPDATE employees SET must_change_password = 1 WHERE work_email = 'admin@isgesolutions.com'`).run();
+  seedBaselineTutorials();
   auditSystem('seed.minimal');
   console.log(`
   Minimal seed complete.
@@ -276,6 +279,27 @@ function seedDemo() {
     createCycle('Year', String(y),
       new Date(Date.UTC(y, 11, 1, 3, 30)).toISOString(),
       new Date(Date.UTC(y, 11, 31, 12, 30)).toISOString(), 'Draft', adminId);
+  }
+
+  seedBaselineTutorials();
+
+  // One published Work Showcase, so the page has something real to show.
+  {
+    const latest = db.prepare(
+      `SELECT w.id FROM winners w JOIN voting_cycles c ON c.id = w.cycle_id
+        WHERE c.award_type='Month' AND w.status='Published' ORDER BY c.period_label DESC LIMIT 1`
+    ).get();
+    if (latest) {
+      const blocks = [
+        { type: 'text', heading: 'The problem', body: 'Customers were abandoning the booking flow at the payment step. Nobody owned the whole journey, so every team had fixed its own piece and the drop-off stayed.' },
+        { type: 'metric', label: 'Drop-off at payment', value: '−34%' },
+        { type: 'metric', label: 'Median time to book', value: '2m 10s' },
+        { type: 'text', heading: 'What changed', body: 'The flow was rebuilt end to end, with one owner, one set of analytics events and a written decision log so the next person does not have to guess why anything is the way it is.' },
+        { type: 'link', label: 'Decision log (internal wiki)', url: 'https://wiki.example.internal/booking-flow' },
+      ];
+      db.prepare(`INSERT INTO showcases (winner_id, status, body_json, published_at, updated_by)
+                  VALUES (?, 'Published', ?, datetime('now'), ?)`).run(latest.id, JSON.stringify(blocks), adminId);
+    }
   }
 
   db.prepare(`INSERT INTO announcements (title, body, created_by) VALUES (?,?,?)`)

@@ -208,3 +208,46 @@ export function Stat({ label, value, sub, tone }) {
 }
 
 export { cx };
+
+/* -------------------------------------------------------------- Segmented */
+/** A segmented control — one choice among a few views, as radio semantics. */
+export function Segmented({ value, onChange, options, label }) {
+  return (
+    <div className="segmented" role="radiogroup" aria-label={label}>
+      {options.map((o) => (
+        <button
+          key={o.value}
+          type="button"
+          role="radio"
+          aria-checked={value === o.value}
+          className={cx('segmented__opt', value === o.value && 'is-on')}
+          onClick={() => onChange(o.value)}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------- Bars */
+/**
+ * Horizontal bar list. RR-14 — the number is always printed beside the bar,
+ * so the chart never carries information the text does not.
+ */
+export function Bars({ items, tone = 'blue', max, format = (v) => v }) {
+  const top = max ?? Math.max(1, ...items.map((i) => i.value));
+  return (
+    <div className="bars">
+      {items.map((i) => (
+        <div key={i.label} className="bars__row">
+          <span className="bars__label">{i.label}</span>
+          <span className="bars__track" aria-hidden="true">
+            <i className={`bars__fill bars__fill--${i.tone || tone}`} style={{ width: `${(i.value / top) * 100}%` }} />
+          </span>
+          <span className="bars__value">{format(i.value)}</span>
+        </div>
+      ))}
+    </div>
+  );
+}

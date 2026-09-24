@@ -186,3 +186,32 @@
     &--clay { color: var(--c-clay-deep); } &--plum { color: var(--c-plum-deep); } }
   &__sub  { margin-top: $s-1; font-size: $fs-12; color: var(--c-muted); }
 }
+
+/* ------------------------------------------------------------ Segmented */
+.segmented {
+  display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px;
+  background: var(--c-surface-2); border: 1px solid var(--c-line); border-radius: $r-md;
+  &__opt {
+    border: 0; background: none; cursor: pointer; border-radius: $r-sm;
+    padding: $s-1 + 0.125rem $s-3; min-height: 32px;
+    font-size: $fs-12; font-weight: $fw-bold; color: var(--c-muted);
+    @include focus-ring(0);
+    &:hover { color: var(--c-ink); }
+    &.is-on { background: var(--c-surface); color: var(--c-blue-deep); box-shadow: 0 0 0 1px var(--c-line-2); }
+    @include mobile { min-height: $tap-min; }
+  }
+}
+
+/* ----------------------------------------------------------------- Bars */
+.bars {
+  display: flex; flex-direction: column; gap: $s-2;
+  &__row { display: grid; grid-template-columns: minmax(70px, 30%) 1fr 48px; align-items: center; gap: $s-3;
+           font-size: $fs-12; }
+  &__label { color: var(--c-ink-2); @include truncate; }
+  &__track { height: 10px; border-radius: $r-pill; background: var(--c-surface-2); overflow: hidden; }
+  &__fill { display: block; height: 100%; border-radius: $r-pill; min-width: 2px;
+    &--blue { background: var(--c-blue); } &--plum { background: var(--c-plum); }
+    &--sage { background: var(--c-sage); } &--bronze { background: var(--c-bronze); }
+    &--teal { background: var(--c-teal); } &--clay { background: var(--c-clay); } }
+  &__value { text-align: right; font-weight: $fw-bold; color: var(--c-ink); @include tabular; }
+}

@@ -117,7 +117,8 @@ Employee Appreciation Portal
 │   └── Past Results & Leaderboard
 │
 ├── Reports
-│   └── Winners Report           (date-wise & month-wise, Month + Year awards)   ◀ 6.9
+│   ├── Winners Report           (date-wise & month-wise, Month + Year awards)   ◀ 6.9
+│   └── Award Statistics         (per employee: wins and nominations)           ◀ 6.9A
 │
 ├── Winners
 │   ├── Hall of Fame        (all past winners, month & year)
@@ -420,6 +421,21 @@ Every column is filterable and sortable per **Section 11**.
 - **Desktop:** full grid, sticky header row, sticky first column (Period), horizontal scroll *within the grid container only* — never the page (RR-2).
 - **Tablet:** reduced default columns — Period · Award Type · Winner · Department · Votes. The rest reachable via the column-visibility control or row expand.
 - **Mobile:** card list. Each card shows the period as its header, then winner avatar, name, designation, department, votes, and average rating, with a chevron to expand for the remaining fields. Sort and filter remain **fully available** through the sticky toolbar sheets described in DG-15 — no capability is dropped on mobile. The date range picker opens as a full-screen sheet with the presets as large tap targets.
+
+---
+
+### 6.9A Reports — Award Statistics
+
+**Purpose:** Per employee, how many times they were announced **Employee of the Month** and **Employee of the Year**, and how many cycles of each they were **nominated** in. Where the Winners Report (6.9) has one row per award, this report has one row per person.
+
+**Columns:** Employee (name, code, designation) · Department · EoM wins · EoY wins · EoM nominations · EoY nominations · Total wins · Total nominations · Votes received · Last won. All filterable and sortable per Section 11; default sort Total wins ↓, then Total nominations ↓, then name.
+
+**Controls:** Year selector (all years or one year) · "Include employees never nominated" toggle · summary tiles (award counts, nominations, people listed, multi-winners) · row drill-down listing every closed cycle behind the numbers, with votes, rank, outcome and a link to that cycle's leaderboard · CSV export and print.
+
+**Rules**
+- R-6.9A.1: A **nomination** is one cycle in which the employee received at least one Submitted vote, counted only after that cycle has closed. Open cycles never contribute — a live count would reveal standings (BR-5).
+- R-6.9A.2: A **win** is a Published winner. Pending decisions and unpublished results do not count. Joint winners each count one win.
+- R-6.9A.3: Visibility follows `winners_report_visibility` (OQ-7). Figures are read from frozen records and never change after a cycle closes.
 
 ---
 
@@ -1113,5 +1129,6 @@ Several of these — SSO, Slack notifications, kudos, scheduled reports, additio
 | Version | Date | Change | Author |
 |---|---|---|---|
 | 1.0 | 2026-09-21 | Initial baseline specification | Drafted for ganesh@isgesolutions.com |
+| 1.3 | 2026-09-24 | Added Award Statistics report (6.9A) under Reports — per-employee counts of Employee of the Month / Year wins and nominations, with counting rules R-6.9A.1–3 | Drafted for ganesh@isgesolutions.com |
 | 1.2 | 2026-09-22 | Added Video Tutorials (6.14) — AI-narrated, captioned tutorial library with onboarding playlist, transcripts, resume playback, progress tracking, and admin Tutorial Library management (6.14.7); added production rules R-6.14.1–11 covering script-as-source-of-truth, caption generation, voice consistency, AI disclosure, and the no-real-data requirement; added `TutorialVideo` and `TutorialProgress` entities, BR-15/16, AC-15–19, tutorial settings, notification events, and Dashboard onboarding block; grouped Help and Video Tutorials under a Help & Training menu; shifted sections 6.14–6.20 to 6.15–6.21 | Drafted for ganesh@isgesolutions.com |
 | 1.1 | 2026-09-22 | Added Winners Report (6.9) with month-wise, year-wise, date-wise and combined views; added Section 11 Data Grid Standard (per-column filter and sort on every grid, with mobile parity); renumbered subsequent sections; added OQ-7, BR-13/14, IR-6, NF-9/12, AC-10–14, `GridPreference` entity, and grid columns to existing screens; renamed admin "Reports & Analytics" to "Analytics & Exports" to distinguish it from the new Reports menu | Drafted for ganesh@isgesolutions.com |

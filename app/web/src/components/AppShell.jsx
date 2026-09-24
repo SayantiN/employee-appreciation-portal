@@ -30,27 +30,33 @@ const NAV = [
     group: 'My Activity',
     items: [
       { label: 'My Votes', to: '/my-votes' },
-      { label: 'Feedback for Me', to: '/feedback', soon: true },
+      { label: 'Feedback for Me', to: '/feedback' },
     ],
   },
   {
     group: 'Results',
     items: [
-      { label: 'Current Cycle Status', to: '/results' },
-      { label: 'Past Results', to: '/results/past', soon: true },
+      { label: 'Current Cycle Status', to: '/results', end: true },
+      { label: 'Past Results', to: '/results/past' },
     ],
   },
-  { group: 'Reports', items: [{ label: 'Winners Report', to: '/reports/winners', soon: true }] },
+  {
+    group: 'Reports',
+    items: [
+      { label: 'Winners Report', to: '/reports/winners' },
+      { label: 'Award Statistics', to: '/reports/award-stats' },
+    ],
+  },
   {
     group: 'Winners',
     items: [
-      { label: 'Hall of Fame', to: '/winners', soon: true },
-      { label: 'Work Showcase', to: '/winners/showcase', soon: true },
+      { label: 'Hall of Fame', to: '/winners', end: true },
+      { label: 'Work Showcase', to: '/winners/showcase' },
     ],
   },
   { group: 'Help & Training', items: [
-    { label: 'How It Works', to: '/help', soon: true },
-    { label: 'Video Tutorials', to: '/tutorials', soon: true },
+    { label: 'How It Works', to: '/help' },
+    { label: 'Video Tutorials', to: '/tutorials' },
   ] },
 ];
 
@@ -59,12 +65,12 @@ const ADMIN_NAV = {
   admin: true,
   items: [
     { label: 'Voting Cycles', to: '/admin/cycles' },
-    { label: 'Publish Winners', to: '/admin/winners', soon: true },
-    { label: 'Employee Directory', to: '/admin/employees', soon: true },
-    { label: 'Tutorial Library', to: '/admin/tutorials', soon: true },
-    { label: 'Analytics & Exports', to: '/admin/analytics', soon: true },
-    { label: 'Audit Log', to: '/admin/audit', soon: true },
-    { label: 'System Settings', to: '/admin/settings', soon: true },
+    { label: 'Publish Winners', to: '/admin/winners' },
+    { label: 'Employee Directory', to: '/admin/employees' },
+    { label: 'Tutorial Library', to: '/admin/tutorials' },
+    { label: 'Analytics & Exports', to: '/admin/analytics' },
+    { label: 'Audit Log', to: '/admin/audit' },
+    { label: 'System Settings', to: '/admin/settings' },
   ],
 };
 
@@ -72,7 +78,7 @@ const TABS = [
   { label: 'Dashboard', to: '/', end: true },
   { label: 'Vote', to: '/vote/month' },
   { label: 'Feedback', to: '/feedback' },
-  { label: 'Winners', to: '/winners' },
+  { label: 'Winners', to: '/winners', end: true },
 ];
 
 export function AppShell() {
@@ -200,7 +206,21 @@ function titleFor(path) {
   if (path.startsWith('/vote/month')) return 'Vote — Employee of the Month';
   if (path.startsWith('/vote/year')) return 'Vote — Employee of the Year';
   if (path.startsWith('/my-votes')) return 'My Votes';
-  if (path.startsWith('/results')) return 'Results';
+  if (path.startsWith('/feedback')) return 'Feedback for Me';
+  if (path.startsWith('/results/past')) return 'Past Results & Leaderboard';
+  if (path.startsWith('/results')) return 'Current Cycle Status';
+  if (path.startsWith('/reports/winners')) return 'Winners Report';
+  if (path.startsWith('/reports/award-stats')) return 'Award Statistics';
+  if (path.startsWith('/winners/showcase')) return 'Work Showcase';
+  if (path.startsWith('/winners')) return 'Hall of Fame';
+  if (path.startsWith('/help')) return 'How It Works';
+  if (path.startsWith('/tutorials')) return 'Video Tutorials';
   if (path.startsWith('/admin/cycles')) return 'Voting Cycles';
+  if (path.startsWith('/admin/winners')) return 'Publish Winners';
+  if (path.startsWith('/admin/employees')) return 'Employee Directory';
+  if (path.startsWith('/admin/tutorials')) return 'Tutorial Library';
+  if (path.startsWith('/admin/analytics')) return 'Analytics & Exports';
+  if (path.startsWith('/admin/audit')) return 'Audit Log';
+  if (path.startsWith('/admin/settings')) return 'System Settings';
   return 'Employee Appreciation Portal';
 }
