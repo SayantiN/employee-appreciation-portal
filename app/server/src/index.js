@@ -19,6 +19,7 @@ import { router as publishRouter } from './routes/publish.js';
 import { router as feedbackRouter } from './routes/feedback.js';
 import { router as adminRouter } from './routes/admin.js';
 import { router as tutorialsRouter } from './routes/tutorials.js';
+import { router as communityRouter } from './routes/community.js';
 import { seedBaselineTutorials } from './lib/tutorials.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -60,6 +61,7 @@ app.use('/api/publish', publishRouter);
 app.use('/api/feedback', feedbackRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/tutorials', tutorialsRouter);
+app.use('/api/community', communityRouter);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true, db: path.basename(dbPath) }));
 

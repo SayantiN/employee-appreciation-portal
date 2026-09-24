@@ -120,6 +120,14 @@ export const api = {
   unpublishWinner: (id, reason) => api.post(`/publish/cycles/${id}/unpublish`, { reason }),
   saveShowcase: (winnerId, payload) => request('PUT', `/publish/showcase/${winnerId}`, payload),
 
+  // community showcase (6.11A)
+  communityPosts: (params) => api.get(`/community${withExtra('', params)}`),
+  communityPost: (id) => api.get(`/community/${id}`),
+  createCommunityPost: (payload) => api.post('/community', payload),
+  updateCommunityPost: (id, payload) => request('PUT', `/community/${id}`, payload),
+  hideCommunityPost: (id, reason) => api.post(`/community/${id}/hide`, { reason }),
+  restoreCommunityPost: (id) => api.post(`/community/${id}/restore`),
+
   // tutorials
   tutorials: () => api.get('/tutorials'),
   tutorial: (id) => api.get(`/tutorials/${id}`),

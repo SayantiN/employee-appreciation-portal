@@ -22,16 +22,17 @@ import { router as publishRouter } from './routes/publish.js';
 import { router as feedbackRouter } from './routes/feedback.js';
 import { router as adminRouter } from './routes/admin.js';
 import { router as tutorialsRouter } from './routes/tutorials.js';
+import { router as communityRouter } from './routes/community.js';
 
 const MOUNTS = [
   ['/auth', authRouter], ['/cycles', cyclesRouter], ['/votes', votesRouter],
   ['/employees', employeesRouter], ['/dashboard', dashboardRouter], ['/winners', winnersRouter],
   ['/publish', publishRouter], ['/feedback', feedbackRouter], ['/admin', adminRouter],
-  ['/tutorials', tutorialsRouter],
+  ['/tutorials', tutorialsRouter], ['/community', communityRouter],
 ];
 
 // Bump when the schema or seed changes, so returning visitors get fresh data.
-const DATA_VERSION = 'eap-demo-v1';
+const DATA_VERSION = 'eap-demo-v2';
 const COOKIE_KEY = 'eap-demo-cookie';
 
 /* ------------------------------------------------------------- boot */

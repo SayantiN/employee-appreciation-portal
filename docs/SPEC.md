@@ -78,6 +78,8 @@ Three roles. A user has exactly one role; Admin implicitly holds all Employee pe
 | View results after cycle closes | ✔ | ✔ | ✔ |
 | View live tally **before** cycle closes | ✖ | ✔ | ✔ |
 | View Hall of Fame & Work Showcase | ✔ | ✔ | ✔ |
+| Share own work in the Community Showcase (6.11A) | ✔ | ✔ | ✔ |
+| Hide a Community Showcase post | ✖ | ✔ | ✖ |
 | View Winners Report | ✔ (OQ-7) | ✔ | ✔ |
 | Export Winners Report | ✔ (OQ-7) | ✔ | ✔ |
 | Watch employee video tutorials | ✔ | ✔ | ✔ |
@@ -120,9 +122,10 @@ Employee Appreciation Portal
 │   ├── Winners Report           (date-wise & month-wise, Month + Year awards)   ◀ 6.9
 │   └── Award Statistics         (per employee: wins and nominations)           ◀ 6.9A
 │
-├── Winners
+├── Winners & Showcase
 │   ├── Hall of Fame        (all past winners, month & year)
-│   └── Work Showcase       (winner's work demo)
+│   ├── Winner Showcase     (winner's work demo, written by HR)          ◀ 6.11
+│   └── Community Showcase  (any employee shares noticeable work)      ◀ 6.11A
 │
 ├── Notifications
 │
@@ -233,7 +236,7 @@ Each screen lists purpose, content, rules, states, and responsive behaviour.
 
 5. **My appreciation trend** — small chart of votes received and average rating over the last 6 months.
 
-6. **Hall of Fame strip** — horizontally scrollable row of the last 6 winners.
+6. **Previous winners** — a short list of the winners *before* the reigning ones (up to 4), each row showing avatar, name, department and an award badge with the period ("Month · July 2026", "Year · 2025"), plus a **Hall of Fame →** link. It replaces the earlier row of unlabelled faces, which did not say who won what or when, and it never repeats the people already shown in the reigning-winner cards (item 3). Empty state: "Earlier winners appear here once more than one cycle has been published."
 
 7. **Announcements** — admin-posted notices (cycle opening, results published, ceremony date).
 
@@ -478,6 +481,29 @@ Every column is filterable and sortable per **Section 11**.
 
 ---
 
+### 6.11A Winners & Showcase — Community Showcase
+
+**Purpose:** The Winner Showcase (6.11) celebrates a handful of people a year. Plenty of other work is noticeable and would help someone else — a runbook, a template, a better process. The Community Showcase lets **any employee** share their own work, whether or not they have won anything.
+
+**Menu:** *Winners & Showcase* holds two showcase entries — **Winner Showcase** (6.11, admin-written, attached to a published winner) and **Community Showcase** (this section, written by the employee).
+
+**Content**
+- **List:** cards showing title, summary (3 lines), up to two impact figures, author avatar, name, department and date shared. Filters: All work / My posts, department, search across title, summary and author. A **Share your work** button.
+- **Post:** header with title, summary and author; then the same block types as 6.11 — write-up (heading + text), impact figure (label + value), link to the work.
+- **Editor:** title (5–120 characters), summary (20–400, required to publish), ordered blocks with add / move / remove. **Publish** or **Save as draft**.
+
+**Rules**
+- R-6.11A.1: Only the author can create or edit their post. Nobody else — including an Admin — can change another person's words.
+- R-6.11A.2: A post is `Draft`, `Published` or `Hidden`. Drafts are visible to the author only. Publishing requires a summary and at least one block.
+- R-6.11A.3: An Admin can **hide** a published post with a reason of at least 10 characters. The reason is shown to the author, the author is notified, and the action is audit-logged. An Admin can restore a hidden post. The author cannot republish a hidden post.
+- R-6.11A.4: Community posts have **no effect on voting, tallies or awards**, and are not a nomination.
+- R-6.11A.5: Links must be `http://` or `https://`. File uploads follow R-6.11.3–4 once storage and scanning are available; until then, posts link to where the work already lives.
+- R-6.11A.6: Everything is audit-logged: post published, edited, hidden, restored.
+
+**Responsive:** Desktop 4 columns · Laptop 3 · Tablet 2 · Mobile 1 card column; the post page uses the 6.11 layout (content column max 820px, impact figures 2-up on mobile).
+
+---
+
 ### 6.12 Notifications
 
 In-app notification centre with an unread badge, plus email for the events marked below.
@@ -662,6 +688,7 @@ Draft ──open──▶ Open ──close (scheduled or manual)──▶ Closed
 - R-6.17.3: A winner may be published without a showcase; the showcase can follow later. The Winners menu and the Winners Report show "Not added" in the interim.
 - R-6.17.4: Publishing triggers winner notifications, releases feedback visibility for that cycle per R-6.7.2, and makes the row appear in the Winners Report.
 - R-6.17.5: Unpublishing is possible but audit-logged and notified — an exception path, not routine. An unpublished winner disappears from Employee views of the Winners Report and stays visible, badged, to Admin/Auditor.
+- R-6.17.6: The screen never opens with an empty detail panel. With no cycle chosen, it selects the **most recent Month cycle** in the list (last month, or the current month once it has closed) and shows its tally and publish form on the right. If there is no Month cycle, the most recent cycle of any type is selected. The selection is reflected in the URL (`?cycle=<id>`), so a link opens the same cycle.
 
 ---
 
@@ -1129,6 +1156,7 @@ Several of these — SSO, Slack notifications, kudos, scheduled reports, additio
 | Version | Date | Change | Author |
 |---|---|---|---|
 | 1.0 | 2026-09-21 | Initial baseline specification | Drafted for ganesh@isgesolutions.com |
+| 1.4 | 2026-09-24 | Added Community Showcase (6.11A) — any employee can share noticeable work; menu split into Winner Showcase and Community Showcase under "Winners & Showcase"; rules R-6.11A.1–6 and two permission rows. Dashboard item 6 changed from an unlabelled Hall of Fame strip to a labelled "Previous winners" list. Publish Winners opens on the most recent Month cycle by default (R-6.17.6) | Drafted for ganesh@isgesolutions.com |
 | 1.3 | 2026-09-24 | Added Award Statistics report (6.9A) under Reports — per-employee counts of Employee of the Month / Year wins and nominations, with counting rules R-6.9A.1–3 | Drafted for ganesh@isgesolutions.com |
 | 1.2 | 2026-09-22 | Added Video Tutorials (6.14) — AI-narrated, captioned tutorial library with onboarding playlist, transcripts, resume playback, progress tracking, and admin Tutorial Library management (6.14.7); added production rules R-6.14.1–11 covering script-as-source-of-truth, caption generation, voice consistency, AI disclosure, and the no-real-data requirement; added `TutorialVideo` and `TutorialProgress` entities, BR-15/16, AC-15–19, tutorial settings, notification events, and Dashboard onboarding block; grouped Help and Video Tutorials under a Help & Training menu; shifted sections 6.14–6.20 to 6.15–6.21 | Drafted for ganesh@isgesolutions.com |
 | 1.1 | 2026-09-22 | Added Winners Report (6.9) with month-wise, year-wise, date-wise and combined views; added Section 11 Data Grid Standard (per-column filter and sort on every grid, with mobile parity); renumbered subsequent sections; added OQ-7, BR-13/14, IR-6, NF-9/12, AC-10–14, `GridPreference` entity, and grid columns to existing screens; renamed admin "Reports & Analytics" to "Analytics & Exports" to distinguish it from the new Reports menu | Drafted for ganesh@isgesolutions.com |

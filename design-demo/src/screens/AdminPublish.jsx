@@ -30,6 +30,15 @@ export function AdminPublish() {
   const pick = (id) => setParams({ cycle: String(id) }, { replace: true });
   const refresh = () => setNonce((n) => n + 1);
 
+  // Open on the most recent month straight away (last month, or the current
+  // one once it has closed) rather than an empty right-hand panel.
+  useEffect(() => {
+    if (selected || !cycles?.length) return;
+    const latest = [...cycles].sort((a, b) =>
+      (b.award_type === 'Month') - (a.award_type === 'Month') || b.period_label.localeCompare(a.period_label))[0];
+    pick(latest.id);
+  }, [cycles, selected]);
+
   if (!cycles) return <div className="page"><Skeleton h={300} r={10} /></div>;
 
   return (
@@ -58,7 +67,7 @@ export function AdminPublish() {
         </Card>
 
         <div className="stack">
-          {!selected && <EmptyState title="Choose a cycle" body="Pick a closed cycle on the left to review its tally." />}
+          {!selected && cycles.length === 0 && <EmptyState title="Nothing to publish yet" body="Closed cycles appear here once a voting window shuts." />}
           {selected && !detail && <Skeleton h={300} r={10} />}
           {detail && <CycleDetail detail={detail} isAdmin={isAdmin} onDone={refresh} />}
         </div>

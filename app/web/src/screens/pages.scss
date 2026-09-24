@@ -218,6 +218,28 @@
 
 .heat td, .heat th { white-space: nowrap; }
 
+/* ============================================ Community Showcase 6.11A */
+.community-card { &:hover { border-color: var(--c-teal); } .tut-card__body { height: 100%; } }
+.community-head {
+  display: flex; flex-direction: column; gap: $s-3; align-items: flex-start;
+  padding: $s-5; border-radius: $r-xl;
+  background: linear-gradient(160deg, var(--c-teal-tint), var(--c-surface) 70%);
+  border: 1px solid var(--c-line);
+  h2 { margin: 0; font-size: $fs-24; font-weight: $fw-black; line-height: $lh-tight; }
+  p { margin: 0; font-size: $fs-14; color: var(--c-ink-2); max-width: 70ch; }
+}
+
+/* ======================================== Dashboard — recent winners 6.3 */
+.recent-winners { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.recent-winners__row {
+  display: flex; align-items: center; gap: $s-3; padding: $s-2 0;
+  border-bottom: 1px solid var(--c-line);
+  &:last-child { border-bottom: 0; }
+}
+.recent-winners__who { flex: 1; min-width: 0; font-size: $fs-13;
+  strong { display: block; @include truncate; }
+  span { font-size: $fs-11; color: var(--c-muted); } }
+
 /* ================================================================ print */
 .print-only { display: none; }
 @media print {

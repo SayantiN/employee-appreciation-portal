@@ -48,10 +48,11 @@ const NAV = [
     ],
   },
   {
-    group: 'Winners',
+    group: 'Winners & Showcase',
     items: [
       { label: 'Hall of Fame', to: '/winners', end: true },
-      { label: 'Work Showcase', to: '/winners/showcase' },
+      { label: 'Winner Showcase', to: '/winners/showcase' },
+      { label: 'Community Showcase', to: '/showcase/community' },
     ],
   },
   { group: 'Help & Training', items: [
@@ -211,7 +212,8 @@ function titleFor(path) {
   if (path.startsWith('/results')) return 'Current Cycle Status';
   if (path.startsWith('/reports/winners')) return 'Winners Report';
   if (path.startsWith('/reports/award-stats')) return 'Award Statistics';
-  if (path.startsWith('/winners/showcase')) return 'Work Showcase';
+  if (path.startsWith('/winners/showcase')) return 'Winner Showcase';
+  if (path.startsWith('/showcase/community')) return 'Community Showcase';
   if (path.startsWith('/winners')) return 'Hall of Fame';
   if (path.startsWith('/help')) return 'How It Works';
   if (path.startsWith('/tutorials')) return 'Video Tutorials';

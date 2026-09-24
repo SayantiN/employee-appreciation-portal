@@ -281,3 +281,21 @@ CREATE TABLE IF NOT EXISTS tutorial_progress (
   updated_at   TEXT    NOT NULL DEFAULT (datetime('now')),
   UNIQUE (tutorial_id, employee_id)
 );
+
+-- ------------------------------------------------------ community showcase
+-- SPEC 6.11A — any employee can share work worth learning from, not only
+-- winners. The author owns the post; an admin can hide it, never rewrite it.
+CREATE TABLE IF NOT EXISTS work_posts (
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id     INTEGER NOT NULL REFERENCES employees(id),
+  title         TEXT    NOT NULL,
+  summary       TEXT    NOT NULL DEFAULT '',
+  body_json     TEXT    NOT NULL DEFAULT '[]',
+  status        TEXT    NOT NULL DEFAULT 'Draft' CHECK (status IN ('Draft','Published','Hidden')),
+  hidden_reason TEXT,
+  published_at  TEXT,
+  created_at    TEXT    NOT NULL DEFAULT (datetime('now')),
+  updated_at    TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS ix_work_posts_status ON work_posts(status, published_at);
+CREATE INDEX IF NOT EXISTS ix_work_posts_author ON work_posts(author_id);

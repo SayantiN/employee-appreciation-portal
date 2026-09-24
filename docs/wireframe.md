@@ -112,7 +112,8 @@ Vote            → Employee of the Month · Employee of the Year
 My Activity     → My Votes · Feedback for Me
 Results         → Current Cycle Status · Past Results & Leaderboard
 Reports         → Winners Report
-Winners         → Hall of Fame · Work Showcase
+Winners &       → Hall of Fame · Winner Showcase · Community Showcase
+  Showcase
 Notifications
 Help & Training → How It Works · Video Tutorials
 [ADMIN]         → Voting Cycles · Publish Winners · Employee Directory ·
@@ -259,8 +260,11 @@ Nine screens are grids. They get **one component**, not nine implementations.
 │ │ Apr May Jun Jul Aug Sep         │ │ │ ▁▁▁▁▁▁▁▁▁▁▁▁               │ │
 │ └─────────────────────────────────┘ │ │ ▓▓ Sep feedback appears ▓▓ │ │
 │ ┌─────────────────────────────────┐ │ │ ▓▓ once that cycle closes▓▓│ │
-│ │ HALL OF FAME  ● ● ● ● ● ●  →    │ │ └────────────────────────────┘ │
-│ └─────────────────────────────────┘ │ ┌ ANNOUNCEMENTS ─────────────┐ │
+│ │ PREVIOUS WINNERS  Hall of Fame →│ │ └────────────────────────────┘ │
+│ │ ● Vikram Rao   Eng  [Month·Jul] │ │ ┌ ANNOUNCEMENTS ─────────────┐ │
+│ │ ● Meera Iyer   Prod [Month·Jun] │ │ │                            │ │
+│ │ ● Karan Shah   Ops  [Month·May] │ │ │                            │ │
+│ └─────────────────────────────────┘ │ │                            │ │
 └─────────────────────────────────────┴─┴────────────────────────────┴─┘
 ```
 
@@ -272,6 +276,7 @@ Nine screens are grids. They get **one component**, not nine implementations.
 - **Bronze on the countdown, sage on "Open"** — the two facts a voter acts on, separated by hue.
 - **The hatched feedback block is deliberate.** Rather than hiding withheld content, the Dashboard shows that something exists and says when it will appear. Silence reads as a bug; an explained absence reads as a rule.
 - **Getting Started disappears permanently** once the onboarding playlist is done. Persistent onboarding becomes furniture people stop seeing.
+- **Previous winners, labelled — not a row of faces.** An unlabelled avatar strip did not say who won what or when, so it read as decoration. Each row now names the person, their department and the award with its period, and the list starts *after* the reigning winners so nobody appears twice. The Hall of Fame link sits in the card header.
 - Mobile: tiles go to a 2×2 compact grid, the chart drops to 3 months with a table fallback (`RR-14`).
 
 ---
@@ -582,6 +587,52 @@ AFTER CLOSE — PUBLISHED
 
 ---
 
+### 5.10A · Community Showcase — `6.11A`
+
+```
+LIST                                                          [ Share your work ]
+┌──────────────────────────────────────────────────────────────────────────┐
+│ [All work | My posts]  [Department ▾]  [Search title, summary, author…]  │
+├───────────────────────┬───────────────────────┬──────────────────────────┤
+│ A one-page runbook    │ Interview notes       │ Month-end close          │
+│ for the nightly deploy│ template for research │ checklist that stuck     │
+│ ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁  │ ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁  │ ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁     │
+│ [4h → 25m · recovery] │ [−60% · synthesis]    │ [5 → 4 days · close]     │
+│ ● Imran S. · Eng · 21 │ ● Kavya S. · Design   │ ● Nisha V. · Finance     │
+└───────────────────────┴───────────────────────┴──────────────────────────┘
+ ┌ HOW THIS DIFFERS FROM THE WINNER SHOWCASE ──────────────────────────────┐
+ │ Winner Showcase: written by HR about a winner. Community: written by the│
+ │ person who did the work. No effect on voting or awards.                 │
+ └─────────────────────────────────────────────────────────────────────────┘
+
+POST                                          EDITOR
+┌────────────────────────────────────┐        ┌──────────────────────────────┐
+│ ░ COMMUNITY SHOWCASE (teal tint) ░ │        │ Title*        [            ] │
+│ A one-page runbook for the …       │        │ Summary*      [            ] │
+│ ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁           │        │ THE WORK                     │
+│ ● Imran Sheikh · DevOps · shared 21│        │ ┌ Write-up  ↑ ↓ Remove ────┐ │
+├────────────────────────────────────┤        │ │ [Heading] [Text        ] │ │
+│ ┌──────────────┐                   │        │ └──────────────────────────┘ │
+│ │ 4h → 25m     │  impact figures   │        │ [+ Write-up][+ Figure][+Link]│
+│ └──────────────┘                   │        │ [ Publish ] [ Save as draft ]│
+│ WHY IT EXISTS ▁▁▁▁▁▁▁▁▁▁▁▁         │        └──────────────────────────────┘
+│ LINKS TO THE WORK  🔗 Runbook      │
+│            [Edit] (author) [Hide…] (admin)
+└────────────────────────────────────┘
+```
+
+**Design logic**
+
+- **Two showcases, one menu group.** *Winners & Showcase* holds Hall of Fame, **Winner Showcase** and **Community Showcase**. Winning is rare; useful work is not. A place for everyone's work turns the showcase from a trophy shelf into a library people actually return to.
+- **Teal, not plum.** Plum means "award" everywhere in the product. Community posts are not awards, so they use the learning colour — nobody should mistake a shared runbook for a win.
+- **The author owns the words.** Only the author can edit. HR can *hide* a post with a written reason the author sees — moderation without rewriting someone's work (`R-6.11A.1`, `R-6.11A.3`).
+- **Same blocks as the winner showcase** — write-up, impact figure, link — so reading either feels the same, and the impact figure surfaces on the card where it does the most work.
+- **Drafts are private.** People can start a post without committing to it; nothing is public until they press Publish.
+- **No bearing on awards**, stated on the page, so sharing never feels like campaigning (`R-6.11A.4`).
+- Mobile: one card column; the post page reuses the 6.11 layout with impact figures 2-up.
+
+---
+
 ### 5.11 · Video Tutorials — `6.14`
 
 ```
@@ -682,6 +733,7 @@ CYCLES                                       LIFECYCLE
 - **Status colour carries the whole table.** Sage Open, plum Published, bronze Tie, muted Draft and Cancelled. An admin scanning twelve cycles needs to find the one demanding action in under a second.
 - **A five-step publish flow, not one long form.** Publishing a winner is a considered, infrequent act with an irreversible social consequence. Steps create natural review points; a single scroll invites a premature Publish click.
 - **The computed winner is labelled FROZEN.** Publishing must never look like it recalculates anything (`R-6.8.4`).
+- **It opens on the latest month, never on a blank panel.** The cycle list sits on the left; the right side shows the most recent Month cycle (last month, or the current month once closed) as soon as the page loads, so the most likely task is already in front of the admin. Picking another cycle on the left swaps the right side (`R-6.17.6`).
 - **Override is available but expensive** — it demands a typed justification, is written to the audit log, is visible to Auditors, and surfaces in the Winners Report's Decision column. Easy to do, impossible to do quietly (`R-6.17.1`).
 - **The blocked-publish message names every missing item at once**, rather than failing one at a time.
 - **Reopening a closed cycle requires a typed reason, notifies everyone, and invalidates the frozen tally.** It is drawn as an exception path, not a button of equal weight (`R-6.16.4`).

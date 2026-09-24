@@ -289,7 +289,8 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
     <a href="#s-res"><span class="n">6.8</span><span class="t">Results &amp; Leaderboard</span></a>
     <a href="#s-rep"><span class="n">6.9</span><span class="t">Winners Report</span></a>
     <a href="#s-hof"><span class="n">6.10</span><span class="t">Hall of Fame</span></a>
-    <a href="#s-show"><span class="n">6.11</span><span class="t">Work Showcase</span></a>
+    <a href="#s-show"><span class="n">6.11</span><span class="t">Winner Showcase</span></a>
+    <a href="#s-comm"><span class="n">6.11A</span><span class="t">Community Showcase</span></a>
     <a href="#s-tut"><span class="n">6.14</span><span class="t">Video Tutorials</span></a>
     <a href="#s-nhp"><span class="n">6.12&ndash;15</span><span class="t">Notifications &middot; Help &middot; Profile</span></a>
     <a href="#s-cyc"><span class="n">6.16&ndash;17</span><span class="t">Cycles &middot; Publish Winners</span></a>
@@ -387,9 +388,10 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
         <span class="snav">Past Results</span>
         <div class="sgrp">Reports</div>
         <span class="snav">Winners Report</span>
-        <div class="sgrp">Winners</div>
+        <div class="sgrp">Winners &amp; Showcase</div>
         <span class="snav">Hall of Fame</span>
-        <span class="snav">Work Showcase</span>
+        <span class="snav">Winner Showcase</span>
+        <span class="snav">Community Showcase</span>
         <div class="sgrp">Help &amp; Training</div>
         <span class="snav">How It Works</span>
         <span class="snav">Video Tutorials</span>
@@ -797,12 +799,10 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
               </div>
 
               <div class="card">
-                <div class="kick">Hall of Fame &mdash; recent</div>
-                <div class="row" style="gap:14px">
-                  <span class="av" style="width:36px;height:36px"></span><span class="av t" style="width:36px;height:36px"></span><span class="av v" style="width:36px;height:36px"></span>
-                  <span class="av a" style="width:36px;height:36px"></span><span class="av" style="width:36px;height:36px"></span><span class="av t" style="width:36px;height:36px"></span>
-                  <div class="sp"></div><span class="sm">See all &rarr;</span>
-                </div>
+                <div class="row" style="margin-bottom:6px"><div class="kick" style="margin:0">Previous winners</div><div class="sp"></div><span class="sm" style="color:var(--indigo-text);font-weight:700">Hall of Fame &rarr;</span></div>
+                <div class="row" style="gap:10px;padding:7px 0;border-bottom:1px solid var(--line)"><span class="av t" style="width:30px;height:30px"></span><div class="sp"><div style="font-size:12px;font-weight:800">Vikram Rao</div><div class="xs">Engineering</div></div><span class="st s-violet">Month &middot; Jul 2026</span></div>
+                <div class="row" style="gap:10px;padding:7px 0;border-bottom:1px solid var(--line)"><span class="av a" style="width:30px;height:30px"></span><div class="sp"><div style="font-size:12px;font-weight:800">Meera Iyer</div><div class="xs">Product</div></div><span class="st s-violet">Month &middot; Jun 2026</span></div>
+                <div class="row" style="gap:10px;padding:7px 0"><span class="av" style="width:30px;height:30px"></span><div class="sp"><div style="font-size:12px;font-weight:800">Karan Shah</div><div class="xs">Operations</div></div><span class="st s-violet">Month &middot; May 2026</span></div>
               </div>
             </div>
 
@@ -919,6 +919,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
       <li><strong>Sage and bronze sit side by side in the first tile</strong> &mdash; the cycle is live, and time is running out. Two facts, two hues, no sentence needed.</li>
       <li><strong>The hatched feedback block is deliberate.</strong> Rather than hiding withheld content, the Dashboard shows that something exists and says when it will appear. Silence reads as a bug; an explained absence reads as a rule.</li>
       <li><strong>Getting Started is the only teal element on this page</strong> and disappears permanently once the playlist is done. Persistent onboarding becomes furniture people stop seeing.</li>
+      <li><strong>Previous winners, labelled &mdash; not a row of faces.</strong> An unlabelled avatar strip did not say who won what or when, so it read as decoration. Each row names the person, their department and the award with its period, and the list starts <em>after</em> the reigning winners so nobody appears twice.</li>
       <li><strong>Winner cards are violet-bordered, not violet-filled.</strong> Full plum is reserved for the moment of announcement on the Results and Showcase pages.</li>
       <li>Mobile: tiles go to a 2&times;2 compact grid, the chart drops to 3 months with a table fallback <code>RR-14</code>.</li>
     </ul>
@@ -1762,6 +1763,78 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
   </div>
 </section>
 
+<section class="sec" id="s-comm" data-a="sky">
+  <div class="sechead"><span class="secnum">6.11A</span><h2>Community Showcase</h2><span class="specref">R-6.11A.1&hellip;R-6.11A.6</span></div>
+  <div class="mockcap"><span class="dot"></span><span>List &mdash; any employee can share work worth learning from</span></div>
+  <div class="mock">
+    <div class="page" style="min-width:820px;background:var(--surface)">
+      <div class="row"><div class="sm sp">Work from anyone in the company that others could learn from. You do not need to have won anything to share here.</div><span class="btn s btn-p">Share your work</span></div>
+      <div class="row"><span class="st s-indigo">All work</span><span class="st s-mute">My posts</span><span class="btn s btn-g">Department</span><div class="ta" style="min-height:30px;flex:1;max-width:260px"></div></div>
+      <div class="g3">
+        <div class="card col" style="gap:8px">
+          <div style="font-size:13px;font-weight:800">A one-page runbook for the nightly deploy</div>
+          <div class="sm">Every step of the nightly deploy on one page, with the three failure modes we actually hit.</div>
+          <div class="row"><span class="st s-teal">4h &rarr; 25m &middot; recovery</span></div>
+          <div class="row"><span class="av t" style="width:22px;height:22px"></span><div class="xs"><strong>Imran Sheikh</strong> &middot; Engineering &middot; 21 Sep</div></div>
+        </div>
+        <div class="card col" style="gap:8px">
+          <div style="font-size:13px;font-weight:800">Interview notes template for user research</div>
+          <div class="sm">Keeps notes comparable across interviewers, so five people&rsquo;s findings merge in an afternoon.</div>
+          <div class="row"><span class="st s-teal">&minus;60% &middot; synthesis</span></div>
+          <div class="row"><span class="av v" style="width:22px;height:22px"></span><div class="xs"><strong>Kavya Suresh</strong> &middot; Design &middot; 16 Sep</div></div>
+        </div>
+        <div class="card col" style="gap:8px">
+          <div class="row"><span class="st s-mute">Draft</span><span class="st s-sky">Yours</span></div>
+          <div style="font-size:13px;font-weight:800">Checklist for onboarding a new client</div>
+          <div class="sm">Access, kickoff and first-week handover in twelve steps.</div>
+          <div class="row"><span class="av a" style="width:22px;height:22px"></span><div class="xs"><strong>You</strong> &middot; not published</div></div>
+        </div>
+      </div>
+      <div class="card" style="background:var(--sky-tint);border-color:var(--sky)"><div class="sm" style="color:var(--sky-text)"><strong>How this differs from the Winner Showcase.</strong> The Winner Showcase is written by HR about an award winner. Community posts are written by the person who did the work, about anything useful. Posts have no effect on voting or awards.</div></div>
+    </div>
+  </div>
+
+  <div class="mockcap"><span class="dot"></span><span>Post &amp; editor</span></div>
+  <div class="mock">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:16px;min-width:860px;padding:18px;background:var(--surface)">
+      <div class="col" style="gap:12px">
+        <div class="card" style="background:linear-gradient(160deg,var(--sky-tint),var(--surface) 70%)">
+          <span class="st s-sky">Community Showcase</span>
+          <div style="font-size:18px;font-weight:800;margin:8px 0 4px">A one-page runbook for the nightly deploy</div>
+          <div class="sm" style="margin-bottom:10px">Every step of the nightly deploy on one page, with the three failure modes we actually hit and how to recover from each.</div>
+          <div class="row"><span class="av t" style="width:30px;height:30px"></span><div><div style="font-size:12px;font-weight:800">Imran Sheikh</div><div class="xs">DevOps Engineer &middot; Engineering &middot; shared 21 Sep</div></div></div>
+        </div>
+        <div class="g2"><div class="card"><div class="xs">Median recovery time</div><div class="big" style="font-size:19px">4h &rarr; 25m</div></div><div></div></div>
+        <div><div class="kick">Why it exists</div><div class="sm">The deploy knowledge lived in two people&rsquo;s heads. When both were on leave the same week, a routine failure took four hours to recover.</div></div>
+        <div class="card"><div class="kick">Links to the work</div><div class="sm" style="color:var(--indigo-text);font-weight:700">Runbook (internal wiki)</div></div>
+        <div class="row"><span class="btn s btn-g">Edit</span><span class="xs">author only</span><div class="sp"></div><span class="btn s btn-g">Hide post&hellip;</span><span class="xs">admin, with a reason</span></div>
+      </div>
+      <div class="card col" style="gap:10px">
+        <div class="kick" style="color:var(--sky-text)">Share your work</div>
+        <div><div style="font-size:12px;font-weight:800">Title *</div><div class="ta" style="min-height:30px"></div><div class="cnt">0 / 120</div></div>
+        <div><div style="font-size:12px;font-weight:800">Summary *</div><div class="xs">What it is, and who it would help.</div><div class="ta" style="min-height:48px"></div><div class="cnt">0 / 20&ndash;400</div></div>
+        <div style="font-size:12px;font-weight:800">The work</div>
+        <div class="card" style="background:var(--surface-2);padding:10px"><div class="row"><span class="st s-sky">Write-up</span><div class="sp"></div><span class="xs">&uarr; &darr; Remove</span></div><div class="ta" style="min-height:26px;margin-top:6px"></div><div class="ta" style="min-height:44px;margin-top:6px"></div></div>
+        <div class="chiprow"><span class="st s-mute">+ Write-up</span><span class="st s-mute">+ Impact figure</span><span class="st s-mute">+ Link</span></div>
+        <div class="row"><span class="btn s btn-p">Publish</span><span class="btn s btn-g">Save as draft</span><span class="xs">Drafts are visible only to you.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logic">
+    <h4>Design logic</h4>
+    <ul>
+      <li><strong>Two showcases, one menu group.</strong> <em>Winners &amp; Showcase</em> holds Hall of Fame, <strong>Winner Showcase</strong> and <strong>Community Showcase</strong>. Winning is rare; useful work is not. A place for everyone&rsquo;s work turns the showcase from a trophy shelf into a library people return to.</li>
+      <li><strong>Teal, not plum.</strong> Plum means &ldquo;award&rdquo; everywhere in the product. Community posts are not awards, so they use the learning colour &mdash; nobody should mistake a shared runbook for a win.</li>
+      <li><strong>The author owns the words.</strong> Only the author can edit. HR can <em>hide</em> a post with a written reason the author sees &mdash; moderation without rewriting someone&rsquo;s work <code>R-6.11A.1</code> <code>R-6.11A.3</code>.</li>
+      <li><strong>Same blocks as the Winner Showcase</strong> &mdash; write-up, impact figure, link &mdash; so reading either feels the same, and the impact figure surfaces on the card where it does the most work.</li>
+      <li><strong>Drafts are private.</strong> Nothing is public until the author presses Publish <code>R-6.11A.2</code>.</li>
+      <li><strong>No bearing on awards</strong>, stated on the page, so sharing never feels like campaigning <code>R-6.11A.4</code>.</li>
+      <li>Mobile: one card column; the post page reuses the 6.11 layout with impact figures 2-up.</li>
+    </ul>
+  </div>
+</section>
+
 <section class="sec" id="s-tut" data-a="sky">
   <div class="sechead"><span class="secnum">6.14</span><h2>Video Tutorials</h2><span class="specref">R-6.14.1&hellip;R-6.14.11</span></div>
 
@@ -2069,9 +2142,10 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
     </div>
   </div>
 
-  <div class="mockcap"><span class="dot"></span><span>Publish Winners &mdash; five steps, not one form</span></div>
+  <div class="mockcap"><span class="dot"></span><span>Publish Winners &mdash; opens on the latest month; five steps, not one form</span></div>
   <div class="mock">
-    <div class="page" style="min-width:760px;background:var(--surface)">
+    <div style="display:flex;min-width:1000px;background:var(--surface)"><aside style="width:230px;flex:none;border-right:1px solid var(--line);background:var(--surface)"><div class="xs" style="padding:10px 12px;border-bottom:1px solid var(--line);font-weight:800;letter-spacing:.08em;text-transform:uppercase">Closed cycles</div><div style="padding:10px 12px;border-bottom:1px solid var(--line);border-left:3px solid transparent;" class="row"><div class="sp"><div style="font-size:11.5px;font-weight:800">Month &middot; Jul 2026</div><div class="xs">2 nominees tied</div></div><span class="st s-amber">Tie</span></div><div style="padding:10px 12px;border-bottom:1px solid var(--line);background:var(--indigo-tint);border-left:3px solid var(--indigo);" class="row"><div class="sp"><div style="font-size:11.5px;font-weight:800">Month &middot; Aug 2026</div><div class="xs">14 nominees &middot; 96 votes</div></div><span class="st s-indigo">To publish</span></div><div style="padding:10px 12px;border-bottom:1px solid var(--line);border-left:3px solid transparent;" class="row"><div class="sp"><div style="font-size:11.5px;font-weight:800">Month &middot; Jun 2026</div><div class="xs">Vikram Rao</div></div><span class="st s-violet">Published</span></div><div style="padding:10px 12px;border-bottom:1px solid var(--line);border-left:3px solid transparent;" class="row"><div class="sp"><div style="font-size:11.5px;font-weight:800">Year &middot; 2025</div><div class="xs">Anita Desai</div></div><span class="st s-violet">Published</span></div><div class="xs" style="padding:10px 12px">Opens on the latest month &mdash; the right side is never blank <code>R-6.17.6</code></div></aside>
+    <div class="page" style="flex:1;min-width:0;background:var(--surface)">
       <div class="row" style="flex-wrap:wrap;gap:8px">
         <span class="st s-indigo">1 Review tally</span><span class="sm">&rarr;</span><span class="st s-mute">2 Citation</span><span class="sm">&rarr;</span><span class="st s-mute">3 Quotes</span><span class="sm">&rarr;</span><span class="st s-mute">4 Showcase</span><span class="sm">&rarr;</span><span class="st s-mute">5 Preview</span>
         <div class="sp"></div><span class="btn s btn-p">Publish</span>
@@ -2102,6 +2176,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
       </div>
       <div class="call k-rose" style="margin:0;padding:12px 14px;font-size:13px;border-radius:9px"><strong>Cannot publish yet.</strong> The citation is empty, and two gallery images have no alt text.</div>
     </div>
+    </div>
   </div>
 
   <div class="logic">
@@ -2110,6 +2185,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font-si
       <li><strong>Status colour carries the whole table.</strong> Sage Open, plum Published, bronze Tie, muted Draft and Cancelled, dimmed row for Cancelled. An admin scanning twelve cycles finds the one demanding action in under a second.</li>
       <li><strong>A five-step publish flow, not one long form.</strong> Publishing a winner is a considered, infrequent act with an irreversible social consequence. Steps create natural review points; a single scroll invites a premature Publish click.</li>
       <li><strong>The computed winner is labelled Frozen at close.</strong> Publishing must never look like it recalculates anything <code>R-6.8.4</code>.</li>
+      <li><strong>It opens on the latest month, never on a blank panel.</strong> The cycle list sits on the left; the right side already shows the most recent Month cycle (last month, or the current month once closed) when the page loads. Choosing another cycle swaps the right side <code>R-6.17.6</code>.</li>
       <li><strong>Override is available but expensive</strong> &mdash; a typed justification, an audit entry, visible to Auditors, surfaced in the Winners Report. Easy to do, impossible to do quietly <code>R-6.17.1</code>.</li>
       <li><strong>The blocked-publish message names every missing item at once</strong>, rather than failing one at a time.</li>
       <li><strong>Reopening and unpublishing are clay</strong>, sitting apart from the normal lifecycle. Both require a typed reason, notify everyone, and are audit-logged <code>R-6.16.4</code> <code>R-6.17.5</code>.</li>

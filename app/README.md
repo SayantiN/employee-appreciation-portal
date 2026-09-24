@@ -59,7 +59,8 @@ Every screen in SPEC §5 is now built, plus one addition — **Award Statistics*
 | Current Cycle Status · Past Results | 6.8 | Past Results deep-links with `?cycle=<id>` |
 | Winners Report | 6.9 | Month / Year / Date-wise / All views, two date bases, CSV export, print |
 | **Award Statistics** | 6.9A (new) | Per employee: EoM and EoY wins and nominations, drill-down, CSV export |
-| Hall of Fame · Work Showcase | 6.10, 6.11 | Showcase blocks: write-up, impact figure, link |
+| Hall of Fame · Winner Showcase | 6.10, 6.11 | Showcase blocks: write-up, impact figure, link |
+| **Community Showcase** | 6.11A (new) | Any employee shares work; author-only editing, admin can hide with a reason |
 | How It Works · Video Tutorials | 6.13, 6.14 | 15 baseline tutorials seeded as scripts; transcript until videos are recorded |
 | Admin — Voting Cycles | 6.16 | |
 | Admin — Publish Winners | 6.17 | Override and tie resolution need a justification; unpublish |

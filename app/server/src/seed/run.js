@@ -79,7 +79,7 @@ const pick = (arr) => arr[Math.floor(rnd() * arr.length)];
 
 function wipe() {
   const tables = [
-    'tutorial_progress', 'tutorials', 'showcases', 'feedback_reports',
+    'work_posts', 'tutorial_progress', 'tutorials', 'showcases', 'feedback_reports',
     'vote_versions', 'votes', 'cycle_results', 'winners', 'notifications',
     'announcements', 'audit_log', 'grid_preferences', 'sessions',
     'password_reset_tokens', 'login_attempts', 'voting_cycles', 'employees',
@@ -300,6 +300,34 @@ function seedDemo() {
       db.prepare(`INSERT INTO showcases (winner_id, status, body_json, published_at, updated_by)
                   VALUES (?, 'Published', ?, datetime('now'), ?)`).run(latest.id, JSON.stringify(blocks), adminId);
     }
+  }
+
+  // Community Showcase (6.11A) — work shared by people who did not win.
+  {
+    const post = db.prepare(
+      `INSERT INTO work_posts (author_id, title, summary, body_json, status, published_at, updated_at)
+       VALUES (?,?,?,?, 'Published', datetime('now', ?), datetime('now', ?))`
+    );
+    post.run(ids[13], 'A one-page runbook for the nightly deploy',
+      'Every step of the nightly deploy on one page, with the three failure modes we actually hit and how to recover from each. New on-call engineers use it on their first night.',
+      JSON.stringify([
+        { type: 'text', heading: 'Why it exists', body: 'The deploy knowledge lived in two people\'s heads. When both were on leave in the same week, a routine failure took four hours to recover.' },
+        { type: 'metric', label: 'Median recovery time', value: '4h → 25m' },
+        { type: 'link', label: 'Runbook (internal wiki)', url: 'https://wiki.example.internal/runbooks/nightly-deploy' },
+      ]), '-3 days', '-3 days');
+    post.run(ids[12], 'Interview notes template for user research',
+      'A template that keeps research notes comparable across interviewers, so findings from five people can be merged in an afternoon instead of a week.',
+      JSON.stringify([
+        { type: 'text', heading: 'How to use it', body: 'Copy the template before each interview. Fill the observation column during the call and the interpretation column afterwards — never both at once.' },
+        { type: 'metric', label: 'Synthesis time', value: '−60%' },
+        { type: 'link', label: 'Template', url: 'https://docs.example.internal/research/interview-template' },
+      ]), '-8 days', '-8 days');
+    post.run(ids[10], 'Month-end close checklist that finally stuck',
+      'The finance close broken into 22 checks with owners and cut-off times. The close now finishes a day earlier and nothing is discovered on day five.',
+      JSON.stringify([
+        { type: 'metric', label: 'Close duration', value: '5 → 4 days' },
+        { type: 'text', heading: 'What made it stick', body: 'Each check has one named owner and a time, not a team and a day. Late items are visible to everyone on the shared board.' },
+      ]), '-15 days', '-15 days');
   }
 
   db.prepare(`INSERT INTO announcements (title, body, created_by) VALUES (?,?,?)`)

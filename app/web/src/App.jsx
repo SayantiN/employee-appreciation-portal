@@ -14,6 +14,7 @@ import { WinnersReport } from './screens/WinnersReport.jsx';
 import { AwardStats } from './screens/AwardStats.jsx';
 import { HallOfFame, Showcase, ShowcaseIndex } from './screens/HallOfFame.jsx';
 import { HowItWorks } from './screens/HowItWorks.jsx';
+import { CommunityShowcase, CommunityPost, CommunityEditor } from './screens/CommunityShowcase.jsx';
 import { Tutorials, TutorialPlayer } from './screens/Tutorials.jsx';
 import { AdminPublish } from './screens/AdminPublish.jsx';
 import { AdminEmployees } from './screens/AdminEmployees.jsx';
@@ -38,6 +39,10 @@ export default function App() {
             <Route path="winners" element={<HallOfFame />} />
             <Route path="winners/showcase" element={<ShowcaseIndex />} />
             <Route path="winners/showcase/:winnerId" element={<Showcase />} />
+            <Route path="showcase/community" element={<CommunityShowcase />} />
+            <Route path="showcase/community/new" element={<CommunityEditor />} />
+            <Route path="showcase/community/:id" element={<CommunityPost />} />
+            <Route path="showcase/community/:id/edit" element={<CommunityEditor />} />
             <Route path="help" element={<HowItWorks />} />
             <Route path="tutorials" element={<Tutorials />} />
             <Route path="tutorials/:id" element={<TutorialPlayer />} />

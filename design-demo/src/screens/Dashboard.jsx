@@ -165,14 +165,35 @@ export function Dashboard() {
           </Card>
 
           <Card>
-            <SectionLabel>Hall of Fame — recent</SectionLabel>
-            {data.hallOfFame.length === 0
-              ? <p className="page__lede">No winners yet.</p>
-              : <div className="faces">
-                  {data.hallOfFame.map((w) => (
-                    <Avatar key={`${w.award_type}${w.period_label}${w.employee_id}`} name={w.full_name} size={40} />
-                  ))}
-                </div>}
+            {/* The reigning winners already have cards above, so this lists the
+                ones before them — each with what they won and when, rather than
+                a row of unlabelled faces. */}
+            <div className="row">
+              <SectionLabel>Previous winners</SectionLabel>
+              <span className="spacer" />
+              <Link to="/winners" className="page__editlink">Hall of Fame →</Link>
+            </div>
+            {(() => {
+              const shown = data.hallOfFame
+                .filter((w) => !data.reigning.some((r) => r.award_type === w.award_type && r.period_label === w.period_label))
+                .slice(0, 4);
+              return shown.length === 0
+                ? <p className="page__lede">Earlier winners appear here once more than one cycle has been published.</p>
+                : <ul className="recent-winners">
+                    {shown.map((w) => (
+                      <li key={`${w.award_type}${w.period_label}${w.employee_id}`} className="recent-winners__row">
+                        <Avatar name={w.full_name} size={32} />
+                        <span className="recent-winners__who">
+                          <strong>{w.full_name}</strong>
+                          <span>{w.department}</span>
+                        </span>
+                        <StatusPill tone={w.award_type === 'Year' ? 'bronze' : 'plum'}>
+                          {w.award_type === 'Year' ? 'Year' : 'Month'} · {w.pretty_period}
+                        </StatusPill>
+                      </li>
+                    ))}
+                  </ul>;
+            })()}
           </Card>
         </div>
 
