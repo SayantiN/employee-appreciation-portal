@@ -1,0 +1,65 @@
+@use 'tokens' as *;
+
+// Breakpoint helpers — mobile-first (RR-1): base styles target the smallest
+// screen and each mixin adds, never subtracts.
+@mixin from($bp)  { @media (min-width: $bp) { @content; } }
+@mixin upto($bp)  { @media (max-width: ($bp - 1px)) { @content; } }
+
+@mixin tablet   { @include from($bp-lg)  { @content; } }
+@mixin laptop   { @include from($bp-xl)  { @content; } }
+@mixin desktop  { @include from($bp-2xl) { @content; } }
+@mixin mobile   { @include upto($bp-lg)  { @content; } }
+
+// A visible, consistent focus ring on everything interactive (A-1).
+@mixin focus-ring($offset: 2px) {
+  &:focus-visible {
+    outline: 2px solid var(--c-blue);
+    outline-offset: $offset;
+    border-radius: $r-sm;
+  }
+}
+
+// RR-3 — 44×44 minimum for anything a finger has to hit.
+@mixin tap-target {
+  min-width: $tap-min;
+  min-height: $tap-min;
+}
+
+@mixin card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: $r-lg;
+}
+
+@mixin label-caps {
+  font-size: $fs-11;
+  font-weight: $fw-black;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--c-faint);
+}
+
+// Numerals in a column must line up — vote counts, ratings, percentages.
+@mixin tabular { font-variant-numeric: tabular-nums; }
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  } @else {
+    display: -webkit-box; -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+}
+
+// RR-13 — honour reduced motion rather than assuming everyone wants it.
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) { @content; }
+}
+
+// The page gutters from the spec, applied consistently.
+@mixin page-gutter {
+  padding-left: $gutter-mobile;
+  padding-right: $gutter-mobile;
+  @include tablet  { padding-left: $gutter-tablet;  padding-right: $gutter-tablet; }
+  @include desktop { padding-left: $gutter-desktop; padding-right: $gutter-desktop; }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "employee-appreciation-portal-design-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Static, click-through design demo of the Employee Appreciation Portal. No server: the API runs in the browser on sample data.",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "sql.js": "^1.11.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "sass": "^1.82.0",
+    "vite": "^6.0.3"
+  }
+}

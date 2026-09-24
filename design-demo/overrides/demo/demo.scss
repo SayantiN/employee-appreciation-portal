@@ -1,0 +1,45 @@
+@use '../styles/tokens' as *;
+@use '../styles/mixins' as *;
+
+.demo-boot {
+  min-height: 100dvh; display: grid; place-items: center; padding: $s-6; text-align: center;
+  font-family: $font-sans; color: var(--c-muted); background: var(--c-bg);
+}
+
+.demo-panel {
+  position: fixed; right: $s-4; z-index: 70;
+  bottom: calc(#{$tabbar-h} + #{$s-3} + env(safe-area-inset-bottom));
+  @include laptop { bottom: $s-4; }
+  display: flex; flex-direction: column; align-items: flex-end; gap: $s-2;
+  font-family: $font-sans;
+
+  &__pill {
+    border: 0; cursor: pointer; border-radius: $r-pill; padding: $s-2 $s-4; min-height: 36px;
+    background: var(--c-ink); color: var(--c-bg); font-size: $fs-12; font-weight: $fw-black;
+    box-shadow: var(--shadow-overlay);
+    @include focus-ring;
+  }
+  &__card {
+    width: min(320px, calc(100vw - 32px)); padding: $s-4; border-radius: $r-xl;
+    background: var(--c-surface); border: 1px solid var(--c-line); box-shadow: var(--shadow-overlay);
+    display: flex; flex-direction: column; gap: $s-2;
+  }
+  &__title { font-size: $fs-14; font-weight: $fw-black; }
+  &__text { margin: 0; font-size: $fs-12; color: var(--c-muted); line-height: $lh-snug;
+            code { font-family: $font-mono; color: var(--c-ink); } }
+  &__label { @include label-caps; margin-top: $s-1; }
+  &__acct {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left;
+    padding: $s-2 $s-3; border: 1px solid var(--c-line); border-radius: $r-md; cursor: pointer;
+    background: var(--c-surface); color: var(--c-ink); font: inherit;
+    strong { font-size: $fs-13; } span { font-size: $fs-11; color: var(--c-muted); }
+    &:hover { border-color: var(--c-blue); background: var(--c-blue-tint); }
+    @include focus-ring;
+  }
+  &__reset {
+    margin-top: $s-1; border: 1px solid var(--c-clay); color: var(--c-clay-deep); background: none;
+    border-radius: $r-md; padding: $s-2; cursor: pointer; font: inherit; font-size: $fs-12; font-weight: $fw-bold;
+    @include focus-ring;
+  }
+  @media print { display: none; }
+}

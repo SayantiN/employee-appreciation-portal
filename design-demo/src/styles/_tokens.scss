@@ -1,0 +1,129 @@
+// =============================================================================
+// Design tokens — the single source of truth for every design value.
+// Mirrors wireframe.html §2 (muted palette, v2.1).
+//
+// Nothing below this file hard-codes a colour, radius, space or duration.
+// Each token is emitted as a CSS custom property too, so themes can switch at
+// runtime without a rebuild (RR-12), and SCSS variables give compile-time use.
+// =============================================================================
+
+// ----------------------------------------------------------------- palette
+$c-blue:        #42678F;   // primary  — actions, active nav, focus, brand
+$c-blue-tint:   #EDF2F7;
+$c-blue-deep:   #355475;
+
+$c-plum:        #6F6193;   // award    — winners, hall of fame, showcase
+$c-plum-tint:   #F2F0F6;
+$c-plum-deep:   #5B4F7C;
+
+$c-sage:        #4E7C62;   // live     — open cycle, submitted, healthy
+$c-sage-tint:   #EEF3EF;
+$c-sage-deep:   #3F6650;
+
+$c-bronze:      #8A6729;   // attention— deadlines, countdowns, stale
+$c-bronze-tint: #F6F2E9;
+$c-bronze-deep: #75571F;
+
+$c-clay:        #9E574F;   // blocked  — errors, validation, locked, withheld
+$c-clay-tint:   #F7EFEE;
+$c-clay-deep:   #834540;
+
+$c-teal:        #3F7880;   // learning — tutorials, help, onboarding
+$c-teal-tint:   #EDF3F4;
+$c-teal-deep:   #33636A;
+
+// neutrals
+$c-ink:         #1D2730;
+$c-ink-2:       #3E4A55;
+$c-muted:       #6B7783;
+$c-faint:       #97A1AA;
+$c-line:        #E2E6E9;
+$c-line-2:      #C7CDD2;
+$c-bg:          #F7F8F8;
+$c-surface:     #FFFFFF;
+$c-surface-2:   #EFF1F2;
+
+// dark theme
+$d-ink:       #E1E7EC;  $d-ink-2:     #BCC5CE;  $d-muted:  #8D97A2;  $d-faint: #6C7681;
+$d-line:      #28323C;  $d-line-2:    #3A4650;
+$d-bg:        #0C1116;  $d-surface:   #141A21;  $d-surface-2: #1B232C;
+$d-blue:      #8FAECD;  $d-blue-tint: #1B2733;  $d-blue-deep:  #A8C3DC;
+$d-plum:      #A99CC6;  $d-plum-tint: #262133;  $d-plum-deep:  #BFB4D6;
+$d-sage:      #8DB79B;  $d-sage-tint: #18251D;  $d-sage-deep:  #A5C7B0;
+$d-bronze:    #C7A867;  $d-bronze-tint:#2B2416; $d-bronze-deep:#D6BC85;
+$d-clay:      #C99089;  $d-clay-tint: #2E1E1C;  $d-clay-deep:  #D7A8A2;
+$d-teal:      #85B0B6;  $d-teal-tint: #17262A;  $d-teal-deep:  #A0C4C9;
+
+// --------------------------------------------------------------- typography
+$font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+
+$fs-11: 0.6875rem;  $fs-12: 0.75rem;   $fs-13: 0.8125rem; $fs-14: 0.875rem;
+$fs-16: 1rem;       $fs-20: 1.25rem;   $fs-24: 1.5rem;    $fs-32: 2rem;   $fs-44: 2.75rem;
+
+$fw-regular: 400; $fw-medium: 500; $fw-semibold: 600; $fw-bold: 700; $fw-black: 800;
+$lh-tight: 1.2;   $lh-snug: 1.45;   $lh-body: 1.6;
+
+// ------------------------------------------------------------------ spacing
+// 4px base grid.
+$s-1: 0.25rem; $s-2: 0.5rem;  $s-3: 0.75rem; $s-4: 1rem;
+$s-5: 1.25rem; $s-6: 1.5rem;  $s-8: 2rem;    $s-10: 2.5rem; $s-12: 3rem; $s-16: 4rem;
+
+$gutter-mobile:  $s-4;   // RR-5
+$gutter-tablet:  $s-6;
+$gutter-desktop: $s-8;
+
+// ------------------------------------------------------------------- shape
+$r-sm: 6px; $r-md: 8px; $r-lg: 10px; $r-xl: 14px; $r-pill: 999px;
+
+// One elevation, for overlays only. Static cards get a border.
+$shadow-overlay: 0 12px 32px rgba(29, 39, 48, 0.16);
+$shadow-overlay-dark: 0 12px 32px rgba(0, 0, 0, 0.5);
+
+// ------------------------------------------------------------------ layout
+$sidebar-w: 240px;
+$rail-w: 64px;
+$drawer-w: 280px;
+$topbar-h: 56px;
+$tabbar-h: 60px;
+$content-max: 1280px;
+$tap-min: 44px;          // RR-3
+
+// -------------------------------------------------------------- breakpoints
+$bp-xs: 320px;  $bp-sm: 375px;  $bp-md: 430px;
+$bp-lg: 768px;  $bp-xl: 1024px; $bp-2xl: 1280px; $bp-3xl: 1536px;
+
+// ------------------------------------------------------------------ motion
+$dur-fast: 120ms; $dur-base: 180ms; $dur-slow: 260ms;
+$ease: cubic-bezier(0.2, 0, 0, 1);
+
+// =============================================================================
+// Runtime custom properties
+// =============================================================================
+@mixin theme-light {
+  --c-blue: #{$c-blue};       --c-blue-tint: #{$c-blue-tint};     --c-blue-deep: #{$c-blue-deep};
+  --c-plum: #{$c-plum};       --c-plum-tint: #{$c-plum-tint};     --c-plum-deep: #{$c-plum-deep};
+  --c-sage: #{$c-sage};       --c-sage-tint: #{$c-sage-tint};     --c-sage-deep: #{$c-sage-deep};
+  --c-bronze: #{$c-bronze};   --c-bronze-tint: #{$c-bronze-tint}; --c-bronze-deep: #{$c-bronze-deep};
+  --c-clay: #{$c-clay};       --c-clay-tint: #{$c-clay-tint};     --c-clay-deep: #{$c-clay-deep};
+  --c-teal: #{$c-teal};       --c-teal-tint: #{$c-teal-tint};     --c-teal-deep: #{$c-teal-deep};
+  --c-ink: #{$c-ink};         --c-ink-2: #{$c-ink-2};
+  --c-muted: #{$c-muted};     --c-faint: #{$c-faint};
+  --c-line: #{$c-line};       --c-line-2: #{$c-line-2};
+  --c-bg: #{$c-bg};           --c-surface: #{$c-surface};         --c-surface-2: #{$c-surface-2};
+  --shadow-overlay: #{$shadow-overlay};
+}
+
+@mixin theme-dark {
+  --c-blue: #{$d-blue};       --c-blue-tint: #{$d-blue-tint};     --c-blue-deep: #{$d-blue-deep};
+  --c-plum: #{$d-plum};       --c-plum-tint: #{$d-plum-tint};     --c-plum-deep: #{$d-plum-deep};
+  --c-sage: #{$d-sage};       --c-sage-tint: #{$d-sage-tint};     --c-sage-deep: #{$d-sage-deep};
+  --c-bronze: #{$d-bronze};   --c-bronze-tint: #{$d-bronze-tint}; --c-bronze-deep: #{$d-bronze-deep};
+  --c-clay: #{$d-clay};       --c-clay-tint: #{$d-clay-tint};     --c-clay-deep: #{$d-clay-deep};
+  --c-teal: #{$d-teal};       --c-teal-tint: #{$d-teal-tint};     --c-teal-deep: #{$d-teal-deep};
+  --c-ink: #{$d-ink};         --c-ink-2: #{$d-ink-2};
+  --c-muted: #{$d-muted};     --c-faint: #{$d-faint};
+  --c-line: #{$d-line};       --c-line-2: #{$d-line-2};
+  --c-bg: #{$d-bg};           --c-surface: #{$d-surface};         --c-surface-2: #{$d-surface-2};
+  --shadow-overlay: #{$shadow-overlay-dark};
+}

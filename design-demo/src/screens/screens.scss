@@ -1,0 +1,200 @@
+@use '../styles/tokens' as *;
+@use '../styles/mixins' as *;
+
+/* ============================================================ 6.1 Login */
+.login {
+  min-height: 100dvh; display: flex; background: var(--c-surface);
+
+  &__brand {
+    display: none;
+    @include tablet {
+      display: flex; flex-direction: column;
+      width: 42%; max-width: 460px; padding: $s-10 $s-8; color: #fff;
+      background: linear-gradient(150deg, $c-blue, $c-plum);
+    }
+  }
+  &__mark { width: 36px; height: 36px; border-radius: $r-lg; background: rgba(255,255,255,.22); margin-bottom: $s-6; }
+  &__wordmark { font-size: $fs-32; font-weight: $fw-black; line-height: 1.15; }
+  &__tagline { margin: $s-4 0 0; max-width: 30ch; font-size: $fs-14; color: rgba(255,255,255,.82); }
+  &__rule { margin-top: auto; height: 1px; background: rgba(255,255,255,.26); }
+  &__fine { margin: $s-4 0 0; font-size: $fs-12; color: rgba(255,255,255,.7); }
+
+  &__panel { flex: 1; display: flex; align-items: center; justify-content: center;
+             padding: $s-6 $gutter-mobile; @include tablet { padding: $s-10 $s-8; } }
+  // Capped even on a 1920 monitor. A 900px-wide email field scans badly.
+  &__form-wrap { width: 100%; max-width: 420px; }
+
+  &__title { font-size: $fs-24; font-weight: $fw-black; }
+  &__sub   { margin: $s-1 0 $s-5; font-size: $fs-13; color: var(--c-muted); }
+  &__alert { margin-bottom: $s-4; }
+
+  &__password { position: relative; }
+  &__reveal {
+    position: absolute; right: $s-2; top: 50%; transform: translateY(-50%);
+    background: none; border: 0; cursor: pointer; padding: $s-1 $s-2;
+    font-size: $fs-12; font-weight: $fw-bold; color: var(--c-blue-deep);
+    @include focus-ring(0);
+  }
+
+  &__row { display: flex; align-items: center; justify-content: space-between;
+           gap: $s-3; margin: $s-2 0 $s-5; flex-wrap: wrap; }
+  &__remember { display: flex; align-items: center; gap: $s-2; font-size: $fs-13; color: var(--c-ink-2);
+                input { accent-color: var(--c-blue); width: 17px; height: 17px; } }
+  &__linkbtn { background: none; border: 0; padding: 0; cursor: pointer;
+               font-size: $fs-13; font-weight: $fw-bold; color: var(--c-blue-deep); @include focus-ring(2px); }
+  &__back { margin-top: $s-4; text-align: center; }
+}
+
+/* ======================================================== shared layout */
+.page {
+  display: flex; flex-direction: column; gap: $s-4;
+  @include tablet { gap: $s-5; }
+}
+.page__head { display: flex; align-items: flex-start; gap: $s-3; flex-wrap: wrap; }
+.page__lede { margin: 0; font-size: $fs-13; color: var(--c-muted); max-width: 70ch; }
+
+.cols {
+  display: grid; gap: $s-4;
+  &--2 { @include laptop { grid-template-columns: 1fr 1fr; } }
+  &--dash { @include laptop { grid-template-columns: 1.45fr 1fr; } }
+  &--form { @include laptop { grid-template-columns: minmax(0, 1fr) 260px; } }
+}
+.tiles {
+  display: grid; gap: $s-3;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  @include laptop { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.stack { display: flex; flex-direction: column; gap: $s-3; }
+.row   { display: flex; align-items: center; gap: $s-2; flex-wrap: wrap; }
+.spacer{ flex: 1; }
+
+/* ======================================================== 6.3 Dashboard */
+.hero {
+  border-radius: $r-xl; padding: $s-5;
+  background: linear-gradient(120deg, $c-blue, $c-blue-deep);
+  color: #fff;
+  display: flex; align-items: center; gap: $s-4; flex-wrap: wrap;
+
+  &__text { flex: 1; min-width: 220px; }
+  &__greet { font-size: $fs-20; font-weight: $fw-black; margin-bottom: $s-1; }
+  &__line  { font-size: $fs-13; color: rgba(255,255,255,.86); }
+  &__cta   { @include mobile { width: 100%; } }
+}
+
+.winner-card {
+  display: flex; gap: $s-3; align-items: flex-start;
+  &__meta { min-width: 0; }
+  &__name { font-size: $fs-14; font-weight: $fw-black; }
+  &__role { font-size: $fs-12; color: var(--c-muted); }
+  &__cite { margin: $s-2 0 $s-2; font-size: $fs-12; color: var(--c-ink-2); @include truncate(3); }
+}
+
+.spark {
+  display: flex; align-items: flex-end; gap: $s-2; height: 84px;
+  i { flex: 1; border-radius: $r-sm $r-sm 0 0; background: var(--c-line-2); display: block;
+      &.is-current { background: var(--c-blue); } }
+}
+.spark-x { display: flex; justify-content: space-between; margin-top: $s-1;
+           font-size: $fs-11; color: var(--c-faint); @include tabular; }
+
+.faces { display: flex; gap: $s-2; flex-wrap: wrap; }
+
+/* ==================================================== 6.4 / 6.5 Voting */
+.vote {
+  &__head {
+    display: flex; align-items: center; gap: $s-3; flex-wrap: wrap;
+    padding: $s-3 $s-4; border-radius: $r-lg;
+    background: var(--c-surface-2); border: 1px solid var(--c-line);
+  }
+  &__period { font-size: $fs-16; font-weight: $fw-black; }
+  &__closes { font-size: $fs-12; color: var(--c-muted); }
+
+  &__form { display: flex; flex-direction: column; gap: $s-5; }
+  &__step { display: flex; flex-direction: column; }
+
+  // The year form's field 3 is the only boxed field, and the only difference
+  // that matters between the two ballots.
+  &__emphasis {
+    border: 2px solid var(--c-plum); background: var(--c-plum-tint);
+    border-radius: $r-lg; padding: $s-4;
+  }
+  &__optional { border: 1px dashed var(--c-line-2); border-radius: $r-lg; padding: $s-4; }
+
+  &__nominee {
+    display: flex; align-items: center; gap: $s-3;
+    padding: $s-2; border: 1px solid var(--c-blue); border-radius: $r-md;
+    background: var(--c-surface); width: 100%; text-align: left; cursor: pointer;
+    @include focus-ring;
+    &.is-empty { border-color: var(--c-line-2); }
+    &-name { font-size: $fs-14; font-weight: $fw-bold; }
+    &-role { font-size: $fs-12; color: var(--c-muted); }
+    &-change { margin-left: auto; font-size: $fs-12; font-weight: $fw-bold; color: var(--c-blue-deep); }
+  }
+
+  &__confirm {
+    display: flex; align-items: flex-start; gap: $s-3;
+    padding-top: $s-4; border-top: 1px solid var(--c-line);
+    font-size: $fs-13; color: var(--c-ink-2);
+    input { accent-color: var(--c-blue); width: 18px; height: 18px; margin-top: 2px; }
+  }
+
+  &__actions {
+    display: flex; align-items: center; gap: $s-2; flex-wrap: wrap;
+    @include mobile {
+      position: sticky; bottom: calc(#{$tabbar-h} + env(safe-area-inset-bottom));
+      background: var(--c-surface); border-top: 1px solid var(--c-line);
+      margin: 0 (-$gutter-mobile); padding: $s-3 $gutter-mobile;
+      z-index: 20;
+    }
+  }
+  &__saved { font-size: $fs-11; color: var(--c-faint); margin-left: auto; }
+
+  /* right rail */
+  &__rail { display: flex; flex-direction: column; gap: $s-4; }
+  &__summary { display: flex; flex-direction: column; gap: $s-2; font-size: $fs-13; }
+  &__summary-row { display: flex; align-items: center; gap: $s-2;
+    dt { color: var(--c-muted); } dd { margin: 0 0 0 auto; font-weight: $fw-black; }
+    &.is-ok   dd { color: var(--c-sage-deep); }
+    &.is-todo dd { color: var(--c-clay-deep); } }
+}
+
+/* nominee picker */
+.picker {
+  &__search { margin-bottom: $s-3; }
+  &__list { display: flex; flex-direction: column; max-height: 52vh; overflow-y: auto; margin: 0 (-$s-2); }
+  &__item {
+    display: flex; align-items: center; gap: $s-3; width: 100%;
+    padding: $s-2 $s-2; border: 0; background: none; text-align: left; cursor: pointer;
+    border-radius: $r-md; min-height: $tap-min;
+    @include focus-ring(-2px);
+    &:hover { background: var(--c-surface-2); }
+    &.is-selected { background: var(--c-blue-tint); }
+    &-name { font-size: $fs-14; font-weight: $fw-semibold; }
+    &-role { font-size: $fs-12; color: var(--c-muted); }
+  }
+}
+
+/* ===================================================== 6.8 Results etc. */
+.result-banner {
+  border-radius: $r-xl; padding: $s-5; color: #fff;
+  background: linear-gradient(120deg, $c-plum, $c-plum-deep);
+  display: flex; gap: $s-4; align-items: center; flex-wrap: wrap;
+  &__meta { flex: 1; min-width: 200px; }
+  &__label { @include label-caps; color: rgba(255,255,255,.75); }
+  &__name { font-size: $fs-24; font-weight: $fw-black; }
+  &__role { font-size: $fs-13; color: rgba(255,255,255,.8); }
+  &__cite { margin: $s-2 0 0; font-size: $fs-13; color: rgba(255,255,255,.88); max-width: 56ch; }
+  &__figs { display: flex; gap: $s-6; }
+  &__fig  { text-align: right;
+    b { display: block; font-size: $fs-24; font-weight: $fw-black; @include tabular; }
+    span { font-size: $fs-11; color: rgba(255,255,255,.75); } }
+}
+
+.confidential {
+  background: var(--c-ink); color: var(--c-bg);
+  text-align: center; padding: $s-2; border-radius: $r-md;
+  @include label-caps; color: #fff;
+}
+
+.ladder { display: flex; flex-direction: column; gap: $s-2; font-size: $fs-13; }
+.ladder__row { display: flex; align-items: center; gap: $s-3; }
