@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dashboard, desktop</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:9px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.tile{background:#fff;border:1px solid #D6D2C8;border-radius:9px;padding:14px 15px;flex:1;min-width:0}
+.tl{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#918C82;margin-bottom:9px}
+.tv{font-size:23px;font-weight:600;letter-spacing:-.01em;line-height:1.1}
+.ts{font-size:11px;color:#6B6862;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:#141413;color:#FAF9F5;border:0;border-radius:6px;height:38px;padding:0 18px;font:600 13px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#141413;border:1px solid #A8A399;border-radius:6px;height:32px;padding:0 13px;font:500 12px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.nv{font-size:11.5px;padding:6px 10px;border-radius:5px;color:#55514A}
+.nvon{background:#EFEDE7;font-weight:600;color:#141413;border-left:3px solid #D97757;padding-left:7px}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.hatch{background:repeating-linear-gradient(135deg,#EFEDE7,#EFEDE7 5px,#E0DCD2 5px,#E0DCD2 10px);border:1px solid #DCD8CE;border-radius:6px}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Dashboard &mdash; desktop 1440</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.3 &middot; R-6.3.1 &hellip; R-6.3.3</div>
+  </div>
+
+  <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;min-height:0">
+
+    <div style="width:186px;flex-shrink:0;border-right:1px solid #E7E3DA;padding:14px 9px;background:#FCFBF8">
+      <div style="display:flex;align-items:center;gap:8px;padding:2px 8px 13px;border-bottom:1px solid #EDE9E1;margin-bottom:7px">
+        <div style="width:22px;height:22px;border-radius:5px;background:#141413"></div>
+        <div style="font-size:12px;font-weight:600">Appreciation</div>
+      </div>
+      <div class="nv nvon">Dashboard</div>
+      <div class="nv" style="margin-top:3px">Vote</div>
+      <div class="nv">My Activity</div>
+      <div class="nv">Results</div>
+      <div class="nv">Reports</div>
+      <div class="nv">Winners</div>
+      <div class="nv">Notifications</div>
+      <div class="nv">Help &amp; Training</div>
+      <div style="border-top:1px solid #EDE9E1;margin:9px 0;padding-top:9px"></div>
+      <div class="nv" style="font-size:10.5px;color:#918C82">ADMINISTRATION</div>
+      <div class="nv">Voting Cycles</div>
+      <div class="nv">Publish Winners</div>
+      <div class="nv">Analytics &amp; Exports</div>
+    </div>
+
+    <div style="flex-grow:1;padding:18px 22px;display:flex;flex-direction:column;gap:14px;overflow:hidden;min-width:0">
+
+      <div style="display:flex;align-items:center;gap:14px;background:#141413;border-radius:9px;padding:16px 20px;color:#FAF9F5;position:relative">
+        <div style="flex-grow:1">
+          <div style="font-size:17px;font-weight:600;margin-bottom:5px">Good morning, Ganesh</div>
+          <div style="font-size:12.5px;opacity:.78">Voting for <strong>September 2026</strong> closes in 3 days &mdash; you haven&#39;t voted yet.</div>
+        </div>
+        <button class="btn" style="background:#FAF9F5;color:#141413" type="button">Vote Now</button>
+        <span class="pin" style="position:absolute;top:-7px;left:-7px">1</span>
+      </div>
+
+      <div style="display:flex;gap:11px">
+        <div class="tile">
+          <div class="tl">Current cycle</div>
+          <div class="tv" style="font-size:17px">September 2026</div>
+          <div class="ts">Open &middot; closes in 3d 4h</div>
+        </div>
+        <div class="tile">
+          <div class="tl">Your voting status</div>
+          <div class="tv" style="font-size:17px">Not submitted</div>
+          <div class="ts">Draft saved 11 minutes ago</div>
+        </div>
+        <div class="tile" style="position:relative">
+          <div class="tl">Company participation</div>
+          <div class="tv">68%</div>
+          <div class="ts">82 of 120 employees voted</div>
+          <span class="pin" style="position:absolute;top:-7px;right:-7px">2</span>
+        </div>
+        <div class="tile">
+          <div class="tl">Appreciation you received</div>
+          <div class="tv">7</div>
+          <div class="ts">votes this month &middot; 8.9 avg</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;flex-grow:1;min-height:0">
+
+        <div style="flex:1.35;display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div style="display:flex;gap:11px">
+            <div class="pane" style="flex:1;padding:13px 14px">
+              <div class="tl" style="margin-bottom:11px">Employee of the Month &middot; August</div>
+              <div style="display:flex;gap:11px;align-items:center;margin-bottom:10px">
+                <div style="width:44px;height:44px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+                <div style="flex-grow:1;min-width:0">
+                  <div class="ln" style="width:76%;margin-bottom:6px"></div>
+                  <div class="ln" style="width:52%;height:7px"></div>
+                </div>
+              </div>
+              <div class="ln" style="width:100%;margin-bottom:5px;height:7px"></div>
+              <div class="ln" style="width:84%;margin-bottom:11px;height:7px"></div>
+              <a href="#showcase" style="font-size:11.5px;font-weight:500">View their work &rarr;</a>
+            </div>
+            <div class="pane" style="flex:1;padding:13px 14px">
+              <div class="tl" style="margin-bottom:11px">Employee of the Year &middot; 2025</div>
+              <div style="display:flex;gap:11px;align-items:center;margin-bottom:10px">
+                <div style="width:44px;height:44px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+                <div style="flex-grow:1;min-width:0">
+                  <div class="ln" style="width:68%;margin-bottom:6px"></div>
+                  <div class="ln" style="width:58%;height:7px"></div>
+                </div>
+              </div>
+              <div class="ln" style="width:100%;margin-bottom:5px;height:7px"></div>
+              <div class="ln" style="width:72%;margin-bottom:11px;height:7px"></div>
+              <a href="#showcase" style="font-size:11.5px;font-weight:500">View their work &rarr;</a>
+            </div>
+          </div>
+
+          <div class="pane" style="padding:13px 14px;flex-grow:1;display:flex;flex-direction:column;min-height:0">
+            <div style="display:flex;align-items:baseline;margin-bottom:12px">
+              <div class="tl" style="margin:0">Your appreciation over 6 months</div>
+              <span class="pin" style="margin-left:9px">3</span>
+            </div>
+            <div style="flex-grow:1;display:flex;align-items:flex-end;gap:13px;padding:0 4px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:38%;background:#DCD8CE;border-radius:4px 4px 0 0"></div><span style="font-size:9.5px" class="mut">Apr</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:56%;background:#DCD8CE;border-radius:4px 4px 0 0"></div><span style="font-size:9.5px" class="mut">May</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:47%;background:#DCD8CE;border-radius:4px 4px 0 0"></div><span style="font-size:9.5px" class="mut">Jun</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:72%;background:#DCD8CE;border-radius:4px 4px 0 0"></div><span style="font-size:9.5px" class="mut">Jul</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:64%;background:#DCD8CE;border-radius:4px 4px 0 0"></div><span style="font-size:9.5px" class="mut">Aug</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:84%;background:#D97757;border-radius:4px 4px 0 0"></div><span style="font-size:9.5px;font-weight:600">Sep</span></div>
+            </div>
+          </div>
+
+          <div class="pane" style="padding:13px 14px">
+            <div class="tl" style="margin-bottom:11px">Hall of Fame &mdash; recent</div>
+            <div style="display:flex;gap:11px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:38px;height:38px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div><div class="ln" style="width:80%;height:6px"></div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:38px;height:38px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div><div class="ln" style="width:80%;height:6px"></div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:38px;height:38px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div><div class="ln" style="width:80%;height:6px"></div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:38px;height:38px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div><div class="ln" style="width:80%;height:6px"></div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:38px;height:38px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div><div class="ln" style="width:80%;height:6px"></div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:38px;height:38px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div><div class="ln" style="width:80%;height:6px"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="width:296px;flex-shrink:0;display:flex;flex-direction:column;gap:14px;min-height:0">
+
+          <div class="pane" style="padding:13px 14px;border-color:#141413;position:relative">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px">
+              <div class="tl" style="margin:0">Getting started</div>
+              <div style="flex-grow:1"></div>
+              <div style="font-size:10.5px;font-weight:600">3 of 12</div>
+            </div>
+            <div style="height:5px;border-radius:3px;background:#EFEDE7;margin-bottom:12px;overflow:hidden"><div style="width:25%;height:100%;background:#D97757"></div></div>
+            <div style="font-size:12px;line-height:1.5;margin-bottom:11px">Next: <strong>Voting for Employee of the Month</strong> &middot; 3 min</div>
+            <button class="gbtn" style="width:100%" type="button">Start the 5-minute tour</button>
+            <span class="pin" style="position:absolute;top:-7px;right:-7px">4</span>
+          </div>
+
+          <div class="pane" style="padding:13px 14px;flex-grow:1;display:flex;flex-direction:column;min-height:0">
+            <div class="tl" style="margin-bottom:11px">Recent feedback about you</div>
+            <div style="display:flex;flex-direction:column;gap:10px;flex-grow:1">
+              <div class="box" style="background:#FCFBF8;padding:10px">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                  <div style="width:18px;height:18px;border-radius:50%;background:#DCD8CE"></div>
+                  <span style="font-size:10.5px;font-weight:600">A colleague</span>
+                  <span style="margin-left:auto;font-size:10.5px;font-weight:600">9/10</span>
+                </div>
+                <div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div>
+                <div class="ln" style="width:72%;height:7px"></div>
+              </div>
+              <div class="box" style="background:#FCFBF8;padding:10px">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                  <div style="width:18px;height:18px;border-radius:50%;background:#DCD8CE"></div>
+                  <span style="font-size:10.5px;font-weight:600">A colleague</span>
+                  <span style="margin-left:auto;font-size:10.5px;font-weight:600">10/10</span>
+                </div>
+                <div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div>
+                <div class="ln" style="width:58%;height:7px"></div>
+              </div>
+              <div class="hatch" style="padding:10px;font-size:10.5px;line-height:1.45;color:#6B6862">
+                September feedback appears once that cycle closes.
+              </div>
+            </div>
+            <a href="#feedback" style="font-size:11.5px;font-weight:500;margin-top:11px">See all feedback &rarr;</a>
+          </div>
+
+          <div class="pane" style="padding:13px 14px">
+            <div class="tl" style="margin-bottom:10px">Announcements</div>
+            <div class="ln" style="width:100%;margin-bottom:5px;height:7px"></div>
+            <div class="ln" style="width:88%;margin-bottom:10px;height:7px"></div>
+            <div class="ln" style="width:94%;margin-bottom:5px;height:7px"></div>
+            <div class="ln" style="width:64%;height:7px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:30px">
+    <div style="flex:1">
+      <div class="note"><span class="pin">1</span><span>One urgent action, stated plainly with the deadline. After voting it becomes &ldquo;Your vote is in &mdash; editable until 30 Sep, 6:00 PM&rdquo;.</span></div>
+      <div class="note" style="margin:0"><span class="pin">2</span><span><strong>Participation count only.</strong> No nominee counts, ranks or leaders while a cycle is open <span class="mono">R-6.3.1</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">3</span><span>Chart simplifies to 3 months below 768px and exposes a table fallback of the same data <span class="mono">RR-14</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">4</span><span>Onboarding block shows only until the playlist is finished, then disappears for good <span class="mono">6.3 item 8</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">5</span><span>Hatched fill marks content a rule is withholding &mdash; here, feedback for a cycle still open <span class="mono">R-6.7.3</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">6</span><span>Admins additionally see an <strong>Admin Snapshot</strong> row: votes today, cycles needing action, pending publication, flagged content <span class="mono">R-6.3.2</span>.</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

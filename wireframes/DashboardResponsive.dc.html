@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dashboard at tablet and mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:8px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.tl{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#918C82;margin-bottom:6px}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.tabbar{border-top:1px solid #D6D2C8;display:flex;padding:8px 3px 12px;background:#fff}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:8.5px;color:#6B6862}
+.ico{width:20px;height:20px;border-radius:5px;background:#D6D2C8}
+.hatch{background:repeating-linear-gradient(135deg,#EFEDE7,#EFEDE7 5px,#E0DCD2 5px,#E0DCD2 10px);border:1px solid #DCD8CE;border-radius:6px}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:18px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Dashboard &mdash; tablet and mobile</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.3 responsive &middot; &sect;12 RR-1 &hellip; RR-14</div>
+  </div>
+
+  <div style="display:flex;gap:22px;flex-grow:1;min-height:0">
+
+    <div style="width:430px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Tablet 768 &times; 1024 &mdash; 2&times;2 tiles, single column below</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:42px;border-bottom:1px solid #EDE9E1;display:flex;align-items:center;gap:11px;padding:0 14px;background:#FCFBF8">
+          <div style="display:flex;flex-direction:column;gap:3px;width:16px">
+            <div style="height:2px;background:#141413"></div><div style="height:2px;background:#141413"></div><div style="height:2px;background:#141413"></div>
+          </div>
+          <div style="font-size:12.5px;font-weight:600">Dashboard</div>
+          <div style="flex-grow:1"></div>
+          <div class="ico" style="width:18px;height:18px"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:#DCD8CE"></div>
+        </div>
+        <div style="padding:14px;display:flex;flex-direction:column;gap:11px;flex-grow:1;overflow:hidden">
+          <div style="background:#141413;border-radius:8px;padding:13px 15px;color:#FAF9F5">
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Good morning, Ganesh</div>
+            <div style="font-size:11px;opacity:.78;margin-bottom:11px">September 2026 closes in 3 days &mdash; you haven&#39;t voted.</div>
+            <div style="display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:6px;background:#FAF9F5;color:#141413;font-size:12px;font-weight:600">Vote Now</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px">
+            <div class="pane" style="padding:11px"><div class="tl">Current cycle</div><div style="font-size:14px;font-weight:600">September 2026</div><div style="font-size:10px" class="mut">closes in 3d 4h</div></div>
+            <div class="pane" style="padding:11px"><div class="tl">Your status</div><div style="font-size:14px;font-weight:600">Not submitted</div><div style="font-size:10px" class="mut">draft saved</div></div>
+            <div class="pane" style="padding:11px"><div class="tl">Participation</div><div style="font-size:19px;font-weight:600">68%</div><div style="font-size:10px" class="mut">82 of 120</div></div>
+            <div class="pane" style="padding:11px"><div class="tl">You received</div><div style="font-size:19px;font-weight:600">7</div><div style="font-size:10px" class="mut">votes &middot; 8.9 avg</div></div>
+          </div>
+          <div style="display:flex;gap:9px">
+            <div class="pane" style="flex:1;padding:11px">
+              <div class="tl">Month winner</div>
+              <div style="display:flex;gap:8px;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:#DCD8CE"></div><div style="flex-grow:1"><div class="ln" style="width:80%;margin-bottom:5px"></div><div class="ln" style="width:55%;height:6px"></div></div></div>
+            </div>
+            <div class="pane" style="flex:1;padding:11px">
+              <div class="tl">Year winner</div>
+              <div style="display:flex;gap:8px;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:#DCD8CE"></div><div style="flex-grow:1"><div class="ln" style="width:72%;margin-bottom:5px"></div><div class="ln" style="width:60%;height:6px"></div></div></div>
+            </div>
+          </div>
+          <div class="pane" style="padding:11px;flex-grow:1;display:flex;flex-direction:column">
+            <div class="tl">Your appreciation, 6 months</div>
+            <div style="flex-grow:1;display:flex;align-items:flex-end;gap:9px;min-height:64px">
+              <div style="flex:1;height:38%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:56%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:47%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:72%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:64%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:84%;background:#D97757;border-radius:3px 3px 0 0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:196px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Mobile 390 &mdash; top</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:22px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+        <div style="height:38px;border-bottom:1px solid #EDE9E1;display:flex;align-items:center;gap:9px;padding:0 13px">
+          <div style="font-size:13px;font-weight:600">Dashboard</div>
+          <div style="flex-grow:1"></div>
+          <div class="ico" style="width:17px;height:17px"></div>
+          <div style="width:20px;height:20px;border-radius:50%;background:#DCD8CE"></div>
+        </div>
+        <div style="padding:12px 13px;display:flex;flex-direction:column;gap:10px;flex-grow:1;overflow:hidden">
+          <div style="background:#141413;border-radius:8px;padding:12px;color:#FAF9F5">
+            <div style="font-size:12.5px;font-weight:600;margin-bottom:4px">Good morning, Ganesh</div>
+            <div style="font-size:10px;opacity:.78;margin-bottom:10px">Closes in 3 days. You haven&#39;t voted.</div>
+            <div style="height:44px;border-radius:6px;background:#FAF9F5;color:#141413;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center">Vote Now</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <div class="pane" style="padding:9px"><div class="tl" style="font-size:8px">Cycle</div><div style="font-size:11.5px;font-weight:600">Sep 2026</div></div>
+            <div class="pane" style="padding:9px"><div class="tl" style="font-size:8px">Your status</div><div style="font-size:11.5px;font-weight:600">Not submitted</div></div>
+            <div class="pane" style="padding:9px"><div class="tl" style="font-size:8px">Participation</div><div style="font-size:15px;font-weight:600">68%</div></div>
+            <div class="pane" style="padding:9px"><div class="tl" style="font-size:8px">You received</div><div style="font-size:15px;font-weight:600">7</div></div>
+          </div>
+          <div class="pane" style="padding:10px;border-color:#141413">
+            <div style="display:flex;align-items:center;margin-bottom:8px"><div class="tl" style="margin:0;font-size:8px">Getting started</div><div style="margin-left:auto;font-size:9px;font-weight:600">3 of 12</div></div>
+            <div style="height:4px;border-radius:2px;background:#EFEDE7;margin-bottom:9px;overflow:hidden"><div style="width:25%;height:100%;background:#D97757"></div></div>
+            <div style="height:36px;border:1px solid #A8A399;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:500">Start the tour</div>
+          </div>
+          <div class="pane" style="padding:10px;flex-grow:1">
+            <div class="tl" style="font-size:8px">Month winner</div>
+            <div style="display:flex;gap:8px;align-items:center"><div style="width:30px;height:30px;border-radius:50%;background:#DCD8CE"></div><div style="flex-grow:1"><div class="ln" style="width:82%;margin-bottom:5px"></div><div class="ln" style="width:56%;height:6px"></div></div></div>
+          </div>
+        </div>
+        <div class="tabbar">
+          <div class="tab"><div class="ico" style="background:#141413"></div><span style="color:#141413;font-weight:600">Dashboard</span></div>
+          <div class="tab"><div class="ico"></div><span>Vote</span></div>
+          <div class="tab"><div class="ico"></div><span>Feedback</span></div>
+          <div class="tab"><div class="ico"></div><span>Winners</span></div>
+          <div class="tab"><div class="ico"></div><span>More</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:196px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Mobile 390 &mdash; scrolled</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:22px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+        <div style="padding:12px 13px;display:flex;flex-direction:column;gap:10px;flex-grow:1;overflow:hidden">
+          <div class="pane" style="padding:10px">
+            <div class="tl" style="font-size:8px">Your appreciation &middot; 3 months</div>
+            <div style="display:flex;align-items:flex-end;gap:9px;height:56px">
+              <div style="flex:1;height:60%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:72%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:92%;background:#D97757;border-radius:3px 3px 0 0"></div>
+            </div>
+            <div style="font-size:8.5px;margin-top:7px;text-decoration:underline" class="mut">View as table</div>
+          </div>
+          <div class="pane" style="padding:10px">
+            <div class="tl" style="font-size:8px">Recent feedback</div>
+            <div class="box" style="background:#FCFBF8;padding:8px;margin-bottom:7px">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><div style="width:15px;height:15px;border-radius:50%;background:#DCD8CE"></div><span style="font-size:9px;font-weight:600">A colleague</span><span style="margin-left:auto;font-size:9px;font-weight:600">9/10</span></div>
+              <div class="ln" style="width:100%;margin-bottom:4px;height:6px"></div>
+              <div class="ln" style="width:66%;height:6px"></div>
+            </div>
+            <div class="hatch" style="padding:8px;font-size:9px;line-height:1.4;color:#6B6862">September feedback appears once that cycle closes.</div>
+          </div>
+          <div class="pane" style="padding:10px">
+            <div class="tl" style="font-size:8px">Hall of Fame</div>
+            <div style="display:flex;gap:8px;overflow:hidden">
+              <div style="flex-shrink:0;width:38px;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE"></div><div class="ln" style="width:100%;height:5px"></div></div>
+              <div style="flex-shrink:0;width:38px;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE"></div><div class="ln" style="width:100%;height:5px"></div></div>
+              <div style="flex-shrink:0;width:38px;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE"></div><div class="ln" style="width:100%;height:5px"></div></div>
+              <div style="flex-shrink:0;width:38px;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE"></div><div class="ln" style="width:100%;height:5px"></div></div>
+            </div>
+            <div style="font-size:8.5px;margin-top:7px" class="mut">Swipe for more</div>
+          </div>
+          <div class="pane" style="padding:10px;flex-grow:1">
+            <div class="tl" style="font-size:8px">Announcements</div>
+            <div class="ln" style="width:100%;margin-bottom:5px;height:6px"></div>
+            <div class="ln" style="width:78%;height:6px"></div>
+          </div>
+        </div>
+        <div class="tabbar">
+          <div class="tab"><div class="ico" style="background:#141413"></div><span style="color:#141413;font-weight:600">Dashboard</span></div>
+          <div class="tab"><div class="ico"></div><span>Vote</span></div>
+          <div class="tab"><div class="ico"></div><span>Feedback</span></div>
+          <div class="tab"><div class="ico"></div><span>Winners</span></div>
+          <div class="tab"><div class="ico"></div><span>More</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;min-width:0">
+      <div class="hd">Breakpoints that this product must survive</div>
+      <div class="pane" style="flex-grow:1;padding:16px 18px;display:flex;flex-direction:column;gap:11px;font-size:11.5px;line-height:1.5">
+        <div style="display:flex;gap:10px;padding-bottom:9px;border-bottom:1px solid #EDE9E1"><span class="mono" style="width:78px;flex-shrink:0;color:#8A857B">320&ndash;374</span><span>iPhone SE, small Android. The hardest case &mdash; and the one the no-horizontal-scroll rule is measured against.</span></div>
+        <div style="display:flex;gap:10px;padding-bottom:9px;border-bottom:1px solid #EDE9E1"><span class="mono" style="width:78px;flex-shrink:0;color:#8A857B">375&ndash;429</span><span>iPhone 13&ndash;15, Pixel.</span></div>
+        <div style="display:flex;gap:10px;padding-bottom:9px;border-bottom:1px solid #EDE9E1"><span class="mono" style="width:78px;flex-shrink:0;color:#8A857B">430&ndash;767</span><span>Pro Max, large Android, small tablets portrait.</span></div>
+        <div style="display:flex;gap:10px;padding-bottom:9px;border-bottom:1px solid #EDE9E1"><span class="mono" style="width:78px;flex-shrink:0;color:#8A857B">768&ndash;1023</span><span>iPad. Drawer navigation. Tables still become cards below this line.</span></div>
+        <div style="display:flex;gap:10px;padding-bottom:9px;border-bottom:1px solid #EDE9E1"><span class="mono" style="width:78px;flex-shrink:0;color:#8A857B">1024&ndash;1279</span><span>iPad Pro landscape, small laptops. Icon rail.</span></div>
+        <div style="display:flex;gap:10px;padding-bottom:9px;border-bottom:1px solid #EDE9E1"><span class="mono" style="width:78px;flex-shrink:0;color:#8A857B">1280&ndash;1535</span><span>Standard desktop. Expanded rail.</span></div>
+        <div style="display:flex;gap:10px"><span class="mono" style="width:78px;flex-shrink:0;color:#8A857B">&ge; 1536</span><span>Wide monitors. Content max-width capped and centred rather than stretched.</span></div>
+        <div style="flex-grow:1"></div>
+        <div class="box" style="padding:11px 13px;font-size:11.5px;line-height:1.5">
+          <strong>Release gate.</strong> Every screen is checked at each width in portrait and landscape on current Chrome, Safari, Edge and Firefox <span class="mono">&sect;12.3</span>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:30px">
+    <div class="note" style="flex:1;margin:0"><span class="pin">1</span><span><strong>No horizontal page scroll from 320px up</strong>, anywhere. A wide grid may scroll inside its own container &mdash; the page never moves <span class="mono">RR-2</span>.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">2</span><span>Body text stays at or above 16px on mobile so iOS does not zoom the field on focus <span class="mono">RR-4</span>.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">3</span><span>Chart drops to 3 months on mobile and always offers the same numbers as a table <span class="mono">RR-14</span>.</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

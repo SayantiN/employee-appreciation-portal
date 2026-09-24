@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Login, reset and auth states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.lbl{display:block;font-size:11.5px;font-weight:500;margin-bottom:6px}
+.inp{width:100%;box-sizing:border-box;height:40px;border:1px solid #A8A399;border-radius:6px;padding:0 12px;font:400 13px 'IBM Plex Sans',sans-serif;background:#fff;color:#141413}
+.btn{width:100%;height:44px;background:#141413;color:#FAF9F5;border:0;border-radius:6px;font:600 13.5px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.err{background:#FBEEE8;border:1px solid #E5B9A4;border-radius:6px;padding:9px 11px;font-size:11.5px;color:#8A3F17}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:44px 48px;display:flex;flex-direction:column;gap:20px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:14px">
+    <h1 style="margin:0;font-size:27px;font-weight:600">Login, password reset and auth states</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.1 &middot; 6.2 &middot; R-6.1.1 &hellip; R-6.1.7</div>
+  </div>
+
+  <div style="display:flex;gap:20px;flex-grow:1;min-height:0">
+
+    <div style="width:600px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Desktop &mdash; brand panel left, form right, form capped at 420px</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex">
+        <div style="width:236px;flex-shrink:0;background:#141413;padding:28px 24px;display:flex;flex-direction:column;color:#FAF9F5">
+          <div style="width:34px;height:34px;border-radius:8px;background:#FAF9F5;margin-bottom:22px"></div>
+          <div style="font-size:19px;font-weight:600;line-height:1.3;margin-bottom:12px">Employee<br>Appreciation<br>Portal</div>
+          <div style="font-size:11.5px;line-height:1.6;opacity:.66">Recognise the people who made this month work.</div>
+          <div style="flex-grow:1"></div>
+          <div style="height:1px;background:rgba(250,249,245,.2);margin-bottom:14px"></div>
+          <div style="font-size:10px;opacity:.55;line-height:1.6">Internal use only.<br>Authenticated access.</div>
+        </div>
+        <div style="flex-grow:1;padding:34px 44px;display:flex;flex-direction:column;justify-content:center">
+          <div style="max-width:420px;width:100%">
+            <h2 style="margin:0 0 6px;font-size:22px;font-weight:600">Sign in</h2>
+            <p style="margin:0 0 22px;font-size:12.5px" class="mut">Use your work email address.</p>
+
+            <div class="err" style="margin-bottom:16px;display:flex;gap:9px;align-items:flex-start">
+              <span class="pin" style="background:#B4541F">2</span>
+              <span>Email or password is incorrect.</span>
+            </div>
+
+            <div style="margin-bottom:15px">
+              <label class="lbl" for="em">Work email</label>
+              <input class="inp" id="em" type="email" autocomplete="username" placeholder="name@isgesolutions.com">
+            </div>
+            <div style="margin-bottom:15px">
+              <label class="lbl" for="pw">Password</label>
+              <div style="position:relative">
+                <input class="inp" id="pw" type="password" autocomplete="current-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" style="padding-right:56px">
+                <span style="position:absolute;right:12px;top:12px;font-size:11px;font-weight:500" class="mut">Show</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+              <label style="display:flex;align-items:center;gap:8px;font-size:12px"><input type="checkbox"> Remember me on this device</label>
+              <a href="#reset" style="font-size:12px">Forgot password?</a>
+            </div>
+            <button class="btn" type="button">Sign In</button>
+            <div style="display:flex;gap:9px;margin-top:20px;padding-top:16px;border-top:1px solid #EDE9E1;font-size:11px" class="mut">
+              <span class="pin">1</span>
+              <span>Domain checked against the allow list before the credential check. Failure message is generic either way &mdash; the form never reveals whether an account exists.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:172px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Mobile 390</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:24px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+        <div style="padding:20px 16px;display:flex;flex-direction:column;flex-grow:1">
+          <div style="width:30px;height:30px;border-radius:7px;background:#141413;margin-bottom:16px"></div>
+          <div style="font-size:16px;font-weight:600;margin-bottom:4px">Sign in</div>
+          <div style="font-size:11px;margin-bottom:18px" class="mut">Use your work email.</div>
+          <label class="lbl" style="font-size:10.5px" for="em2">Work email</label>
+          <input class="inp" id="em2" type="email" style="height:44px;font-size:16px;margin-bottom:13px" placeholder="name@&hellip;">
+          <label class="lbl" style="font-size:10.5px" for="pw2">Password</label>
+          <input class="inp" id="pw2" type="password" style="height:44px;font-size:16px;margin-bottom:14px" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;">
+          <label style="display:flex;align-items:center;gap:7px;font-size:10.5px;margin-bottom:16px"><input type="checkbox"> Remember me</label>
+          <button class="btn" style="height:46px;font-size:13px" type="button">Sign In</button>
+          <div style="text-align:center;margin-top:14px"><a href="#reset" style="font-size:11px">Forgot password?</a></div>
+          <div style="flex-grow:1"></div>
+          <div style="display:flex;gap:7px;font-size:9.5px;line-height:1.4" class="mut"><span class="pin">3</span><span>Fields 16px so iOS does not zoom. 44px targets. 16px gutters.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:172px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Forgot &mdash; step 1</div>
+      <div class="pane" style="flex-grow:1;padding:20px 16px;display:flex;flex-direction:column">
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px">Reset your password</div>
+        <div style="font-size:11px;line-height:1.55;margin-bottom:16px" class="mut">Enter your work email and we will send a reset link.</div>
+        <label class="lbl" style="font-size:10.5px" for="em3">Work email</label>
+        <input class="inp" id="em3" type="email" style="margin-bottom:14px">
+        <button class="btn" style="height:40px;font-size:12.5px" type="button">Send reset link</button>
+        <div style="background:#F1F4F0;border:1px solid #C9D4C4;border-radius:6px;padding:10px;font-size:10.5px;line-height:1.5;margin-top:16px">
+          If that email is registered, a reset link has been sent.
+        </div>
+        <div style="flex-grow:1"></div>
+        <div style="display:flex;gap:7px;font-size:9.5px;line-height:1.4" class="mut"><span class="pin">4</span><span>Same message whether or not the account exists. No enumeration.</span></div>
+      </div>
+    </div>
+
+    <div style="width:172px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Reset &mdash; step 3</div>
+      <div class="pane" style="flex-grow:1;padding:20px 16px;display:flex;flex-direction:column">
+        <div style="font-size:15px;font-weight:600;margin-bottom:14px">Choose a new password</div>
+        <label class="lbl" style="font-size:10.5px" for="np">New password</label>
+        <input class="inp" id="np" type="password" style="margin-bottom:9px">
+        <div style="display:flex;gap:3px;margin-bottom:12px">
+          <div style="flex:1;height:4px;border-radius:2px;background:#D97757"></div>
+          <div style="flex:1;height:4px;border-radius:2px;background:#D97757"></div>
+          <div style="flex:1;height:4px;border-radius:2px;background:#D97757"></div>
+          <div style="flex:1;height:4px;border-radius:2px;background:#E2DED5"></div>
+        </div>
+        <label class="lbl" style="font-size:10.5px" for="cp">Confirm password</label>
+        <input class="inp" id="cp" type="password" style="margin-bottom:14px">
+        <div style="font-size:9.5px;line-height:1.7" class="mut">
+          <div>&#10003; At least 10 characters</div>
+          <div>&#10003; Three of: upper, lower, digit, symbol</div>
+          <div>&#10003; Not your name or email</div>
+          <div>&#10007; Not one of your last 3 passwords</div>
+        </div>
+        <div style="flex-grow:1"></div>
+        <button class="btn" style="height:40px;font-size:12.5px" type="button">Set password</button>
+        <div style="display:flex;gap:7px;font-size:9.5px;line-height:1.4;margin-top:12px" class="mut"><span class="pin">5</span><span>Token single-use, 30 min. On success every session is invalidated.</span></div>
+      </div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;min-width:0">
+      <div class="hd">Blocked states</div>
+      <div class="pane" style="padding:14px;display:flex;flex-direction:column;gap:12px;flex-grow:1">
+        <div>
+          <div style="font-size:10px;font-weight:600;margin-bottom:6px" class="mut">ACCOUNT LOCKED</div>
+          <div class="err">Too many attempts. Your account is locked for 15 minutes. We have emailed you.</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:600;margin-bottom:6px" class="mut">DEACTIVATED</div>
+          <div class="err">Your account is inactive. Contact HR.</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:600;margin-bottom:6px" class="mut">FIRST LOGIN</div>
+          <div class="box" style="padding:9px 11px;font-size:11.5px;line-height:1.5">You are signing in with a temporary password. Choose a new one to continue.</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:600;margin-bottom:6px" class="mut">SESSION EXPIRED</div>
+          <div class="box" style="padding:9px 11px;font-size:11.5px;line-height:1.5">Your session ended. Sign in again &mdash; your draft is saved.</div>
+        </div>
+        <div style="flex-grow:1"></div>
+        <div style="display:flex;gap:8px;font-size:10.5px;line-height:1.45" class="mut"><span class="pin">6</span><span>5 failures per account per 15 min locks it; 20 per IP throttles the IP.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:14px;display:flex;gap:34px">
+    <div class="note" style="flex:1;margin:0"><span class="pin">7</span><span>Session: 8 hours absolute, 60 minutes idle. <strong>Remember me</strong> extends absolute life to 30 days on that device only <span class="mono">R-6.1.7</span>.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">8</span><span>Successful sign-in returns the user to the deep link they originally requested, not always the Dashboard.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">9</span><span>Passwords are salted hashes. Never logged, never emailed, never shown <span class="mono">R-6.1.2, NF-2</span>.</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

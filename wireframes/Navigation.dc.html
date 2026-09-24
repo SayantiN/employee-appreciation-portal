@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Navigation at four widths</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.nav{font-size:12.5px;padding:7px 12px;border-radius:6px;color:#3A3732;display:flex;align-items:center;gap:8px}
+.navsub{font-size:12px;padding:6px 12px 6px 30px;border-radius:6px;color:#55514A}
+.navon{background:#EFEDE7;font-weight:600;color:#141413;border-left:3px solid #D97757;padding-left:9px}
+.grp{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#918C82;padding:14px 12px 5px}
+.ico{width:16px;height:16px;border-radius:4px;background:#D6D2C8;flex-shrink:0}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:8px}
+.lock{font:600 8.5px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;background:#141413;color:#FAF9F5;border-radius:3px;padding:3px 5px}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:44px 48px;display:flex;flex-direction:column;gap:22px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:14px">
+    <h1 style="margin:0;font-size:27px;font-weight:600">Navigation &mdash; the complete menu at four widths</h1>
+    <div class="mono mut" style="font-size:12px">SPEC &sect;5 &middot; 5.2 &middot; R-5.1</div>
+  </div>
+
+  <div style="display:flex;gap:22px;flex-grow:1;min-height:0">
+
+    <div style="width:268px;flex-shrink:0;display:flex;flex-direction:column">
+      <div class="hd" style="margin-bottom:9px">Desktop &ge; 1280 &middot; expanded rail</div>
+      <div class="pane" style="flex-grow:1;padding:14px 10px;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:9px;padding:4px 10px 14px;border-bottom:1px solid #EDE9E1;margin-bottom:6px">
+          <div style="width:26px;height:26px;border-radius:6px;background:#141413"></div>
+          <div style="font-size:13px;font-weight:600">Appreciation</div>
+        </div>
+        <div class="nav navon"><span class="ico"></span>Dashboard</div>
+        <div class="grp">Vote</div>
+        <div class="navsub">Employee of the Month</div>
+        <div class="navsub">Employee of the Year</div>
+        <div class="grp">My Activity</div>
+        <div class="navsub">My Votes</div>
+        <div class="navsub">Feedback for Me</div>
+        <div class="grp">Results</div>
+        <div class="navsub">Current Cycle Status</div>
+        <div class="navsub">Past Results &amp; Leaderboard</div>
+        <div class="grp">Reports</div>
+        <div class="navsub">Winners Report</div>
+        <div class="grp">Winners</div>
+        <div class="navsub">Hall of Fame</div>
+        <div class="navsub">Work Showcase</div>
+        <div class="nav" style="margin-top:8px"><span class="ico"></span>Notifications</div>
+        <div class="grp">Help &amp; Training</div>
+        <div class="navsub">How It Works</div>
+        <div class="navsub">Video Tutorials</div>
+        <div class="grp" style="display:flex;align-items:center;gap:7px">Administration <span class="lock">ADMIN</span></div>
+        <div class="navsub">Voting Cycles</div>
+        <div class="navsub">Publish Winners</div>
+        <div class="navsub">Employee Directory</div>
+        <div class="navsub">Tutorial Library</div>
+        <div class="navsub">Analytics &amp; Exports</div>
+        <div class="navsub">Audit Log</div>
+        <div class="navsub">System Settings</div>
+        <div style="border-top:1px solid #EDE9E1;margin:10px 10px 0;padding-top:10px;display:flex;align-items:center;gap:9px">
+          <div style="width:26px;height:26px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+          <div style="flex-grow:1">
+            <div style="font-size:11.5px;font-weight:600">My Profile</div>
+            <div style="font-size:10px" class="mut">Change password &middot; Logout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:210px;flex-shrink:0;display:flex;flex-direction:column">
+      <div class="hd" style="margin-bottom:9px">Laptop 1024&ndash;1279 &middot; icon rail</div>
+      <div style="display:flex;gap:10px;flex-grow:1">
+        <div class="pane" style="width:60px;flex-shrink:0;padding:14px 0;display:flex;flex-direction:column;align-items:center;gap:15px">
+          <div style="width:26px;height:26px;border-radius:6px;background:#141413"></div>
+          <div style="width:30px;height:30px;border-radius:7px;background:#EFEDE7;border-left:3px solid #D97757"></div>
+          <div class="ico" style="width:22px;height:22px"></div>
+          <div class="ico" style="width:22px;height:22px"></div>
+          <div class="ico" style="width:22px;height:22px"></div>
+          <div class="ico" style="width:22px;height:22px"></div>
+          <div class="ico" style="width:22px;height:22px"></div>
+          <div class="ico" style="width:22px;height:22px"></div>
+          <div class="ico" style="width:22px;height:22px"></div>
+          <div style="flex-grow:1"></div>
+          <div style="width:26px;height:26px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+        </div>
+        <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px">
+          <div class="box" style="height:52px"></div>
+          <div class="box" style="flex-grow:1"></div>
+          <div style="display:flex;gap:8px;font-size:11px;line-height:1.45" class="mut">
+            <span class="pin">1</span><span>Expands on hover or click, overlaying content rather than reflowing it.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:290px;flex-shrink:0;display:flex;flex-direction:column">
+      <div class="hd" style="margin-bottom:9px">Tablet 768&ndash;1023 &middot; off-canvas drawer</div>
+      <div class="pane" style="flex-grow:1;position:relative;overflow:hidden;padding:0">
+        <div style="height:48px;border-bottom:1px solid #EDE9E1;display:flex;align-items:center;gap:11px;padding:0 13px">
+          <div style="display:flex;flex-direction:column;gap:3px;width:17px">
+            <div style="height:2px;background:#141413"></div>
+            <div style="height:2px;background:#141413"></div>
+            <div style="height:2px;background:#141413"></div>
+          </div>
+          <div style="font-size:12.5px;font-weight:600">Dashboard</div>
+          <div style="flex-grow:1"></div>
+          <div class="ico"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+        </div>
+        <div style="display:flex;height:calc(100% - 48px)">
+          <div style="width:176px;background:#fff;border-right:1px solid #D6D2C8;padding:11px 8px;box-shadow:3px 0 12px rgba(20,20,19,.09)">
+            <div class="nav navon" style="font-size:11.5px">Dashboard</div>
+            <div class="grp" style="padding:10px 10px 4px">Vote</div>
+            <div class="navsub" style="font-size:11px;padding-left:26px">Employee of the Month</div>
+            <div class="navsub" style="font-size:11px;padding-left:26px">Employee of the Year</div>
+            <div class="grp" style="padding:10px 10px 4px">My Activity</div>
+            <div class="navsub" style="font-size:11px;padding-left:26px">My Votes</div>
+            <div class="navsub" style="font-size:11px;padding-left:26px">Feedback for Me</div>
+            <div class="grp" style="padding:10px 10px 4px">Reports</div>
+            <div class="navsub" style="font-size:11px;padding-left:26px">Winners Report</div>
+            <div class="grp" style="padding:10px 10px 4px">Winners</div>
+            <div class="navsub" style="font-size:11px;padding-left:26px">Hall of Fame</div>
+          </div>
+          <div style="flex-grow:1;background:rgba(20,20,19,.38)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;flex-direction:column">
+      <div class="hd" style="margin-bottom:9px">Mobile &le; 767 &middot; bottom tabs + More sheet</div>
+      <div style="display:flex;gap:18px;flex-grow:1">
+
+        <div class="pane" style="width:224px;flex-shrink:0;padding:0;overflow:hidden;display:flex;flex-direction:column">
+          <div style="height:26px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+          <div style="padding:13px;flex-grow:1;display:flex;flex-direction:column;gap:9px">
+            <div style="font-size:14px;font-weight:600">Dashboard</div>
+            <div class="box" style="height:58px"></div>
+            <div style="display:flex;gap:8px">
+              <div class="box" style="flex-grow:1;height:52px"></div>
+              <div class="box" style="flex-grow:1;height:52px"></div>
+            </div>
+            <div class="box" style="flex-grow:1"></div>
+          </div>
+          <div style="border-top:1px solid #D6D2C8;display:flex;padding:9px 4px 13px;background:#fff">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px">
+              <div style="width:22px;height:22px;border-radius:6px;background:#141413"></div>
+              <div style="font-size:9px;font-weight:600">Dashboard</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px">
+              <div class="ico" style="width:22px;height:22px"></div>
+              <div style="font-size:9px" class="mut">Vote</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px">
+              <div class="ico" style="width:22px;height:22px"></div>
+              <div style="font-size:9px" class="mut">Feedback</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px">
+              <div class="ico" style="width:22px;height:22px"></div>
+              <div style="font-size:9px" class="mut">Winners</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px">
+              <div class="ico" style="width:22px;height:22px;background:#B9B4A8"></div>
+              <div style="font-size:9px" class="mut">More</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" style="width:224px;flex-shrink:0;padding:0;overflow:hidden;display:flex;flex-direction:column;background:#fff">
+          <div style="height:26px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+          <div style="flex-grow:1;background:rgba(20,20,19,.3)"></div>
+          <div style="background:#fff;border-top:1px solid #D6D2C8;border-radius:14px 14px 0 0;padding:12px 15px 15px;height:78%;box-shadow:0 -5px 18px rgba(20,20,19,.1)">
+            <div style="width:34px;height:4px;border-radius:2px;background:#D6D2C8;margin:0 auto 13px"></div>
+            <div style="font-size:13px;font-weight:600;margin-bottom:11px">More</div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">My Votes</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">Results &amp; Leaderboard</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">Winners Report</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">Work Showcase</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">Notifications</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">How It Works</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">Video Tutorials</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px;display:flex;align-items:center;gap:7px">Administration <span class="lock">ADMIN</span></div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">My Profile</div>
+              <div class="navsub" style="padding-left:12px;font-size:11.5px">Logout</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;padding-top:2px">
+          <div class="note"><span class="pin">2</span><span>Four primary destinations only. Everything else, Administration included, lives behind <strong>More</strong>.</span></div>
+          <div class="note"><span class="pin">3</span><span>Tap targets 44&times;44 minimum, 8px apart <span class="mono">RR-3</span>.</span></div>
+          <div class="note"><span class="pin">4</span><span>Safe-area inset respected below the tab bar <span class="mono">RR-9</span>.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:14px;display:flex;gap:40px">
+    <div class="note" style="flex:1"><span class="pin">5</span><span><strong>Active item is never colour alone</strong> &mdash; colour, a left bar and heavier weight together <span class="mono">R-5.1</span>.</span></div>
+    <div class="note" style="flex:1"><span class="pin">6</span><span><strong>Administration is hidden, not disabled</strong>, for anyone without the role &mdash; and excluded server-side <span class="mono">NF-3</span>.</span></div>
+    <div class="note" style="flex:1"><span class="pin">7</span><span>Three winner screens are deliberately distinct: leaderboard per cycle, report across time, Hall of Fame for celebration <span class="mono">&sect;5.1</span>.</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

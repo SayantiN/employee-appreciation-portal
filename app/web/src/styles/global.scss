@@ -1,0 +1,79 @@
+@use 'tokens' as *;
+@use 'mixins' as *;
+
+:root { @include theme-light; }
+
+// RR-12 — follow the OS by default, with a manual override that wins.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) { @include theme-dark; }
+}
+:root[data-theme='dark'] { @include theme-dark; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  // RR-4 — 16px base. Anything smaller makes iOS zoom the viewport on focus.
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: $fs-16;
+  line-height: $lh-body;
+  color: var(--c-ink);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  // RR-2 — the page itself never scrolls sideways. Wide grids scroll inside
+  // their own container instead.
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  line-height: $lh-tight;
+  letter-spacing: -0.02em;
+  font-weight: $fw-bold;
+}
+
+a { color: var(--c-blue-deep); text-underline-offset: 3px; }
+a:hover { color: var(--c-plum-deep); }
+
+button, input, textarea, select { font: inherit; color: inherit; }
+
+// A-1 — one focus treatment, everywhere, and never removed.
+:focus-visible { outline: 2px solid var(--c-blue); outline-offset: 2px; }
+
+// A-1 — keyboard users get a way past the navigation.
+.skip-link {
+  position: absolute;
+  left: $s-4;
+  top: -100px;
+  z-index: 100;
+  background: var(--c-surface);
+  border: 1px solid var(--c-blue);
+  border-radius: $r-sm;
+  padding: $s-2 $s-4;
+  font-weight: $fw-bold;
+  &:focus { top: $s-4; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+code {
+  font-family: $font-mono;
+  font-size: 0.86em;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-line);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
+@include motion-safe {
+  .fade-in { animation: fade $dur-slow $ease both; }
+}
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }

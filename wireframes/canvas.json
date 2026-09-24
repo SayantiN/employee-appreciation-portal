@@ -1,0 +1,68 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-09-22T10:00:00Z" },
+  "title": "Employee Appreciation Portal — Wireframes",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "designSystems": [],
+  "boards": {
+    "Main.dc.html":                 { "x": 0,    "y": 0,    "w": 1440, "h": 1120, "title": "Cover & screen index" },
+    "Navigation.dc.html":           { "x": 1520, "y": 0,    "w": 1440, "h": 1120, "title": "Navigation — four widths" },
+    "DataGrid.dc.html":             { "x": 3040, "y": 0,    "w": 1440, "h": 1120, "title": "Data Grid Standard §11" },
+
+    "Login.dc.html":                { "x": 0,    "y": 1520, "w": 1440, "h": 1120, "title": "6.1–6.2 Login & reset" },
+    "Dashboard.dc.html":            { "x": 1520, "y": 1520, "w": 1440, "h": 1120, "title": "6.3 Dashboard — desktop" },
+    "DashboardResponsive.dc.html":  { "x": 3040, "y": 1520, "w": 1440, "h": 1120, "title": "6.3 Dashboard — tablet & mobile" },
+
+    "VoteMonth.dc.html":            { "x": 0,    "y": 3040, "w": 1440, "h": 1120, "title": "6.4 Vote — Employee of the Month" },
+    "VoteYearAndMyVotes.dc.html":   { "x": 1520, "y": 3040, "w": 1440, "h": 1120, "title": "6.5 Vote — Year · 6.6 My Votes" },
+    "FeedbackForMe.dc.html":        { "x": 3040, "y": 3040, "w": 1440, "h": 1120, "title": "6.7 Feedback for Me" },
+
+    "Results.dc.html":              { "x": 0,    "y": 4560, "w": 1440, "h": 1120, "title": "6.8 Results & Leaderboard" },
+    "WinnersReport.dc.html":        { "x": 1520, "y": 4560, "w": 1440, "h": 1120, "title": "6.9 Winners Report — desktop" },
+    "WinnersReportMobile.dc.html":  { "x": 3040, "y": 4560, "w": 1440, "h": 1120, "title": "6.9 Winners Report — mobile & states" },
+
+    "WinnersAndShowcase.dc.html":   { "x": 0,    "y": 6080, "w": 1440, "h": 1120, "title": "6.10 Hall of Fame · 6.11 Work Showcase" },
+    "VideoTutorials.dc.html":       { "x": 1520, "y": 6080, "w": 1440, "h": 1120, "title": "6.14 Video Tutorials" },
+    "NotificationsHelpProfile.dc.html": { "x": 3040, "y": 6080, "w": 1440, "h": 1120, "title": "6.12 Notifications · 6.13 Help · 6.15 Profile" },
+
+    "AdminCycles.dc.html":          { "x": 0,    "y": 7600, "w": 1440, "h": 1120, "title": "6.16 Voting Cycles · 6.17 Publish Winners" },
+    "AdminDirectory.dc.html":       { "x": 1520, "y": 7600, "w": 1440, "h": 1120, "title": "6.18 Employee Directory · 6.21 Settings" },
+    "AdminAnalytics.dc.html":       { "x": 3040, "y": 7600, "w": 1440, "h": 1120, "title": "6.19 Analytics · 6.20 Audit Log" },
+
+    "States.dc.html":               { "x": 0,    "y": 9120, "w": 1440, "h": 1120, "title": "§10 Empty, loading & error states" }
+  },
+  "order": [
+    "Main.dc.html",
+    "Navigation.dc.html",
+    "DataGrid.dc.html",
+    "Login.dc.html",
+    "Dashboard.dc.html",
+    "DashboardResponsive.dc.html",
+    "VoteMonth.dc.html",
+    "VoteYearAndMyVotes.dc.html",
+    "FeedbackForMe.dc.html",
+    "Results.dc.html",
+    "WinnersReport.dc.html",
+    "WinnersReportMobile.dc.html",
+    "WinnersAndShowcase.dc.html",
+    "VideoTutorials.dc.html",
+    "NotificationsHelpProfile.dc.html",
+    "AdminCycles.dc.html",
+    "AdminDirectory.dc.html",
+    "AdminAnalytics.dc.html",
+    "States.dc.html"
+  ],
+  "notes": {
+    "r1": { "x": 0, "y": -280, "text": "Foundations", "kind": "title1", "maxW": 4480 },
+    "r2": { "x": 0, "y": 1240, "text": "Getting in, and the daily view", "kind": "title1", "maxW": 4480 },
+    "r3": { "x": 0, "y": 2760, "text": "Voting and feedback", "kind": "title1", "maxW": 4480 },
+    "r4": { "x": 0, "y": 4280, "text": "Results and reporting", "kind": "title1", "maxW": 4480 },
+    "r5": { "x": 0, "y": 5800, "text": "Celebration, training and account", "kind": "title1", "maxW": 4480 },
+    "r6": { "x": 0, "y": 7320, "text": "Administration", "kind": "title1", "maxW": 4480 },
+    "r7": { "x": 0, "y": 8840, "text": "States every screen must define", "kind": "title1", "maxW": 4480 },
+    "k1": { "x": 4620, "y": 0, "w": 420, "text": "Read this canvas left to right, top to bottom — it follows the order of SPEC.md §6.\n\nOrange pins are numbered notes. Each screen lists its notes underneath with the rule ID they enforce (R-6.4.2, DG-15, RR-2 …), so a wireframe and the spec can be checked against each other.\n\nGrey boxes and lines are placeholder content. Hatched fill marks something a rule is deliberately withholding.", "fill": "gray" },
+    "k2": { "x": 4620, "y": 4560, "w": 420, "text": "Two boards carry the additions you asked for after v1.0:\n\n• Winners Report (6.9) — month-wise, year-wise, date-wise and combined, with the announcement-date vs award-period toggle drawn explicitly.\n\n• Data Grid Standard (§11) — per-column filter and sort, and the mobile sheets that keep every one of them reachable at 320px.", "fill": "orange" },
+    "k3": { "x": 4620, "y": 6080, "w": 420, "text": "Open questions still visible in the drawings:\n\nOQ-1 — votes per cycle, drawn as one.\nOQ-2 — Employee Directory is drawn as admin-managed; an HR sync would make it read-only.\nOQ-3 — Year candidate pool drawn as all active employees.\nOQ-7 — Winners Report drawn as visible to everyone.", "fill": "gray" }
+  }
+}

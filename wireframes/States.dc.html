@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>System states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:8px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.tl{font-size:9.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#918C82;margin-bottom:6px}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;gap:5px;background:#fff;color:#141413;border:1px solid #A8A399;border-radius:6px;height:30px;padding:0 12px;font:500 11px 'IBM Plex Sans',sans-serif}
+.dbtn{background:#141413;color:#FAF9F5;border-color:#141413}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.card{background:#fff;border:1px solid #D6D2C8;border-radius:9px;padding:15px;display:flex;flex-direction:column;gap:10px}
+.icon{width:34px;height:34px;border-radius:8px;background:#EFEDE7;border:1px solid #DCD8CE}
+.sk{background:linear-gradient(90deg,#EFEDE7,#E4E0D7,#EFEDE7);border-radius:4px}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Empty, loading and error states &mdash; every screen defines all of them</h1>
+    <div class="mono mut" style="font-size:12px">SPEC &sect;10 &middot; R-9.1 &middot; DG-12, DG-13</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;flex-grow:1;min-height:0">
+
+    <div class="card">
+      <div class="tl">Loading</div>
+      <div style="display:flex;flex-direction:column;gap:9px;flex-grow:1">
+        <div class="sk" style="height:34px"></div>
+        <div style="display:flex;gap:8px">
+          <div class="sk" style="flex:1;height:52px"></div>
+          <div class="sk" style="flex:1;height:52px"></div>
+        </div>
+        <div class="sk" style="height:13px;width:62%"></div>
+        <div class="sk" style="height:13px;width:88%"></div>
+        <div class="sk" style="height:13px;width:74%"></div>
+        <div class="sk" style="flex-grow:1"></div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5" class="mut">Skeletons that match the final layout. <strong>Never a bare full-page spinner</strong> &mdash; the shape of what is coming is itself information.</div>
+    </div>
+
+    <div class="card">
+      <div class="tl">Empty &mdash; no data yet</div>
+      <div style="flex-grow:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:11px">
+        <div class="icon"></div>
+        <div style="font-size:13px;font-weight:600">No cycle is open right now</div>
+        <div style="font-size:11px;line-height:1.5" class="mut">The next one opens on 1 October at 9:00 AM. We will let you know.</div>
+        <div class="gbtn">See past results</div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5" class="mut">An explanation plus the thing you can do instead. Never a blank panel.</div>
+    </div>
+
+    <div class="card">
+      <div class="tl">Empty &mdash; nothing matched a filter</div>
+      <div style="flex-grow:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:11px">
+        <div class="icon"></div>
+        <div style="font-size:13px;font-weight:600">No rows match your filters</div>
+        <div style="font-size:11px;line-height:1.5" class="mut">3 filters are active. Clearing them brings back 41 rows.</div>
+        <div style="display:flex;gap:7px"><div class="gbtn dbtn">Clear filters</div><div class="gbtn">Edit filters</div></div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5;display:flex;gap:8px"><span class="pin">1</span><span>A different state from the one on its left. Merging them sends people hunting for a filter they never set.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="tl">Error</div>
+      <div style="flex-grow:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:11px">
+        <div class="icon" style="background:#FBEEE8;border-color:#E5B9A4"></div>
+        <div style="font-size:13px;font-weight:600">We could not load the leaderboard</div>
+        <div style="font-size:11px;line-height:1.5" class="mut">The server did not respond in time. Your data is safe.</div>
+        <div style="display:flex;gap:7px"><div class="gbtn dbtn">Try again</div><div class="gbtn">Go to Dashboard</div></div>
+        <div class="mono" style="font-size:9px" class="mut">ref 9f3c-21ab</div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5" class="mut">Plain language and a way forward. A reference code for support &mdash; never a raw stack trace.</div>
+    </div>
+
+    <div class="card">
+      <div class="tl">Offline or request failed</div>
+      <div style="flex-grow:1;display:flex;flex-direction:column;gap:10px">
+        <div class="box" style="background:#FBEEE8;border-color:#E5B9A4;padding:11px;font-size:11px;line-height:1.5;color:#8A3F17">
+          <strong>You are offline.</strong> Your vote has not been submitted. Everything you typed is saved on this device.
+        </div>
+        <div class="box" style="padding:10px">
+          <div class="ln" style="width:100%;margin-bottom:5px;height:7px"></div>
+          <div class="ln" style="width:88%;margin-bottom:5px;height:7px"></div>
+          <div class="ln" style="width:54%;height:7px"></div>
+        </div>
+        <div style="flex-grow:1"></div>
+        <div class="gbtn dbtn" style="width:100%">Retry submission</div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5;display:flex;gap:8px"><span class="pin">2</span><span>Losing a written vote to a dropped connection is the fastest way to stop someone voting again.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="tl">403 &mdash; not your page</div>
+      <div style="flex-grow:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:11px">
+        <div class="icon"></div>
+        <div style="font-size:13px;font-weight:600">You don&#39;t have access to this page</div>
+        <div style="font-size:11px;line-height:1.5" class="mut">Administration is limited to HR. If you think this is wrong, contact your administrator.</div>
+        <div class="gbtn dbtn">Back to Dashboard</div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5" class="mut">The menu item was hidden, and the route is refused too. Hiding a link is not a permission <span class="mono">NF-3</span>.</div>
+    </div>
+
+    <div class="card">
+      <div class="tl">Session expired</div>
+      <div style="flex-grow:1;display:flex;flex-direction:column;justify-content:center;gap:11px">
+        <div style="background:rgba(20,20,19,.28);border-radius:8px;padding:14px;display:flex;align-items:center;justify-content:center">
+          <div class="pane" style="width:100%;padding:13px;display:flex;flex-direction:column;gap:9px">
+            <div style="font-size:12.5px;font-weight:600">Your session has ended</div>
+            <div style="font-size:10.5px;line-height:1.5" class="mut">Sign in again to carry on. Your draft vote is saved and will still be here.</div>
+            <div class="box" style="background:#fff;border-color:#A8A399;height:30px"></div>
+            <div class="box" style="background:#fff;border-color:#A8A399;height:30px"></div>
+            <div class="gbtn dbtn" style="width:100%">Sign in</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5;display:flex;gap:8px"><span class="pin">3</span><span>Returns the user to exactly where they were, with unsaved input intact.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="tl">Validation</div>
+      <div style="flex-grow:1;display:flex;flex-direction:column;gap:11px">
+        <div>
+          <div style="font-size:11px;font-weight:600;margin-bottom:5px">Why better than others</div>
+          <div style="border:1px solid #B4541F;border-radius:6px;background:#fff;height:48px"></div>
+          <div style="display:flex;gap:6px;align-items:center;margin-top:6px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#B4541F;color:#fff;font-size:9px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">!</span>
+            <span style="font-size:10.5px;color:#8A3F17">Tell us a bit more &mdash; at least 30 characters.</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;margin-bottom:5px">Nominee</div>
+          <div style="border:1px solid #B4541F;border-radius:6px;background:#fff;height:34px"></div>
+          <div style="display:flex;gap:6px;align-items:center;margin-top:6px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#B4541F;color:#fff;font-size:9px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">!</span>
+            <span style="font-size:10.5px;color:#8A3F17">Choose a colleague. You can&#39;t vote for yourself.</span>
+          </div>
+        </div>
+        <div style="flex-grow:1"></div>
+      </div>
+      <div style="font-size:10.5px;line-height:1.5" class="mut">On blur, not on every keystroke. Inline under the field, announced in a live region, focus jumps to the first error on submit <span class="mono">R-9.1</span>.</div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:26px">
+    <div style="flex:1">
+      <div class="note"><span class="pin">4</span><span>Every list, tile and page in this product declares its loading, empty, error and offline state. &ldquo;It will never be empty&rdquo; is not a design.</span></div>
+      <div class="note" style="margin:0"><span class="pin">5</span><span>A grid mid-filter keeps the old rows under a loading overlay rather than blanking &mdash; no content flash while typing <span class="mono">DG-12</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">6</span><span>Error copy names the cause in plain words and offers an action. Never an error code alone, never a stack trace.</span></div>
+      <div class="note" style="margin:0"><span class="pin">7</span><span>Errors are announced to screen readers through an ARIA live region, not signalled by red alone <span class="mono">A-6, A-8</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">8</span><span>The cycle-specific empty states carry real information: when the next window opens, and why feedback is not visible yet.</span></div>
+      <div class="note" style="margin:0"><span class="pin">9</span><span>All of these must hold at 320px wide with no horizontal page scroll <span class="mono">RR-2, AC-7</span>.</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

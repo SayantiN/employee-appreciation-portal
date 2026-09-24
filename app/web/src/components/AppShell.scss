@@ -1,0 +1,165 @@
+@use '../styles/tokens' as *;
+@use '../styles/mixins' as *;
+
+.shell {
+  min-height: 100dvh;
+  display: flex;
+  background: var(--c-bg);
+
+  /* ------------------------------------------------------------ sidebar */
+  &__side {
+    // ≤767: off-canvas, and the bottom tab bar is the primary navigation.
+    position: fixed; inset: 0 auto 0 0; z-index: 50;
+    width: $drawer-w; max-width: 84vw;
+    transform: translateX(-100%);
+    transition: transform $dur-base $ease;
+    background: var(--c-surface);
+    border-right: 1px solid var(--c-line);
+    display: flex; flex-direction: column;
+    padding: $s-3 $s-2;
+    &.is-open { transform: none; box-shadow: var(--shadow-overlay); }
+
+    @include laptop {
+      position: sticky; top: 0; height: 100dvh; transform: none;
+      width: $rail-w; overflow: hidden;
+      transition: width $dur-base $ease;
+      // The rail expands over the content rather than pushing it, so the
+      // reading position never jumps.
+      &:hover, &:focus-within { width: $sidebar-w; box-shadow: var(--shadow-overlay); }
+    }
+    @include desktop { width: $sidebar-w; &:hover { box-shadow: none; } }
+  }
+
+  &__scrim {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgba(29, 39, 48, 0.42);
+    @include laptop { display: none; }
+  }
+
+  &__brand {
+    display: flex; align-items: center; gap: $s-2;
+    padding: $s-1 $s-2 $s-3;
+    border-bottom: 1px solid var(--c-line); margin-bottom: $s-2;
+  }
+  &__logo {
+    width: 26px; height: 26px; border-radius: $r-md; flex: none;
+    background: linear-gradient(135deg, var(--c-blue), var(--c-plum));
+  }
+  &__brand-text { font-weight: $fw-black; font-size: $fs-14; white-space: nowrap; }
+
+  &__nav { flex: 1; overflow-y: auto; }
+  &__group { margin-top: $s-3; }
+  &__group-label {
+    display: block; padding: $s-1 $s-2; @include label-caps;
+    &.is-admin { color: var(--c-plum-deep); }
+  }
+
+  &__link {
+    display: flex; align-items: center; gap: $s-2;
+    padding: $s-2 $s-2 + 0.125rem;
+    border-radius: $r-sm; border-left: 3px solid transparent;
+    color: var(--c-muted); font-size: $fs-13; font-weight: $fw-semibold;
+    text-decoration: none; white-space: nowrap;
+    background: none; width: 100%; text-align: left; cursor: pointer;
+    @include focus-ring(-2px);
+
+    &:hover { background: var(--c-surface-2); color: var(--c-ink); }
+
+    // R-5.1 — three signals, not one.
+    &.is-active {
+      background: var(--c-blue-tint);
+      border-left-color: var(--c-blue);
+      color: var(--c-blue-deep);
+      font-weight: $fw-black;
+    }
+
+    &.is-soon { color: var(--c-faint); cursor: default;
+      em { margin-left: auto; font-style: normal; font-size: $fs-11; opacity: .75; } }
+  }
+
+  &__me {
+    display: flex; align-items: center; gap: $s-2;
+    padding: $s-3 $s-2 0; margin-top: $s-2; border-top: 1px solid var(--c-line);
+  }
+  &__me-text { display: flex; flex-direction: column; min-width: 0; }
+  &__me-name { font-size: $fs-12; font-weight: $fw-bold; @include truncate; }
+  &__me-role { font-size: $fs-11; color: var(--c-faint); }
+
+  /* --------------------------------------------------------------- main */
+  &__main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+  &__top {
+    position: sticky; top: 0; z-index: 30;
+    display: flex; align-items: center; gap: $s-3;
+    min-height: $topbar-h;
+    padding: $s-2 $gutter-mobile;
+    background: color-mix(in srgb, var(--c-surface) 92%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--c-line);
+    @include tablet { padding-inline: $gutter-tablet; }
+    @include desktop { padding-inline: $gutter-desktop; }
+  }
+
+  &__burger {
+    @include tap-target;
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 4px;
+    background: none; border: 0; cursor: pointer; padding: 0 $s-2 0 0;
+    @include focus-ring;
+    span { display: block; width: 18px; height: 2px; background: var(--c-ink); border-radius: 1px; }
+    @include laptop { display: none; }
+  }
+
+  &__title { flex: 1; font-size: $fs-16; font-weight: $fw-bold; @include truncate;
+             @include tablet { font-size: $fs-20; } }
+  &__top-actions { display: flex; align-items: center; gap: $s-2; }
+  &__theme { height: 34px; width: auto; padding: 0 $s-2; font-size: $fs-12;
+             @include upto($bp-md) { display: none; } }
+
+  &__content {
+    flex: 1;
+    @include page-gutter;
+    padding-top: $s-4; padding-bottom: $s-8;
+    max-width: $content-max; width: 100%;
+    // ≥1536 the content is capped and centred rather than stretched.
+    @include from($bp-3xl) { margin-inline: auto; }
+    // Room for the bottom tab bar plus the safe-area inset (RR-9).
+    @include mobile { padding-bottom: calc(#{$tabbar-h} + #{$s-6} + env(safe-area-inset-bottom)); }
+  }
+
+  /* ------------------------------------------------------- bottom tabs */
+  &__tabs {
+    position: fixed; inset: auto 0 0 0; z-index: 45;
+    display: flex; background: var(--c-surface);
+    border-top: 1px solid var(--c-line);
+    padding-bottom: env(safe-area-inset-bottom);
+    @include laptop { display: none; }
+  }
+  &__tab {
+    flex: 1; min-height: $tabbar-h;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    background: none; border: 0; cursor: pointer;
+    font-size: $fs-11; font-weight: $fw-bold; color: var(--c-muted);
+    text-decoration: none;
+    @include focus-ring(-3px);
+    &.is-active { color: var(--c-blue-deep); }
+    &.is-active .shell__tab-mark { background: var(--c-blue); }
+  }
+  &__tab-mark { width: 20px; height: 20px; border-radius: $r-sm; background: var(--c-line-2); }
+
+  &__more {
+    position: fixed; inset: 0; z-index: 55;
+    background: rgba(29, 39, 48, 0.42);
+    display: flex; align-items: flex-end;
+    @include laptop { display: none; }
+  }
+  &__more-panel {
+    width: 100%; max-height: 80vh; overflow-y: auto;
+    background: var(--c-surface);
+    border-radius: $r-xl $r-xl 0 0;
+    padding: $s-2 $s-4 calc(#{$s-6} + env(safe-area-inset-bottom));
+    box-shadow: var(--shadow-overlay);
+    h2 { font-size: $fs-16; margin: $s-2 0 $s-3; }
+  }
+  &__grab { width: 34px; height: 4px; border-radius: 2px; background: var(--c-line-2); margin: $s-1 auto $s-2; }
+  &__more-list { display: flex; flex-direction: column; gap: 2px; }
+}

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vote for Employee of the Year and My Votes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:8px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.lbl{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
+.help{font-size:11px;color:#6B6862;margin-bottom:7px;line-height:1.45}
+.ta{width:100%;box-sizing:border-box;border:1px solid #A8A399;border-radius:6px;background:#fff;padding:9px 11px;font:400 12px 'IBM Plex Sans',sans-serif;resize:none}
+.cnt{font-size:10px;color:#918C82;text-align:right;margin-top:3px}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;gap:5px;background:#fff;color:#141413;border:1px solid #A8A399;border-radius:6px;height:30px;padding:0 11px;font:500 11.5px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.sortbtn{display:inline-flex;align-items:center;gap:5px;background:none;border:0;padding:0;font:600 10px/1 'IBM Plex Sans',sans-serif;color:#44413C;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}
+table{width:100%;border-collapse:collapse}
+th{padding:8px 9px;border-bottom:1px solid #D6D2C8;text-align:left;background:#F7F5F0}
+td{padding:8px 9px;border-bottom:1px solid #EDE9E1;font-size:11px}
+.chip{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:10px;font-size:9.5px;font-weight:600;border:1px solid #DCD8CE;background:#F4F2EC}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Vote &mdash; Employee of the Year &nbsp;&middot;&nbsp; My Votes</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.5 &middot; 6.6 &middot; R-6.6.1, R-6.6.2 &middot; OQ-3</div>
+  </div>
+
+  <div style="display:flex;gap:20px;flex-grow:1;min-height:0">
+
+    <div style="width:560px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Vote &mdash; Employee of the Year &middot; what differs from the month form</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:14px 18px;border-bottom:1px solid #EDE9E1;display:flex;align-items:center;gap:13px;background:#FCFBF8">
+          <div>
+            <div style="font-size:15px;font-weight:600">2026 &middot; Employee of the Year</div>
+            <div style="font-size:11px" class="mut">Opens 1 Dec 9:00 AM &middot; closes 31 Dec 6:00 PM IST</div>
+          </div>
+          <div style="flex-grow:1"></div>
+          <span class="chip" style="background:#141413;color:#FAF9F5;border-color:#141413">YEAR AWARD</span>
+        </div>
+
+        <div style="padding:16px 18px;display:flex;flex-direction:column;gap:13px;flex-grow:1;overflow:hidden">
+          <div class="box" style="padding:10px 12px;font-size:11px;line-height:1.5;display:flex;gap:9px">
+            <span class="pin">1</span>
+            <span><strong>Candidate pool is a setting.</strong> Default: any active employee. Alternative: only this year&#39;s twelve monthly winners. <span class="mono">OQ-3, eoy_candidate_pool</span></span>
+          </div>
+
+          <div>
+            <label class="lbl" for="ynom">1 &middot; Who are you voting for?</label>
+            <div style="display:flex;align-items:center;gap:10px;border:1px solid #A8A399;border-radius:6px;background:#fff;padding:7px 11px">
+              <div style="width:30px;height:30px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+              <span style="font-size:12px" class="mut">Search all active employees&hellip;</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="lbl" for="y1">2 &middot; Reason for voting</label>
+            <textarea class="ta" id="y1" rows="2"></textarea>
+            <div class="cnt">30 &ndash; 1000 characters</div>
+          </div>
+
+          <div style="border:1px solid #141413;border-radius:7px;padding:11px;position:relative">
+            <label class="lbl" for="y2">3 &middot; Why they are the best of the entire year</label>
+            <div class="help">Evidence across the whole year, not one good month.</div>
+            <textarea class="ta" id="y2" rows="3"></textarea>
+            <div class="cnt"><strong style="color:#141413">minimum 50 characters</strong> &middot; up to 1000</div>
+            <span class="pin" style="position:absolute;top:-7px;right:-7px">2</span>
+          </div>
+
+          <div>
+            <label class="lbl" for="y3">4 &middot; One suggestion for them</label>
+            <textarea class="ta" id="y3" rows="2"></textarea>
+            <div class="cnt">20 &ndash; 500 characters</div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-end">
+            <div style="flex-grow:1">
+              <label class="lbl" for="y5">5 &middot; Rating out of 10</label>
+              <div style="height:6px;border-radius:3px;background:#EFEDE7;position:relative;margin-top:14px"><div style="width:92%;height:6px;border-radius:3px;background:#141413"></div><div style="position:absolute;left:92%;top:-8px;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid #141413;margin-left:-11px"></div></div>
+            </div>
+            <div style="font-size:23px;font-weight:600;width:44px;text-align:center">10</div>
+          </div>
+
+          <div style="border:1px dashed #BDB7AA;border-radius:7px;padding:11px;position:relative">
+            <label class="lbl" for="y6">6 &middot; Standout contribution of the year <span class="mut" style="font-weight:400">&mdash; optional</span></label>
+            <div class="help">Feeds the citation on their Hall of Fame card if they win.</div>
+            <textarea class="ta" id="y6" rows="2"></textarea>
+            <div class="cnt">0 / 800</div>
+            <span class="pin" style="position:absolute;top:-7px;right:-7px">3</span>
+          </div>
+
+          <div style="flex-grow:1"></div>
+          <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;padding-top:11px;border-top:1px solid #EDE9E1"><input type="checkbox" style="margin-top:2px"> 7 &middot; I confirm this is my honest assessment.</label>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;flex-direction:column;gap:16px;min-width:0">
+
+      <div style="display:flex;flex-direction:column;gap:9px;flex-grow:1;min-height:0">
+        <div class="hd">My Votes &mdash; desktop grid, everything I submitted</div>
+        <div class="pane" style="flex-grow:1;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:0">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="display:flex;align-items:center;flex-grow:1;height:30px;border:1px solid #A8A399;border-radius:6px;padding:0 10px;font-size:11.5px" class="mut">Search by nominee&hellip;</div>
+            <button class="gbtn" type="button">Award type</button>
+            <button class="gbtn" type="button">Year</button>
+            <button class="gbtn" type="button">Status</button>
+            <button class="gbtn" type="button">Columns</button>
+          </div>
+          <div style="border:1px solid #D6D2C8;border-radius:7px;overflow:hidden;flex-grow:1;display:flex;flex-direction:column">
+            <table>
+              <thead><tr>
+                <th style="width:96px"><button class="sortbtn" type="button">Cycle <span class="mut">&#8597;</span></button></th>
+                <th style="width:74px"><button class="sortbtn" type="button">Award <span class="mut">&#8597;</span></button></th>
+                <th><button class="sortbtn" type="button">Nominee <span class="mut">&#8597;</span></button></th>
+                <th style="width:66px"><button class="sortbtn" type="button">Rating <span class="mut">&#8597;</span></button></th>
+                <th style="width:100px"><button class="sortbtn" type="button">Status <span class="mut">&#8597;</span></button></th>
+                <th style="width:108px"><button class="sortbtn" type="button">Submitted <span style="color:#D97757">&#9660;</span></button></th>
+                <th style="width:66px"></th>
+              </tr></thead>
+              <tbody>
+                <tr style="background:#FCFBF8">
+                  <td>Sep 2026</td><td>Month</td>
+                  <td style="display:flex;align-items:center;gap:7px"><span style="width:18px;height:18px;border-radius:50%;background:#DCD8CE;display:inline-block"></span><span class="ln" style="width:84px"></span></td>
+                  <td>9</td><td><span class="chip" style="background:#F1F4F0;border-color:#C9D4C4">Submitted</span></td><td>27 Sep 2026</td>
+                  <td><span style="font-size:10.5px;font-weight:500">Edit</span></td>
+                </tr>
+                <tr>
+                  <td>Aug 2026</td><td>Month</td>
+                  <td style="display:flex;align-items:center;gap:7px"><span style="width:18px;height:18px;border-radius:50%;background:#DCD8CE;display:inline-block"></span><span class="ln" style="width:96px"></span></td>
+                  <td>8</td><td><span class="chip">Locked</span></td><td>26 Aug 2026</td>
+                  <td><span style="font-size:10.5px" class="mut">View</span></td>
+                </tr>
+                <tr>
+                  <td>Jul 2026</td><td>Month</td>
+                  <td style="display:flex;align-items:center;gap:7px"><span style="width:18px;height:18px;border-radius:50%;background:#DCD8CE;display:inline-block"></span><span class="ln" style="width:78px"></span></td>
+                  <td>10</td><td><span class="chip">Locked</span></td><td>22 Jul 2026</td>
+                  <td><span style="font-size:10.5px" class="mut">View</span></td>
+                </tr>
+                <tr>
+                  <td>2025</td><td>Year</td>
+                  <td style="display:flex;align-items:center;gap:7px"><span style="width:18px;height:18px;border-radius:50%;background:#DCD8CE;display:inline-block"></span><span class="ln" style="width:88px"></span></td>
+                  <td>9</td><td><span class="chip">Locked</span></td><td>18 Dec 2025</td>
+                  <td><span style="font-size:10.5px" class="mut">View</span></td>
+                </tr>
+                <tr>
+                  <td>Jun 2026</td><td>Month</td>
+                  <td style="display:flex;align-items:center;gap:7px"><span style="width:18px;height:18px;border-radius:50%;background:#DCD8CE;display:inline-block"></span><span class="ln" style="width:70px"></span></td>
+                  <td>&mdash;</td><td><span class="chip" style="background:#F4EEF4;border-color:#D6C6D6">Withdrawn</span></td><td>&mdash;</td>
+                  <td><span style="font-size:10.5px" class="mut">View</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="padding:9px 11px;border-top:1px solid #EDE9E1;background:#FCFBF8;display:flex;align-items:center;gap:9px">
+              <span style="font-size:10.5px" class="mut">Expanded row shows all three written answers and your own edit history</span>
+              <span class="pin">4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;height:302px;flex-shrink:0">
+        <div style="width:176px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+          <div class="hd">Mobile cards</div>
+          <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+            <div style="padding:9px 11px;border-bottom:1px solid #EDE9E1;display:flex;gap:6px;background:#F7F5F0">
+              <div class="gbtn" style="height:26px;font-size:10px;padding:0 8px">Sort</div>
+              <div class="gbtn" style="height:26px;font-size:10px;padding:0 8px">Filter</div>
+            </div>
+            <div style="padding:9px;display:flex;flex-direction:column;gap:8px">
+              <div class="box" style="background:#fff;padding:9px">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                  <div style="width:24px;height:24px;border-radius:50%;background:#DCD8CE"></div>
+                  <div style="flex-grow:1"><div class="ln" style="width:88%;height:7px"></div></div>
+                  <span style="font-size:11px;font-weight:600">9</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span class="chip" style="height:17px;font-size:8.5px">Sep 2026</span>
+                  <span class="chip" style="height:17px;font-size:8.5px;background:#F1F4F0;border-color:#C9D4C4">Submitted</span>
+                  <span style="margin-left:auto;font-size:11px" class="mut">&rsaquo;</span>
+                </div>
+              </div>
+              <div class="box" style="background:#fff;padding:9px">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                  <div style="width:24px;height:24px;border-radius:50%;background:#DCD8CE"></div>
+                  <div style="flex-grow:1"><div class="ln" style="width:76%;height:7px"></div></div>
+                  <span style="font-size:11px;font-weight:600">8</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span class="chip" style="height:17px;font-size:8.5px">Aug 2026</span>
+                  <span class="chip" style="height:17px;font-size:8.5px">Locked</span>
+                  <span style="margin-left:auto;font-size:11px" class="mut">&rsaquo;</span>
+                </div>
+              </div>
+              <div class="box" style="background:#fff;padding:9px">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                  <div style="width:24px;height:24px;border-radius:50%;background:#DCD8CE"></div>
+                  <div style="flex-grow:1"><div class="ln" style="width:82%;height:7px"></div></div>
+                  <span style="font-size:11px;font-weight:600">10</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span class="chip" style="height:17px;font-size:8.5px">2025</span>
+                  <span class="chip" style="height:17px;font-size:8.5px">Year</span>
+                  <span style="margin-left:auto;font-size:11px" class="mut">&rsaquo;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;min-width:0">
+          <div class="hd">Expanded row &mdash; the full vote, read-only once locked</div>
+          <div class="pane" style="flex-grow:1;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:center;gap:10px;padding-bottom:9px;border-bottom:1px solid #EDE9E1">
+              <div style="width:32px;height:32px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+              <div style="flex-grow:1"><div class="ln" style="width:120px;margin-bottom:5px"></div><div class="ln" style="width:90px;height:6px"></div></div>
+              <span class="chip">Aug 2026 &middot; Month</span>
+              <span style="font-size:15px;font-weight:600">8 / 10</span>
+            </div>
+            <div><div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:5px" class="mut">REASON</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:92%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:64%;height:7px"></div></div>
+            <div><div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:5px" class="mut">WHY BETTER THAN OTHERS</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:78%;height:7px"></div></div>
+            <div><div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:5px" class="mut">SUGGESTION</div><div class="ln" style="width:88%;height:7px"></div></div>
+            <div style="flex-grow:1"></div>
+            <div class="box" style="padding:9px 11px;font-size:11px;display:flex;gap:9px"><span class="pin">5</span><span>Voting closed 31 Aug. This vote is locked. Edit and Withdraw are disabled with the reason shown, not silently missing.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:30px">
+    <div class="note" style="flex:1;margin:0"><span class="pin">2</span><span>A year-level claim earns a longer minimum &mdash; <strong>50 characters</strong>, against 30 for a month <span class="mono">6.5</span>.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">4</span><span>You see only your own votes here. Never anyone else&#39;s, at any point <span class="mono">R-6.6.1</span>.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">6</span><span>Month and year votes are independent records. If both cycles are open, the Dashboard shows two separate calls to action <span class="mono">6.5</span>.</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

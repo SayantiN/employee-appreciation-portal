@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vote for Employee of the Month</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:8px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.lbl{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
+.help{font-size:11px;color:#6B6862;margin-bottom:7px;line-height:1.45}
+.ta{width:100%;box-sizing:border-box;border:1px solid #A8A399;border-radius:6px;background:#fff;padding:9px 11px;font:400 12px 'IBM Plex Sans',sans-serif;color:#141413;resize:none}
+.cnt{font-size:10px;color:#918C82;text-align:right;margin-top:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:#141413;color:#FAF9F5;border:0;border-radius:6px;height:40px;padding:0 20px;font:600 13px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#141413;border:1px solid #A8A399;border-radius:6px;height:40px;padding:0 16px;font:500 12.5px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.hatch{background:repeating-linear-gradient(135deg,#EFEDE7,#EFEDE7 5px,#E0DCD2 5px,#E0DCD2 10px);border:1px dashed #BDB7AA;border-radius:6px}
+.stop{width:2px;height:7px;background:#CDC8BC}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Vote &mdash; Employee of the Month</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.4 &middot; R-6.4.1 &hellip; R-6.4.9 &middot; BR-2, BR-3, BR-4</div>
+  </div>
+
+  <div style="display:flex;gap:18px;flex-grow:1;min-height:0">
+
+    <div style="width:700px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Desktop &mdash; form left, live summary and guidance right</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+
+        <div style="padding:14px 18px;border-bottom:1px solid #EDE9E1;display:flex;align-items:center;gap:13px;background:#FCFBF8">
+          <div>
+            <div style="font-size:15px;font-weight:600">September 2026</div>
+            <div style="font-size:11px" class="mut">Voting open &middot; closes 30 Sep, 6:00 PM IST</div>
+          </div>
+          <div style="flex-grow:1"></div>
+          <div style="display:flex;align-items:center;gap:7px;background:#141413;color:#FAF9F5;border-radius:16px;padding:6px 13px;font-size:11.5px;font-weight:600">3d 4h left</div>
+          <span class="pin">1</span>
+        </div>
+
+        <div style="display:flex;flex-grow:1;min-height:0">
+          <div style="flex-grow:1;padding:16px 18px;display:flex;flex-direction:column;gap:13px;overflow:hidden">
+
+            <div>
+              <label class="lbl" for="nom">1 &middot; Who are you voting for?</label>
+              <div style="display:flex;align-items:center;gap:10px;border:1px solid #141413;border-radius:6px;background:#fff;padding:7px 11px">
+                <div style="width:30px;height:30px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+                <div style="flex-grow:1;min-width:0">
+                  <div class="ln" style="width:130px;margin-bottom:5px"></div>
+                  <div class="ln" style="width:190px;height:6px"></div>
+                </div>
+                <span style="font-size:11.5px;font-weight:500" class="mut">Change</span>
+              </div>
+              <div class="hatch" style="margin-top:6px;padding:6px 10px;font-size:10.5px;color:#6B6862">Your own name is not in this list. <span class="mono">R-6.4.2</span></div>
+            </div>
+
+            <div>
+              <label class="lbl" for="r1">2 &middot; Reason for voting</label>
+              <div class="help">What did they actually do this month? Be specific &mdash; name the project, the save, the help.</div>
+              <textarea class="ta" id="r1" rows="3"></textarea>
+              <div class="cnt">142 / 1000 &middot; minimum 30</div>
+            </div>
+
+            <div>
+              <label class="lbl" for="r2">3 &middot; Why better than others this month</label>
+              <div class="help">What set them apart from everyone else?</div>
+              <textarea class="ta" id="r2" rows="3"></textarea>
+              <div class="cnt">18 / 1000 &middot; <span style="color:#B4541F;font-weight:600">at least 30 characters</span></div>
+            </div>
+
+            <div>
+              <label class="lbl" for="r3">4 &middot; One suggestion for them</label>
+              <div class="help">One thing that would make them even stronger. Keep it kind and actionable.</div>
+              <textarea class="ta" id="r3" rows="2"></textarea>
+              <div class="cnt">0 / 500 &middot; minimum 20</div>
+            </div>
+
+            <div>
+              <label class="lbl" for="rt">5 &middot; Rating out of 10</label>
+              <div style="display:flex;align-items:center;gap:13px">
+                <button class="gbtn" style="width:40px;height:40px;padding:0;font-size:17px" type="button" aria-label="Lower rating">&minus;</button>
+                <div style="flex-grow:1">
+                  <div style="position:relative;height:6px;border-radius:3px;background:#EFEDE7">
+                    <div style="position:absolute;left:0;top:0;height:6px;width:82%;border-radius:3px;background:#141413"></div>
+                    <div style="position:absolute;left:82%;top:-8px;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid #141413;margin-left:-11px"></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;margin-top:9px;font-size:9.5px" class="mut">
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                  </div>
+                </div>
+                <button class="gbtn" style="width:40px;height:40px;padding:0;font-size:17px" type="button" aria-label="Raise rating">+</button>
+                <div style="width:50px;text-align:center;font-size:23px;font-weight:600">9</div>
+              </div>
+            </div>
+
+            <div style="flex-grow:1"></div>
+
+            <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.45;padding-top:12px;border-top:1px solid #EDE9E1">
+              <input type="checkbox" style="margin-top:2px"> 6 &middot; I confirm this is my honest assessment.
+            </label>
+
+            <div style="display:flex;align-items:center;gap:10px">
+              <button class="btn" type="button">Submit Vote</button>
+              <button class="gbtn" type="button">Save Draft</button>
+              <div style="flex-grow:1"></div>
+              <span style="font-size:10.5px" class="mut">Draft saved 11 minutes ago</span>
+              <span class="pin">3</span>
+            </div>
+          </div>
+
+          <div style="width:216px;flex-shrink:0;border-left:1px solid #EDE9E1;padding:16px 15px;background:#FCFBF8;display:flex;flex-direction:column;gap:13px">
+            <div>
+              <div class="hd" style="font-size:10px;margin-bottom:9px">Your vote so far</div>
+              <div style="font-size:11.5px;line-height:1.9">
+                <div style="display:flex;justify-content:space-between"><span class="mut">Nominee</span><span style="font-weight:600">Chosen</span></div>
+                <div style="display:flex;justify-content:space-between"><span class="mut">Reason</span><span style="font-weight:600">Done</span></div>
+                <div style="display:flex;justify-content:space-between"><span class="mut">Comparison</span><span style="font-weight:600;color:#B4541F">Too short</span></div>
+                <div style="display:flex;justify-content:space-between"><span class="mut">Suggestion</span><span style="font-weight:600;color:#B4541F">Empty</span></div>
+                <div style="display:flex;justify-content:space-between"><span class="mut">Rating</span><span style="font-weight:600">9 / 10</span></div>
+              </div>
+            </div>
+            <div style="height:1px;background:#E7E3DA"></div>
+            <div>
+              <div class="hd" style="font-size:10px;margin-bottom:9px">Before you submit</div>
+              <div style="font-size:10.5px;line-height:1.6" class="mut">
+                <div style="margin-bottom:8px">Your name is never shown to the person you vote for.</div>
+                <div style="margin-bottom:8px">Admins can see who voted, for audit only.</div>
+                <div style="margin-bottom:8px">You can change or withdraw this vote until the window closes.</div>
+                <div>Results stay hidden until then.</div>
+              </div>
+            </div>
+            <div style="flex-grow:1"></div>
+            <a href="#tutorial" style="font-size:11px;font-weight:500">Watch: how voting works &middot; 3 min</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:180px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Mobile &mdash; nominee sheet</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:22px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+        <div style="padding:11px 13px;border-bottom:1px solid #EDE9E1;display:flex;align-items:center">
+          <span style="font-size:13px;font-weight:600">Choose a colleague</span>
+          <span style="margin-left:auto;font-size:16px" class="mut">&times;</span>
+        </div>
+        <div style="padding:11px 13px;border-bottom:1px solid #EDE9E1;background:#FCFBF8">
+          <div style="height:40px;border:1px solid #A8A399;border-radius:6px;background:#fff;display:flex;align-items:center;padding:0 11px;gap:8px">
+            <div style="width:12px;height:12px;border:1.5px solid #8A857B;border-radius:50%"></div>
+            <span style="font-size:12px" class="mut">Search by name&hellip;</span>
+          </div>
+        </div>
+        <div style="padding:7px 0;flex-grow:1;overflow:hidden">
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 13px;background:#F4F2EC">
+            <div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+            <div style="flex-grow:1;min-width:0"><div class="ln" style="width:78%;margin-bottom:5px"></div><div class="ln" style="width:58%;height:6px"></div></div>
+            <div style="width:15px;height:15px;border-radius:50%;background:#141413;flex-shrink:0"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 13px">
+            <div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+            <div style="flex-grow:1;min-width:0"><div class="ln" style="width:66%;margin-bottom:5px"></div><div class="ln" style="width:72%;height:6px"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 13px">
+            <div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+            <div style="flex-grow:1;min-width:0"><div class="ln" style="width:84%;margin-bottom:5px"></div><div class="ln" style="width:50%;height:6px"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 13px">
+            <div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+            <div style="flex-grow:1;min-width:0"><div class="ln" style="width:70%;margin-bottom:5px"></div><div class="ln" style="width:64%;height:6px"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 13px">
+            <div style="width:34px;height:34px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+            <div style="flex-grow:1;min-width:0"><div class="ln" style="width:76%;margin-bottom:5px"></div><div class="ln" style="width:56%;height:6px"></div></div>
+          </div>
+        </div>
+        <div style="padding:11px 13px;border-top:1px solid #EDE9E1">
+          <div style="height:46px;border-radius:6px;background:#141413;color:#FAF9F5;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">Select</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;font-size:10.5px;line-height:1.4" class="mut"><span class="pin">2</span><span>Full-screen search sheet, never a cramped dropdown.</span></div>
+    </div>
+
+    <div style="width:180px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Mobile &mdash; form</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:22px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+        <div style="padding:10px 13px;border-bottom:1px solid #EDE9E1;background:#FCFBF8">
+          <div style="font-size:12px;font-weight:600">September 2026</div>
+          <div style="font-size:9.5px" class="mut">closes in 3d 4h</div>
+        </div>
+        <div style="padding:11px 13px;flex-grow:1;display:flex;flex-direction:column;gap:11px;overflow:hidden">
+          <div>
+            <div style="font-size:10.5px;font-weight:600;margin-bottom:5px">Nominee</div>
+            <div style="border:1px solid #141413;border-radius:6px;padding:7px 9px;display:flex;align-items:center;gap:8px">
+              <div style="width:26px;height:26px;border-radius:50%;background:#DCD8CE"></div>
+              <div style="flex-grow:1"><div class="ln" style="width:86%;height:7px"></div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:10.5px;font-weight:600;margin-bottom:4px">Reason</div>
+            <div class="box" style="background:#fff;border-color:#A8A399;height:52px"></div>
+            <div style="font-size:8.5px;text-align:right;margin-top:3px" class="mut">142 / 1000</div>
+          </div>
+          <div>
+            <div style="font-size:10.5px;font-weight:600;margin-bottom:4px">Why better this month</div>
+            <div class="box" style="background:#fff;border-color:#A8A399;height:52px"></div>
+            <div style="font-size:8.5px;text-align:right;margin-top:3px;color:#B4541F">at least 30 characters</div>
+          </div>
+          <div>
+            <div style="font-size:10.5px;font-weight:600;margin-bottom:4px">Suggestion</div>
+            <div class="box" style="background:#fff;border-color:#A8A399;height:44px"></div>
+          </div>
+          <div>
+            <div style="font-size:10.5px;font-weight:600;margin-bottom:7px">Rating &mdash; 9</div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:36px;height:36px;border:1px solid #A8A399;border-radius:6px;display:flex;align-items:center;justify-content:center">&minus;</div>
+              <div style="flex-grow:1;height:6px;border-radius:3px;background:#EFEDE7;position:relative"><div style="width:82%;height:6px;border-radius:3px;background:#141413"></div></div>
+              <div style="width:36px;height:36px;border:1px solid #A8A399;border-radius:6px;display:flex;align-items:center;justify-content:center">+</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:10px 13px 13px;border-top:1px solid #EDE9E1;background:#fff">
+          <div style="height:46px;border-radius:6px;background:#141413;color:#FAF9F5;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">Submit Vote</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;font-size:10.5px;line-height:1.4" class="mut"><span class="pin">4</span><span>Submit sticks to the bottom above the tab bar.</span></div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;min-width:0">
+      <div class="hd">The other states this screen has</div>
+      <div class="pane" style="flex-grow:1;padding:14px;display:flex;flex-direction:column;gap:11px">
+
+        <div class="box" style="background:#F1F4F0;border-color:#C9D4C4;padding:11px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:7px" class="mut">SUBMITTED &mdash; WINDOW OPEN</div>
+          <div style="font-size:11.5px;line-height:1.5;margin-bottom:9px">Your vote is in. You can change or withdraw it until 30 Sep, 6:00 PM.</div>
+          <div style="display:flex;gap:7px">
+            <div style="height:30px;padding:0 12px;border:1px solid #A8A399;border-radius:6px;background:#fff;display:flex;align-items:center;font-size:11px;font-weight:500">Edit Vote</div>
+            <div style="height:30px;padding:0 12px;border:1px solid #A8A399;border-radius:6px;background:#fff;display:flex;align-items:center;font-size:11px;font-weight:500">Withdraw</div>
+          </div>
+        </div>
+
+        <div class="box" style="padding:11px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:7px" class="mut">WINDOW CLOSED &mdash; SUBMITTED</div>
+          <div style="font-size:11.5px;line-height:1.5">Voting closed on 30 Sep. Your vote is locked and can no longer be edited.</div>
+        </div>
+
+        <div class="box" style="padding:11px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:7px" class="mut">WINDOW NOT YET OPEN</div>
+          <div style="font-size:11.5px;line-height:1.5">Voting for October opens on 1 Oct at 9:00 AM.</div>
+        </div>
+
+        <div class="box" style="background:#FBEEE8;border-color:#E5B9A4;padding:11px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:7px" style="color:#8A3F17">CLOSED MID-SESSION</div>
+          <div style="font-size:11.5px;line-height:1.5;color:#8A3F17">Voting closed while you were writing. Your text is saved below &mdash; nothing was lost.</div>
+        </div>
+
+        <div class="box" style="padding:11px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.06em;margin-bottom:7px" class="mut">SOFT WARNING BEFORE SUBMIT</div>
+          <div style="font-size:11.5px;line-height:1.5">Some wording here may read as harsh. Consider rephrasing. You can still submit.</div>
+        </div>
+
+        <div style="flex-grow:1"></div>
+        <div style="display:flex;gap:8px;font-size:10.5px;line-height:1.45" class="mut"><span class="pin">5</span><span>A draft left unsubmitted when the window closes is discarded and counts as non-participation <span class="mono">R-6.4.6</span>.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:30px">
+    <div style="flex:1">
+      <div class="note"><span class="pin">1</span><span>The countdown is cosmetic. <strong>The server clock decides</strong> whether a submission is accepted <span class="mono">R-6.4.1, BR-10</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">2</span><span>Self-voting blocked three times over: absent from the list, rejected by the server, forbidden by a database constraint <span class="mono">BR-2, IR-1</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">3</span><span>Drafts autosave every 20 seconds and on blur, are private, and never count toward the tally <span class="mono">R-6.4.6</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">4</span><span>All four qualitative fields are required. A vote is an argument, not a name <span class="mono">&sect;9</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">5</span><span>Every edit writes a new <span class="mono">VoteVersion</span>; the nominee only ever sees the latest <span class="mono">R-6.4.4</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">6</span><span>Text is sanitised to plain text. Flagged wording goes to admin review rather than silent rejection <span class="mono">R-6.4.7, R-6.4.8</span>.</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

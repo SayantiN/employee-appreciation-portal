@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Admin analytics and audit log</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:8px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.tl{font-size:9.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#918C82;margin-bottom:5px}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;gap:5px;background:#fff;color:#141413;border:1px solid #A8A399;border-radius:6px;height:28px;padding:0 10px;font:500 10.5px 'IBM Plex Sans',sans-serif}
+.dbtn{background:#141413;color:#FAF9F5;border-color:#141413}
+.chip{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:10px;font-size:9px;font-weight:600;border:1px solid #DCD8CE;background:#F4F2EC}
+.sortbtn{display:inline-flex;align-items:center;gap:4px;background:none;border:0;padding:0;font:600 9px 'IBM Plex Sans',sans-serif;color:#44413C;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;white-space:nowrap}
+table{width:100%;border-collapse:collapse}
+th{padding:7px 8px;border-bottom:1px solid #D6D2C8;text-align:left;background:#F7F5F0}
+td{padding:6px 8px;border-bottom:1px solid #EDE9E1;font-size:10px;white-space:nowrap}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.hm{border-radius:3px}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:15px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Admin &mdash; Analytics &amp; Exports &nbsp;&middot;&nbsp; Audit Log</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.19 &middot; 6.20 &middot; R-6.19.1 &hellip; R-6.20.3 &middot; BR-12</div>
+  </div>
+
+  <div style="display:flex;gap:16px;flex-grow:1;min-height:0">
+
+    <div style="width:680px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Analytics &amp; Exports &mdash; participation and behaviour, not the award record</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+
+        <div style="padding:11px 13px;border-bottom:1px solid #EDE9E1;background:#FCFBF8;display:flex;gap:7px;align-items:center;flex-wrap:wrap">
+          <span class="chip" style="background:#141413;color:#FAF9F5;border-color:#141413">Participation</span>
+          <span class="chip">Nominee summary</span>
+          <span class="chip">Appreciation heatmap</span>
+          <span class="chip">Rating analysis</span>
+          <span class="chip">Winner history</span>
+          <span class="chip">Engagement</span>
+          <span class="chip">Feedback quality</span>
+        </div>
+
+        <div style="padding:11px 13px;border-bottom:1px solid #EDE9E1;display:flex;gap:7px;align-items:center">
+          <div class="gbtn">Last 12 cycles</div>
+          <div class="gbtn">Award: All</div>
+          <div class="gbtn">Department</div>
+          <div class="gbtn">Location</div>
+          <div style="flex-grow:1"></div>
+          <div class="gbtn">Excel</div>
+          <div class="gbtn">PDF</div>
+        </div>
+
+        <div style="padding:13px;flex-grow:1;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+
+          <div style="display:flex;gap:10px">
+            <div class="box" style="flex:1;padding:10px"><div class="tl">Participation, Sep</div><div style="font-size:20px;font-weight:600">68%</div></div>
+            <div class="box" style="flex:1;padding:10px"><div class="tl">12-cycle average</div><div style="font-size:20px;font-weight:600">71%</div></div>
+            <div class="box" style="flex:1;padding:10px"><div class="tl">Non-voters</div><div style="font-size:20px;font-weight:600">38</div></div>
+            <div class="box" style="flex:1;padding:10px"><div class="tl">Nominees</div><div style="font-size:20px;font-weight:600">18</div></div>
+          </div>
+
+          <div class="pane" style="padding:12px;border-color:#E7E3DA">
+            <div class="tl" style="margin-bottom:10px">Participation over 12 cycles</div>
+            <div style="display:flex;align-items:flex-end;gap:7px;height:76px">
+              <div style="flex:1;height:52%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:58%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:64%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:61%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:72%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:78%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:69%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:74%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:80%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:66%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:83%;background:#DCD8CE;border-radius:3px 3px 0 0"></div>
+              <div style="flex:1;height:68%;background:#D97757;border-radius:3px 3px 0 0"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:8.5px" class="mut"><span>Oct 2025</span><span>Sep 2026</span></div>
+          </div>
+
+          <div style="display:flex;gap:11px;flex-grow:1;min-height:0">
+            <div class="pane" style="flex:1.1;padding:12px;border-color:#E7E3DA;display:flex;flex-direction:column">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+                <div class="tl" style="margin:0">Appreciation heatmap</div>
+                <span class="pin">1</span>
+              </div>
+              <div style="font-size:8.5px;margin-bottom:6px" class="mut">Who appreciates whom, department to department</div>
+              <div style="display:grid;grid-template-columns:44px repeat(5,minmax(0,1fr));gap:3px;font-size:8px">
+                <div></div>
+                <div style="text-align:center" class="mut">Eng</div><div style="text-align:center" class="mut">Des</div><div style="text-align:center" class="mut">Ops</div><div style="text-align:center" class="mut">Fin</div><div style="text-align:center" class="mut">Sal</div>
+                <div class="mut" style="display:flex;align-items:center">Eng</div>
+                <div class="hm" style="background:#8C8579;height:22px"></div><div class="hm" style="background:#C6C0B4;height:22px"></div><div class="hm" style="background:#DEDAD1;height:22px"></div><div class="hm" style="background:#EFEDE7;height:22px"></div><div class="hm" style="background:#EFEDE7;height:22px"></div>
+                <div class="mut" style="display:flex;align-items:center">Des</div>
+                <div class="hm" style="background:#B4AEA1;height:22px"></div><div class="hm" style="background:#9A9386;height:22px"></div><div class="hm" style="background:#DEDAD1;height:22px"></div><div class="hm" style="background:#EFEDE7;height:22px"></div><div class="hm" style="background:#E6E2D9;height:22px"></div>
+                <div class="mut" style="display:flex;align-items:center">Ops</div>
+                <div class="hm" style="background:#CFC9BC;height:22px"></div><div class="hm" style="background:#E6E2D9;height:22px"></div><div class="hm" style="background:#A49D90;height:22px"></div><div class="hm" style="background:#DEDAD1;height:22px"></div><div class="hm" style="background:#EFEDE7;height:22px"></div>
+                <div class="mut" style="display:flex;align-items:center">Fin</div>
+                <div class="hm" style="background:#E6E2D9;height:22px"></div><div class="hm" style="background:#EFEDE7;height:22px"></div><div class="hm" style="background:#DEDAD1;height:22px"></div><div class="hm" style="background:#B4AEA1;height:22px"></div><div class="hm" style="background:#E6E2D9;height:22px"></div>
+                <div class="mut" style="display:flex;align-items:center">Sal</div>
+                <div class="hm" style="background:#DEDAD1;height:22px"></div><div class="hm" style="background:#EFEDE7;height:22px"></div><div class="hm" style="background:#E6E2D9;height:22px"></div><div class="hm" style="background:#DEDAD1;height:22px"></div><div class="hm" style="background:#8C8579;height:22px"></div>
+              </div>
+              <div style="font-size:9px;line-height:1.4;margin-top:9px" class="mut">A dark diagonal means people mostly appreciate their own team. That is a finding, not a bug &mdash; but it is worth knowing.</div>
+            </div>
+
+            <div class="pane" style="flex:1;padding:12px;border-color:#E7E3DA;display:flex;flex-direction:column">
+              <div class="tl">Rating analysis</div>
+              <div style="display:flex;align-items:flex-end;gap:4px;height:54px;margin-bottom:10px">
+                <div style="flex:1;height:5%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:7%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:10%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:14%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:22%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:34%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:52%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:78%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:100%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+                <div style="flex:1;height:88%;background:#D97757;border-radius:2px 2px 0 0"></div>
+              </div>
+              <div class="tl">Outlier voters</div>
+              <div style="font-size:10px;line-height:1.9">
+                <div style="display:flex"><span class="ln" style="width:62px;height:6px;margin-top:6px"></span><span style="margin-left:auto" class="mut">always 10</span></div>
+                <div style="display:flex"><span class="ln" style="width:70px;height:6px;margin-top:6px"></span><span style="margin-left:auto" class="mut">always 10</span></div>
+                <div style="display:flex"><span class="ln" style="width:56px;height:6px;margin-top:6px"></span><span style="margin-left:auto" class="mut">never above 6</span></div>
+              </div>
+              <div style="flex-grow:1"></div>
+              <div class="box" style="padding:8px;font-size:9px;line-height:1.4;margin-top:9px">Large exports run as background jobs and arrive as a signed link valid 24 hours <span class="mono">R-6.19.3</span>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;min-width:0">
+      <div class="hd">Audit Log &mdash; append-only, never editable by anyone</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+
+        <div style="padding:11px 13px;border-bottom:1px solid #EDE9E1;background:#FCFBF8;display:flex;gap:7px;align-items:center;flex-wrap:wrap">
+          <div class="gbtn">Actor</div>
+          <div class="gbtn">Action</div>
+          <div class="gbtn">Entity</div>
+          <div class="gbtn">Date range</div>
+          <div style="flex-grow:1"></div>
+          <div class="gbtn">Export</div>
+        </div>
+
+        <div style="flex-grow:1;overflow:hidden">
+          <table>
+            <thead><tr>
+              <th style="width:110px"><button class="sortbtn" type="button">Timestamp <span style="color:#D97757">&#9660;</span></button></th>
+              <th style="width:96px"><button class="sortbtn" type="button">Actor <span class="mut">&#8597;</span></button></th>
+              <th style="width:62px"><button class="sortbtn" type="button">Role <span class="mut">&#8597;</span></button></th>
+              <th><button class="sortbtn" type="button">Action <span class="mut">&#8597;</span></button></th>
+              <th style="width:92px"><button class="sortbtn" type="button">Entity <span class="mut">&#8597;</span></button></th>
+              <th style="width:86px"><button class="sortbtn" type="button">IP <span class="mut">&#8597;</span></button></th>
+            </tr></thead>
+            <tbody>
+              <tr style="background:#FBF6F2"><td class="mono">02 Sep 11:04</td><td><span class="ln" style="width:66px;height:6px"></span></td><td>Admin</td><td style="font-weight:600;white-space:normal">Winner published &mdash; override with justification</td><td>Cycle 2026-08</td><td class="mono">10.2.4.18</td></tr>
+              <tr><td class="mono">02 Sep 10:58</td><td><span class="ln" style="width:58px;height:6px"></span></td><td>Admin</td><td>Citation edited</td><td>Winner 214</td><td class="mono">10.2.4.18</td></tr>
+              <tr><td class="mono">01 Sep 18:00</td><td class="mut">system</td><td>&mdash;</td><td>Cycle closed, tally frozen</td><td>Cycle 2026-08</td><td class="mut">&mdash;</td></tr>
+              <tr><td class="mono">31 Aug 17:42</td><td><span class="ln" style="width:70px;height:6px"></span></td><td>Employee</td><td>Vote edited &mdash; version 3</td><td>Vote 8841</td><td class="mono">10.2.7.91</td></tr>
+              <tr><td class="mono">31 Aug 16:20</td><td><span class="ln" style="width:62px;height:6px"></span></td><td>Employee</td><td>Vote withdrawn</td><td>Vote 8796</td><td class="mono">10.2.7.44</td></tr>
+              <tr><td class="mono">30 Aug 09:12</td><td><span class="ln" style="width:74px;height:6px"></span></td><td>Admin</td><td>Employee deactivated</td><td>E-0177</td><td class="mono">10.2.4.18</td></tr>
+              <tr><td class="mono">29 Aug 14:33</td><td><span class="ln" style="width:56px;height:6px"></span></td><td>Admin</td><td>Setting changed &mdash; reveal count 2 to 3</td><td>Settings</td><td class="mono">10.2.4.18</td></tr>
+              <tr><td class="mono">28 Aug 11:07</td><td><span class="ln" style="width:68px;height:6px"></span></td><td>Auditor</td><td>Report exported &mdash; voter identity included</td><td>Report</td><td class="mono">10.2.9.03</td></tr>
+              <tr><td class="mono">27 Aug 08:55</td><td><span class="ln" style="width:60px;height:6px"></span></td><td>&mdash;</td><td>Login failed &times;5, account locked</td><td>E-1042</td><td class="mono">10.2.7.12</td></tr>
+              <tr><td class="mono">26 Aug 15:41</td><td><span class="ln" style="width:72px;height:6px"></span></td><td>Admin</td><td>Role changed &mdash; Employee to Auditor</td><td>E-1042</td><td class="mono">10.2.4.18</td></tr>
+              <tr><td class="mono">25 Aug 10:02</td><td><span class="ln" style="width:64px;height:6px"></span></td><td>Admin</td><td>Cycle extended &mdash; close moved 2 days</td><td>Cycle 2026-08</td><td class="mono">10.2.4.18</td></tr>
+              <tr><td class="mono">24 Aug 13:18</td><td><span class="ln" style="width:58px;height:6px"></span></td><td>Admin</td><td>Tutorial published</td><td>Tutorial 11</td><td class="mono">10.2.4.18</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="padding:12px 13px;border-top:1px solid #D6D2C8;background:#F7F5F0;display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;gap:9px;align-items:flex-start">
+            <span class="pin">2</span>
+            <div style="font-size:10.5px;line-height:1.5">Expanding the highlighted row shows the <strong>computed winner</strong>, the <strong>chosen winner</strong> and the admin&#39;s typed justification, side by side <span class="mono">AC-9</span>.</div>
+          </div>
+          <div class="box" style="background:#fff;padding:9px;font-size:10px;line-height:1.5">
+            <div style="display:flex;gap:9px;margin-bottom:4px"><span class="mut" style="width:68px;flex-shrink:0">Computed</span><span class="ln" style="width:80px;height:6px;margin-top:5px"></span><span class="mut" style="margin-left:9px">17 votes</span></div>
+            <div style="display:flex;gap:9px;margin-bottom:6px"><span class="mut" style="width:68px;flex-shrink:0">Published</span><span class="ln" style="width:92px;height:6px;margin-top:5px"></span><span class="mut" style="margin-left:9px">15 votes</span></div>
+            <div style="display:flex;gap:9px"><span class="mut" style="width:68px;flex-shrink:0">Reason</span><span style="flex-grow:1"><span class="ln" style="width:100%;height:6px;display:block;margin-bottom:4px"></span><span class="ln" style="width:72%;height:6px;display:block"></span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:26px">
+    <div style="flex:1">
+      <div class="note"><span class="pin">1</span><span>Analytics answers &ldquo;is this programme healthy?&rdquo;. The <strong>Winners Report</strong> answers &ldquo;who won and when?&rdquo;. Keeping them apart stops one screen doing neither job well <span class="mono">6.19</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">3</span><span>Exports that include voter identity are watermarked <em>Confidential &mdash; contains voter identity</em> <span class="mono">R-6.19.2</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">2</span><span>No role can edit or delete an audit entry through the application. Retention is at least 3 years <span class="mono">R-6.20.1, R-6.20.2</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">4</span><span>Logged: logins, lockouts, role changes, every cycle transition, every vote submit, edit, withdrawal and removal, tallies, publications, overrides, settings and exports <span class="mono">BR-12</span>.</span></div>
+    </div>
+    <div style="flex:1">
+      <div class="note"><span class="pin">5</span><span>Voter identity in Employee-facing analytics is never exposed. Admin and Auditor views may include it, and say so on screen <span class="mono">NF-10</span>.</span></div>
+      <div class="note" style="margin:0"><span class="pin">6</span><span>Both grids follow &sect;11 &mdash; per-column filter and sort, card layout below 768px, default sort declared <span class="mono">DG-16</span>.</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

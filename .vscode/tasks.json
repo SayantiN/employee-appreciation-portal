@@ -1,0 +1,69 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Portal: Run (API + Web)",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": { "cwd": "${workspaceFolder}/app" },
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "portal"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^-$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Local:.*5173"
+        }
+      },
+      "group": { "kind": "build", "isDefault": true },
+      "detail": "Starts the API (port 4000) and the Vite dev server (port 5173) together."
+    },
+    {
+      "label": "Portal: Install dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "options": { "cwd": "${workspaceFolder}/app" },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Portal: Seed demo data",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "seed:demo"],
+      "options": { "cwd": "${workspaceFolder}/app" },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Portal: Seed minimal data",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "seed:minimal"],
+      "options": { "cwd": "${workspaceFolder}/app" },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Portal: Build for production",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build"],
+      "options": { "cwd": "${workspaceFolder}/app" },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    }
+  ]
+}

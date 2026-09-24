@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Portal: Run + Open Browser",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/app/web/src",
+      "preLaunchTask": "Portal: Run (API + Web)",
+      "presentation": { "hidden": false, "group": "portal", "order": 1 }
+    }
+  ]
+}

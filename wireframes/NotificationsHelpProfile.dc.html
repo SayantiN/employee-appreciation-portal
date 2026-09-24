@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notifications, help and profile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:8px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.tl{font-size:9.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#918C82;margin-bottom:5px}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;gap:5px;background:#fff;color:#141413;border:1px solid #A8A399;border-radius:6px;height:28px;padding:0 10px;font:500 10.5px 'IBM Plex Sans',sans-serif}
+.chip{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:10px;font-size:9px;font-weight:600;border:1px solid #DCD8CE;background:#F4F2EC}
+.nrow{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #EDE9E1;align-items:flex-start}
+.dot{width:7px;height:7px;border-radius:50%;background:#D97757;flex-shrink:0;margin-top:5px}
+table{width:100%;border-collapse:collapse}
+th{padding:6px 7px;border-bottom:1px solid #D6D2C8;text-align:left;background:#F7F5F0;font:600 9px 'IBM Plex Sans',sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#44413C}
+td{padding:6px 7px;border-bottom:1px solid #EDE9E1;font-size:10px}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.sw{width:32px;height:18px;border-radius:9px;background:#141413;position:relative;flex-shrink:0}
+.swk{position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+.swoff{background:#DCD8CE}
+.swoff .swk{left:2px;right:auto}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:15px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Notifications &nbsp;&middot;&nbsp; How It Works &nbsp;&middot;&nbsp; My Profile</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.12 &middot; 6.13 &middot; 6.15 &middot; R-6.12.1 &hellip; R-6.12.3</div>
+  </div>
+
+  <div style="display:flex;gap:16px;flex-grow:1;min-height:0">
+
+    <div style="width:322px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Notification centre</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:12px 14px;border-bottom:1px solid #EDE9E1;display:flex;align-items:center;gap:9px;background:#FCFBF8">
+          <div style="font-size:13.5px;font-weight:600">Notifications</div>
+          <span class="chip" style="background:#D97757;color:#fff;border-color:#D97757">4 new</span>
+          <div style="flex-grow:1"></div>
+          <div class="gbtn">Mark all read</div>
+        </div>
+        <div style="padding:0 14px;flex-grow:1;overflow:hidden">
+          <div class="nrow"><span class="dot"></span><div style="flex-grow:1"><div style="font-size:11.5px;font-weight:600;margin-bottom:4px">You won Employee of the Month</div><div style="font-size:10.5px;line-height:1.45" class="mut">August 2026. Your Work Showcase is being prepared.</div><div style="font-size:9.5px;margin-top:5px" class="mut">2 Sep &middot; also emailed</div></div></div>
+          <div class="nrow"><span class="dot"></span><div style="flex-grow:1"><div style="font-size:11.5px;font-weight:600;margin-bottom:4px">New feedback about you is available</div><div style="font-size:10.5px;line-height:1.45" class="mut">August 2026 has closed and the threshold is met.</div><div style="font-size:9.5px;margin-top:5px" class="mut">2 Sep &middot; also emailed</div></div></div>
+          <div class="nrow"><span class="dot"></span><div style="flex-grow:1"><div style="font-size:11.5px;font-weight:600;margin-bottom:4px">Voting for September is open</div><div style="font-size:10.5px;line-height:1.45" class="mut">Closes 30 Sep at 6:00 PM.</div><div style="font-size:9.5px;margin-top:5px" class="mut">1 Sep &middot; also emailed</div></div></div>
+          <div class="nrow"><span class="dot"></span><div style="flex-grow:1"><div style="font-size:11.5px;font-weight:600;margin-bottom:4px">3 days left and you have not voted</div><div style="font-size:10.5px;line-height:1.45" class="mut">September 2026.</div><div style="font-size:9.5px;margin-top:5px" class="mut">27 Sep &middot; also emailed</div></div></div>
+          <div class="nrow" style="opacity:.62"><span style="width:7px;flex-shrink:0"></span><div style="flex-grow:1"><div style="font-size:11.5px;font-weight:600;margin-bottom:4px">Work Showcase published</div><div style="font-size:9.5px;margin-top:5px" class="mut">4 Sep</div></div></div>
+          <div class="nrow" style="opacity:.62;border-bottom:0"><span style="width:7px;flex-shrink:0"></span><div style="flex-grow:1"><div style="font-size:11.5px;font-weight:600;margin-bottom:4px">Your vote was submitted</div><div style="font-size:9.5px;margin-top:5px" class="mut">27 Aug &middot; in-app only</div></div></div>
+        </div>
+        <div style="padding:11px 14px;border-top:1px solid #EDE9E1;background:#FCFBF8;display:flex;gap:9px;align-items:flex-start">
+          <span class="pin">1</span>
+          <span style="font-size:10.5px;line-height:1.45" class="mut">No notification may leak standings. &ldquo;You received a vote&rdquo; is withheld until the cycle closes <span class="mono">R-6.12.1</span>.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:322px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Who gets told what</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="overflow:hidden;flex-grow:1">
+          <table>
+            <thead><tr><th>Event</th><th style="width:38px">App</th><th style="width:44px">Email</th></tr></thead>
+            <tbody>
+              <tr><td>Cycle opened</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>3 days left, not voted</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>24 hours left, not voted</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Vote submitted / edited</td><td>&#10003;</td><td class="mut">&mdash;</td></tr>
+              <tr><td>Voting closed</td><td>&#10003;</td><td class="mut">&mdash;</td></tr>
+              <tr><td>Winner published</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr style="background:#FCFBF8"><td style="font-weight:600">You won</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Feedback now available</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Showcase published</td><td>&#10003;</td><td class="mut">&mdash;</td></tr>
+              <tr><td>Account locked</td><td class="mut">&mdash;</td><td>&#10003;</td></tr>
+              <tr><td>Content flagged</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Export ready</td><td>&#10003;</td><td class="mut">&mdash;</td></tr>
+              <tr><td>Welcome &mdash; start tutorials</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Onboarding unfinished, 7 days</td><td>&#10003;</td><td class="mut">&mdash;</td></tr>
+              <tr><td>New tutorial published</td><td>&#10003;</td><td class="mut">&mdash;</td></tr>
+              <tr><td>A tutorial went stale</td><td>&#10003;</td><td>&#10003;</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:10px 12px;border-top:1px solid #EDE9E1;background:#FCFBF8;display:flex;gap:9px;align-items:flex-start">
+          <span class="pin">2</span>
+          <span style="font-size:10px;line-height:1.45" class="mut">Non-essential email is mutable in Profile. Cycle-open, winner-published and security email are not <span class="mono">R-6.12.2</span>.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:318px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">How It Works &mdash; the disclosure page</div>
+      <div class="pane" style="flex-grow:1;padding:14px;display:flex;flex-direction:column;gap:11px;overflow:hidden">
+        <div style="font-size:14px;font-weight:600">How this works</div>
+        <div class="box" style="padding:11px 13px;border-left:3px solid #D97757">
+          <div class="tl" style="color:#8A3F17">WHO CAN SEE YOUR VOTE</div>
+          <div style="font-size:11px;line-height:1.55">
+            The person you vote for sees your reason, suggestion and rating, but <strong>never your name</strong>.
+            <br><br>
+            <strong>Administrators can see who voted for whom.</strong> This is used only to audit the process and handle abuse.
+          </div>
+          <span class="pin" style="margin-top:9px">3</span>
+        </div>
+        <div style="font-size:11px;line-height:1.7">
+          <div style="display:flex;gap:9px;padding:6px 0;border-bottom:1px solid #EDE9E1"><span class="mono" style="color:#8A857B;width:16px">1</span><span>The two awards explained</span></div>
+          <div style="display:flex;gap:9px;padding:6px 0;border-bottom:1px solid #EDE9E1"><span class="mono" style="color:#8A857B;width:16px">2</span><span>Who can vote, and for whom</span></div>
+          <div style="display:flex;gap:9px;padding:6px 0;border-bottom:1px solid #EDE9E1"><span class="mono" style="color:#8A857B;width:16px">3</span><span>How anonymity works</span></div>
+          <div style="display:flex;gap:9px;padding:6px 0;border-bottom:1px solid #EDE9E1"><span class="mono" style="color:#8A857B;width:16px">4</span><span>How the winner is decided, and ties</span></div>
+          <div style="display:flex;gap:9px;padding:6px 0;border-bottom:1px solid #EDE9E1"><span class="mono" style="color:#8A857B;width:16px">5</span><span>When feedback becomes visible</span></div>
+          <div style="display:flex;gap:9px;padding:6px 0;border-bottom:1px solid #EDE9E1"><span class="mono" style="color:#8A857B;width:16px">6</span><span>The yearly schedule</span></div>
+          <div style="display:flex;gap:9px;padding:6px 0"><span class="mono" style="color:#8A857B;width:16px">7</span><span>FAQ and who to contact</span></div>
+        </div>
+        <div style="flex-grow:1"></div>
+        <div class="box" style="padding:10px;font-size:10.5px;line-height:1.45">
+          Linked from Login, the Dashboard and both Vote screens &mdash; and shown once at first login, so nobody can say they were not told.
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;min-width:0">
+      <div class="hd">My Profile</div>
+      <div class="pane" style="flex-grow:1;padding:14px;display:flex;flex-direction:column;gap:11px;overflow:hidden">
+        <div style="display:flex;gap:12px;align-items:center;padding-bottom:11px;border-bottom:1px solid #EDE9E1">
+          <div style="width:52px;height:52px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+          <div style="flex-grow:1;min-width:0">
+            <div class="ln" style="width:70%;margin-bottom:6px"></div>
+            <div class="ln" style="width:52%;height:6px"></div>
+          </div>
+          <div class="gbtn">Change photo</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div><div class="tl">Display name</div><div class="box" style="background:#fff;border-color:#A8A399;height:30px"></div></div>
+          <div style="display:flex;gap:8px">
+            <div style="flex:1"><div class="tl">Designation</div><div class="box" style="background:#fff;border-color:#A8A399;height:30px"></div></div>
+            <div style="flex:1"><div class="tl">Department</div><div class="box" style="height:30px;display:flex;align-items:center;padding:0 9px;font-size:10px" class="mut">From HR &middot; read only</div></div>
+          </div>
+        </div>
+
+        <div style="height:1px;background:#EDE9E1"></div>
+
+        <div>
+          <div class="tl">Email notifications</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:11px">
+            <div style="display:flex;align-items:center;gap:9px"><span class="sw"><span class="swk"></span></span>Voting opened <span class="chip" style="margin-left:auto;height:17px;font-size:8px">Locked on</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><span class="sw"><span class="swk"></span></span>Reminders before close</div>
+            <div style="display:flex;align-items:center;gap:9px"><span class="sw swoff"><span class="swk"></span></span>New tutorial published</div>
+            <div style="display:flex;align-items:center;gap:9px"><span class="sw"><span class="swk"></span></span>Winner published <span class="chip" style="margin-left:auto;height:17px;font-size:8px">Locked on</span></div>
+          </div>
+        </div>
+
+        <div style="height:1px;background:#EDE9E1"></div>
+
+        <div style="display:flex;gap:9px">
+          <div style="flex:1"><div class="tl">Theme</div><div style="display:flex;gap:5px"><span class="chip">Light</span><span class="chip">Dark</span><span class="chip" style="background:#141413;color:#FAF9F5;border-color:#141413">System</span></div></div>
+          <div style="flex:1"><div class="tl">Language</div><span class="chip">English</span></div>
+        </div>
+
+        <div class="box" style="padding:10px;display:flex;align-items:center;gap:9px">
+          <div style="flex-grow:1;font-size:10.5px;line-height:1.45"><strong>Change password</strong><br><span class="mut">Requires your current password. Signs out your other devices.</span></div>
+          <div class="gbtn">Change</div>
+        </div>
+
+        <div style="flex-grow:1"></div>
+        <div>
+          <div class="tl">Your awards</div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span class="chip" style="background:#141413;color:#FAF9F5;border-color:#141413">MONTH &middot; MAR 2026</span>
+            <span style="font-size:10.5px" class="mut">31 votes received all time &middot; 8.7 average</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:30px">
+    <div class="note" style="flex:1;margin:0"><span class="pin">3</span><span>This wording is the product&#39;s honesty test. Anonymity that is not qualified by &ldquo;admins can see&rdquo; is a promise the system does not keep <span class="mono">R-4.1</span>.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">4</span><span>Department is read-only where employee data comes from an HR system &mdash; the answer to <span class="mono">OQ-2</span> decides this field.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">5</span><span>All email must render on mobile clients and degrade to plain text <span class="mono">R-6.12.3</span>.</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

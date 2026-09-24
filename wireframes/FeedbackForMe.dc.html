@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Feedback for me</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.ln{background:#DFDBD2;border-radius:3px;height:8px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#D97757;color:#fff;font:600 10.5px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.tl{font-size:9.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#918C82;margin-bottom:6px}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;gap:5px;background:#fff;color:#141413;border:1px solid #A8A399;border-radius:6px;height:30px;padding:0 11px;font:500 11.5px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.chip{display:inline-flex;align-items:center;height:21px;padding:0 9px;border-radius:11px;font-size:9.5px;font-weight:600;border:1px solid #DCD8CE;background:#F4F2EC}
+.note{display:flex;gap:9px;font-size:11.5px;line-height:1.45;margin-bottom:9px}
+.hatch{background:repeating-linear-gradient(135deg,#EFEDE7,#EFEDE7 5px,#E0DCD2 5px,#E0DCD2 10px);border:1px dashed #BDB7AA;border-radius:8px}
+.sec{font-size:9.5px;font-weight:600;letter-spacing:.06em;color:#918C82;margin-bottom:5px}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #141413;padding-bottom:12px">
+    <h1 style="margin:0;font-size:26px;font-weight:600">Feedback for Me &mdash; the heart of the product</h1>
+    <div class="mono mut" style="font-size:12px">SPEC 6.7 &middot; R-6.7.1 &hellip; R-6.7.4 &middot; BR-6, BR-7</div>
+  </div>
+
+  <div style="display:flex;gap:18px;flex-grow:1;min-height:0">
+
+    <div style="flex-grow:1;display:flex;flex-direction:column;gap:9px;min-width:0">
+      <div class="hd">Desktop &mdash; summary rail, then the feed</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;min-height:0">
+
+        <div style="width:246px;flex-shrink:0;border-right:1px solid #EDE9E1;padding:16px;background:#FCFBF8;display:flex;flex-direction:column;gap:15px">
+          <div>
+            <div class="tl">All time</div>
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px">
+              <div><div style="font-size:25px;font-weight:600;line-height:1">31</div><div style="font-size:10px" class="mut">votes received</div></div>
+              <div><div style="font-size:25px;font-weight:600;line-height:1">8.7</div><div style="font-size:10px" class="mut">average rating</div></div>
+              <div><div style="font-size:25px;font-weight:600;line-height:1">10</div><div style="font-size:10px" class="mut">best rating</div></div>
+              <div><div style="font-size:25px;font-weight:600;line-height:1">7</div><div style="font-size:10px" class="mut">cycles nominated</div></div>
+            </div>
+          </div>
+          <div class="box" style="padding:9px 11px;font-size:11px;line-height:1.45">Employee of the Month, <strong>March 2026</strong></div>
+
+          <div>
+            <div class="tl">Rating distribution</div>
+            <div style="display:flex;align-items:flex-end;gap:4px;height:62px">
+              <div style="flex:1;height:6%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:6%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:6%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:12%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:18%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:24%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:40%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:68%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:100%;background:#D97757;border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:82%;background:#DCD8CE;border-radius:2px 2px 0 0"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:5px;font-size:8.5px" class="mut"><span>1</span><span>10</span></div>
+          </div>
+
+          <div style="height:1px;background:#E7E3DA"></div>
+          <div>
+            <div class="tl">Filter</div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <div class="gbtn" style="justify-content:space-between;width:100%">Cycle <span class="mut">All</span></div>
+              <div class="gbtn" style="justify-content:space-between;width:100%">Award type <span class="mut">All</span></div>
+              <div class="gbtn" style="justify-content:space-between;width:100%">Rating <span class="mut">1&ndash;10</span></div>
+              <div class="gbtn" style="justify-content:space-between;width:100%">Sort <span class="mut">Newest</span></div>
+            </div>
+          </div>
+          <div style="flex-grow:1"></div>
+          <button class="gbtn" style="width:100%" type="button">Download my feedback (PDF)</button>
+        </div>
+
+        <div style="flex-grow:1;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0;overflow:hidden">
+
+          <div class="hatch" style="padding:13px 15px;display:flex;gap:11px;align-items:flex-start">
+            <span class="pin">1</span>
+            <div style="font-size:12px;line-height:1.55">
+              <div style="font-weight:600;margin-bottom:3px">September 2026 &mdash; not yet visible</div>
+              <div class="mut">Feedback appears once the cycle closes <strong>and</strong> at least 3 colleagues have voted for you. You have 2 so far.</div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;flex-grow:1;min-height:0;align-content:start">
+
+            <div class="pane" style="padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:center;gap:9px">
+                <div style="width:26px;height:26px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+                <div>
+                  <div style="font-size:11.5px;font-weight:600">A colleague</div>
+                  <div style="font-size:9.5px" class="mut">August 2026 &middot; Month</div>
+                </div>
+                <div style="flex-grow:1"></div>
+                <div style="font-size:17px;font-weight:600">9<span style="font-size:11px" class="mut">/10</span></div>
+              </div>
+              <div><div class="sec">REASON</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:94%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:60%;height:7px"></div></div>
+              <div><div class="sec">WHY BETTER THAN OTHERS</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:72%;height:7px"></div></div>
+              <div style="background:#F4F2EC;border-left:3px solid #D97757;border-radius:0 5px 5px 0;padding:9px 11px">
+                <div class="sec" style="color:#8A3F17">SUGGESTION</div>
+                <div class="ln" style="width:100%;margin-bottom:4px;height:7px;background:#D8D3C8"></div>
+                <div class="ln" style="width:66%;height:7px;background:#D8D3C8"></div>
+              </div>
+              <div style="display:flex;align-items:center;font-size:10px" class="mut"><span>26 Aug 2026</span><span style="margin-left:auto;text-decoration:underline">Report</span></div>
+            </div>
+
+            <div class="pane" style="padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:center;gap:9px">
+                <div style="width:26px;height:26px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+                <div>
+                  <div style="font-size:11.5px;font-weight:600">A colleague</div>
+                  <div style="font-size:9.5px" class="mut">August 2026 &middot; Month</div>
+                </div>
+                <div style="flex-grow:1"></div>
+                <div style="font-size:17px;font-weight:600">10<span style="font-size:11px" class="mut">/10</span></div>
+              </div>
+              <div><div class="sec">REASON</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:82%;height:7px"></div></div>
+              <div><div class="sec">WHY BETTER THAN OTHERS</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:90%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:54%;height:7px"></div></div>
+              <div style="background:#F4F2EC;border-left:3px solid #D97757;border-radius:0 5px 5px 0;padding:9px 11px">
+                <div class="sec" style="color:#8A3F17">SUGGESTION</div>
+                <div class="ln" style="width:92%;height:7px;background:#D8D3C8"></div>
+              </div>
+              <div style="display:flex;align-items:center;font-size:10px" class="mut"><span>24 Aug 2026</span><span style="margin-left:auto;text-decoration:underline">Report</span></div>
+            </div>
+
+            <div class="pane" style="padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:center;gap:9px">
+                <div style="width:26px;height:26px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+                <div>
+                  <div style="font-size:11.5px;font-weight:600">A colleague</div>
+                  <div style="font-size:9.5px" class="mut">2025 &middot; Year</div>
+                </div>
+                <div style="flex-grow:1"></div>
+                <div style="font-size:17px;font-weight:600">9<span style="font-size:11px" class="mut">/10</span></div>
+              </div>
+              <div><div class="sec">REASON</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:68%;height:7px"></div></div>
+              <div style="background:#F4F2EC;border-left:3px solid #D97757;border-radius:0 5px 5px 0;padding:9px 11px">
+                <div class="sec" style="color:#8A3F17">SUGGESTION</div>
+                <div class="ln" style="width:78%;height:7px;background:#D8D3C8"></div>
+              </div>
+              <div style="font-size:10px" class="mut">19 Dec 2025</div>
+            </div>
+
+            <div class="pane" style="padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:center;gap:9px">
+                <div style="width:26px;height:26px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC"></div>
+                <div>
+                  <div style="font-size:11.5px;font-weight:600">A colleague</div>
+                  <div style="font-size:9.5px" class="mut">July 2026 &middot; Month</div>
+                </div>
+                <div style="flex-grow:1"></div>
+                <div style="font-size:17px;font-weight:600">8<span style="font-size:11px" class="mut">/10</span></div>
+              </div>
+              <div><div class="sec">REASON</div><div class="ln" style="width:100%;margin-bottom:4px;height:7px"></div><div class="ln" style="width:88%;height:7px"></div></div>
+              <div style="background:#F4F2EC;border-left:3px solid #D97757;border-radius:0 5px 5px 0;padding:9px 11px">
+                <div class="sec" style="color:#8A3F17">SUGGESTION</div>
+                <div class="ln" style="width:84%;height:7px;background:#D8D3C8"></div>
+              </div>
+              <div style="font-size:10px" class="mut">28 Jul 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:186px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Mobile</div>
+      <div class="pane" style="flex-grow:1;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:22px;background:#F4F2EC;border-bottom:1px solid #EDE9E1"></div>
+        <div style="padding:11px 13px;border-bottom:1px solid #EDE9E1">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">Feedback for Me</div>
+          <div style="display:flex;gap:13px">
+            <div><div style="font-size:17px;font-weight:600;line-height:1">31</div><div style="font-size:8.5px" class="mut">votes</div></div>
+            <div><div style="font-size:17px;font-weight:600;line-height:1">8.7</div><div style="font-size:8.5px" class="mut">average</div></div>
+            <div><div style="font-size:17px;font-weight:600;line-height:1">1</div><div style="font-size:8.5px" class="mut">win</div></div>
+          </div>
+        </div>
+        <div style="padding:9px 13px;border-bottom:1px solid #EDE9E1;display:flex;gap:6px;background:#F7F5F0">
+          <div class="gbtn" style="height:26px;font-size:10px;padding:0 9px">Filter</div>
+          <div class="gbtn" style="height:26px;font-size:10px;padding:0 9px">Sort</div>
+        </div>
+        <div style="padding:10px 13px;display:flex;flex-direction:column;gap:9px;flex-grow:1;overflow:hidden">
+          <div class="hatch" style="padding:9px;font-size:9.5px;line-height:1.45;color:#6B6862">September appears once that cycle closes and 3 colleagues have voted.</div>
+          <div class="pane" style="padding:10px">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+              <div style="width:20px;height:20px;border-radius:50%;background:#DCD8CE"></div>
+              <span style="font-size:10px;font-weight:600">A colleague</span>
+              <span style="margin-left:auto;font-size:12px;font-weight:600">9/10</span>
+            </div>
+            <div class="sec" style="font-size:8px">REASON</div>
+            <div class="ln" style="width:100%;margin-bottom:4px;height:6px"></div>
+            <div class="ln" style="width:88%;margin-bottom:4px;height:6px"></div>
+            <div class="ln" style="width:52%;margin-bottom:7px;height:6px"></div>
+            <div style="font-size:9px;text-decoration:underline" class="mut">Read more</div>
+            <div style="background:#F4F2EC;border-left:3px solid #D97757;padding:7px 9px;margin-top:8px">
+              <div class="sec" style="font-size:8px;color:#8A3F17">SUGGESTION</div>
+              <div class="ln" style="width:90%;height:6px;background:#D8D3C8"></div>
+            </div>
+          </div>
+          <div class="pane" style="padding:10px">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+              <div style="width:20px;height:20px;border-radius:50%;background:#DCD8CE"></div>
+              <span style="font-size:10px;font-weight:600">A colleague</span>
+              <span style="margin-left:auto;font-size:12px;font-weight:600">10/10</span>
+            </div>
+            <div class="ln" style="width:100%;margin-bottom:4px;height:6px"></div>
+            <div class="ln" style="width:72%;height:6px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:250px;flex-shrink:0;display:flex;flex-direction:column;gap:9px">
+      <div class="hd">Why the threshold exists</div>
+      <div class="pane" style="flex-grow:1;padding:15px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;line-height:1.55">
+          On a four-person team, a single anonymous vote is not anonymous. The nominee can work out who wrote it from the fact that it exists.
+        </div>
+        <div class="box" style="padding:11px;font-size:11.5px;line-height:1.5">
+          <strong>Rule.</strong> Feedback becomes visible only when the cycle has <strong>closed</strong> and the nominee received at least <strong>3</strong> votes in it.
+          <div class="mono" style="font-size:10px;margin-top:7px;color:#6B6862">min_feedback_reveal_count = 3 &middot; R-6.7.2</div>
+        </div>
+        <div style="height:1px;background:#E7E3DA"></div>
+        <div class="tl">What is never shown to the nominee</div>
+        <div style="font-size:11px;line-height:1.75" class="mut">
+          <div>&#10007; Name</div>
+          <div>&#10007; Email</div>
+          <div>&#10007; Avatar or photo</div>
+          <div>&#10007; Department &mdash; identifying on a small team</div>
+          <div>&#10007; Timestamp finer than the date</div>
+        </div>
+        <div style="height:1px;background:#E7E3DA"></div>
+        <div style="font-size:11px;line-height:1.55">
+          <strong>And it is not only the UI.</strong> The API response behind this page carries no voter identifier in any form <span class="mono">NF-10, AC-4</span>.
+        </div>
+        <div style="flex-grow:1"></div>
+        <div class="box" style="padding:10px;font-size:10.5px;line-height:1.45">Reporting a card hides it immediately for the reader and queues it for admin review <span class="mono">R-6.7.4</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:13px;display:flex;gap:30px">
+    <div class="note" style="flex:1;margin:0"><span class="pin">1</span><span>Feedback for an <strong>open</strong> cycle is never shown, even above the threshold &mdash; releasing it early leaks the standings <span class="mono">R-6.7.3</span>.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">2</span><span>The suggestion is styled apart from the praise. It is the part that makes someone better, and it should not be skimmed past.</span></div>
+    <div class="note" style="flex:1;margin:0"><span class="pin">3</span><span>Admins can see who wrote each card. That is disclosed on the Help page and at first login, not buried <span class="mono">R-4.1</span>.</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

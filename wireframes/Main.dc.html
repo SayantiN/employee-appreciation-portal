@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Wireframe cover and index</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#FAF9F5;color:#141413}
+a{color:#B4541F}a:hover{color:#8A3F17}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.pane{background:#fff;border:1px solid #D6D2C8;border-radius:10px}
+.box{background:#EFEDE7;border:1px solid #DCD8CE;border-radius:6px}
+.hd{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6B6862}
+.mut{color:#6B6862}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#D97757;color:#fff;font:600 11px/1 'IBM Plex Mono',monospace;flex-shrink:0}
+.ix{display:flex;gap:10px;align-items:baseline;font-size:12.5px;padding:5px 0;border-bottom:1px solid #EDE9E1}
+.ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8A857B;width:56px;flex-shrink:0}
+</style>
+</helmet>
+<div style="width:1440px;height:1120px;box-sizing:border-box;padding:56px 60px;display:flex;flex-direction:column;gap:26px">
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #141413;padding-bottom:18px">
+    <div>
+      <div class="hd" style="margin-bottom:10px">Wireframes &middot; low fidelity &middot; annotated</div>
+      <h1 style="margin:0;font-size:46px;font-weight:600;letter-spacing:-.02em">Employee Appreciation Portal</h1>
+    </div>
+    <div style="text-align:right;font-size:12px;line-height:1.7" class="mut">
+      <div>Drawn from <span class="mono" style="color:#141413">SPEC.md v1.2</span></div>
+      <div>22 screens &middot; 19 artboards</div>
+      <div>Desktop 1440 &middot; Tablet 768 &middot; Mobile 390</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:26px;flex-grow:1;min-height:0">
+
+    <div style="width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:18px">
+      <div class="pane" style="padding:20px">
+        <div class="hd" style="margin-bottom:14px">How to read these</div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:12px">
+          <div style="display:flex;gap:11px;align-items:center">
+            <div class="box" style="width:44px;height:26px;flex-shrink:0"></div>
+            <span>Content block, not final copy</span>
+          </div>
+          <div style="display:flex;gap:11px;align-items:center">
+            <div style="width:44px;height:9px;background:#DFDBD2;border-radius:3px;flex-shrink:0"></div>
+            <span>A line of text</span>
+          </div>
+          <div style="display:flex;gap:11px;align-items:center">
+            <div style="width:44px;height:26px;border-radius:50%;background:#DCD8CE;border:1px solid #CDC8BC;flex-shrink:0"></div>
+            <span>Person &mdash; photo or avatar</span>
+          </div>
+          <div style="display:flex;gap:11px;align-items:center">
+            <div style="width:44px;height:26px;border-radius:6px;background:repeating-linear-gradient(135deg,#EFEDE7,#EFEDE7 5px,#E0DCD2 5px,#E0DCD2 10px);border:1px solid #DCD8CE;flex-shrink:0"></div>
+            <span>Hidden or blocked by a rule</span>
+          </div>
+          <div style="display:flex;gap:11px;align-items:center">
+            <span class="pin" style="margin-left:12px">3</span>
+            <span style="margin-left:12px">Numbered note, listed below<br>each screen with its rule ID</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane" style="padding:20px;flex-grow:1">
+        <div class="hd" style="margin-bottom:14px">Locked policy</div>
+        <div style="display:flex;flex-direction:column;gap:11px;font-size:12px;line-height:1.5">
+          <div><strong>Results hidden</strong> until the voting window closes</div>
+          <div><strong>Anonymous to the nominee</strong>; admins can see voters, and this is disclosed</div>
+          <div><strong>No self-voting</strong>, enforced in UI, server and database</div>
+          <div><strong>Editable</strong> until the window closes</div>
+          <div><strong>One vote</strong> per voter per cycle <span class="mut">(OQ-1)</span></div>
+          <div><strong>Every grid</strong> filters and sorts, per column, at every width</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow:1;display:flex;gap:26px">
+      <div class="pane" style="flex-grow:1;padding:22px 24px">
+        <div class="hd" style="margin-bottom:12px">Employee screens</div>
+        <div class="ix"><span class="ref">6.1</span><span>Login</span></div>
+        <div class="ix"><span class="ref">6.2</span><span>Forgot password &amp; reset</span></div>
+        <div class="ix"><span class="ref">6.3</span><span>Dashboard</span></div>
+        <div class="ix"><span class="ref">6.4</span><span>Vote &mdash; Employee of the Month</span></div>
+        <div class="ix"><span class="ref">6.5</span><span>Vote &mdash; Employee of the Year</span></div>
+        <div class="ix"><span class="ref">6.6</span><span>My Votes</span></div>
+        <div class="ix"><span class="ref">6.7</span><span>Feedback for Me</span></div>
+        <div class="ix"><span class="ref">6.8</span><span>Results &amp; Leaderboard</span></div>
+        <div class="ix"><span class="ref">6.9</span><span>Winners Report</span></div>
+        <div class="ix"><span class="ref">6.10</span><span>Hall of Fame</span></div>
+        <div class="ix"><span class="ref">6.11</span><span>Work Showcase</span></div>
+        <div class="ix"><span class="ref">6.12</span><span>Notifications</span></div>
+        <div class="ix"><span class="ref">6.13</span><span>How It Works</span></div>
+        <div class="ix"><span class="ref">6.14</span><span>Video Tutorials</span></div>
+        <div class="ix" style="border-bottom:0"><span class="ref">6.15</span><span>My Profile</span></div>
+      </div>
+
+      <div style="width:320px;flex-shrink:0;display:flex;flex-direction:column;gap:18px">
+        <div class="pane" style="padding:22px 24px">
+          <div class="hd" style="margin-bottom:12px">Administration</div>
+          <div class="ix"><span class="ref">6.16</span><span>Voting Cycles</span></div>
+          <div class="ix"><span class="ref">6.17</span><span>Publish Winners</span></div>
+          <div class="ix"><span class="ref">6.18</span><span>Employee Directory</span></div>
+          <div class="ix"><span class="ref">6.14.7</span><span>Tutorial Library</span></div>
+          <div class="ix"><span class="ref">6.19</span><span>Analytics &amp; Exports</span></div>
+          <div class="ix"><span class="ref">6.20</span><span>Audit Log</span></div>
+          <div class="ix" style="border-bottom:0"><span class="ref">6.21</span><span>System Settings</span></div>
+        </div>
+        <div class="pane" style="padding:22px 24px;flex-grow:1">
+          <div class="hd" style="margin-bottom:12px">Cross-cutting boards</div>
+          <div class="ix"><span class="ref">&sect;5</span><span>Navigation, three widths</span></div>
+          <div class="ix"><span class="ref">&sect;11</span><span>Data Grid Standard</span></div>
+          <div class="ix" style="border-bottom:0"><span class="ref">&sect;10</span><span>Empty, loading, error states</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #D6D2C8;padding-top:16px;font-size:12px;line-height:1.6" class="mut">
+    Boxes and grey lines stand in for real content. Copy shown is indicative, not final. Where the spec fixes exact wording &mdash; validation messages, the anonymity notice, the AI-narration disclosure &mdash; that wording is drawn as written.
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
